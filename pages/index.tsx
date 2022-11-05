@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -8,35 +9,19 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js 13!</a>
         </h1>
 
-        <p className={'text-2xl leading-normal mx-0 my-16'}>
-          Get started by editing{' '}
-          <code className={'code'}>app/page.tsx</code>
-        </p>
-
-        <div className={'grid'}>
-          <a href="https://beta.nextjs.org/docs" className={'card'}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js 13</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={'card'}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Explore the Next.js 13 playground.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates/next.js/app-directory?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
+          <Link
+            href="/office"
             rel="noopener noreferrer"
-            className={'card'}
           >
-            <h2>Deploy &rarr;</h2>
-            <p>Deploy your Next.js site to a public URL with Vercel.</p>
-          </a>
-        </div>
+            <h2>The office &rarr;</h2>
+          </Link>
+
+          <Link
+            href="/contact"
+            rel="noopener noreferrer"
+          >
+            <h2>Contact &rarr;</h2>
+          </Link>
       </main>
 
       <footer className={'flex items-center justify-center flex-grow'}>
