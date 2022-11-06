@@ -17,6 +17,13 @@ export default function Home() {
           </Link>
 
           <Link
+            href="/blog"
+            rel="noopener noreferrer"
+          >
+            <h2>The blog &rarr;</h2>
+          </Link>
+
+          <Link
             href="/contact"
             rel="noopener noreferrer"
           >
