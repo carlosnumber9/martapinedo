@@ -2,7 +2,7 @@ const fetchPosts = async () => {
     try {
       const headers = {
         "content-type": "application/json",
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+        Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
         "gcms-locales": "es_ES",
       };
 
@@ -31,9 +31,9 @@ const fetchPosts = async () => {
         body: JSON.stringify(requestBody),
       };
 
-      const response = await (await fetch(process.env.NEXT_PUBLIC_CONTENT_URL ?? '' , options)).json();
+      const response = await (await fetch(process.env.CONTENT_URL ?? '' , options)).json();
 
-      console.debug(response?.data);
+      return response?.data.posts;
     } catch (e) {
       console.error(e);
     }
