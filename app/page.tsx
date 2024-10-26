@@ -9,7 +9,7 @@ const Page: React.FC = () => {
       </Head>
       <main
         className={
-          "flex flex-col items-center justify-center flex-grow min-h-screen px-0 py-16"
+          "flex flex-col items-center justify-center flex-grow min-h-screen px-0 py-16 text-white"
         }
       >
         <Link href="/blog" rel="noopener noreferrer">
