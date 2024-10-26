@@ -1,5 +1,4 @@
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
 
 const Page: React.FC = () => {
   return (
@@ -9,17 +8,9 @@ const Page: React.FC = () => {
       </Head>
       <main
         className={
-          "flex flex-col items-center justify-center flex-grow min-h-screen px-0 py-16 text-white"
+          'flex flex-col items-center justify-center flex-grow min-h-screen px-0 py-16'
         }
-      >
-        <Link href="/blog" rel="noopener noreferrer">
-          <h2>The blog &rarr;</h2>
-        </Link>
-
-        <Link href="/contact" rel="noopener noreferrer">
-          <h2>Contact &rarr;</h2>
-        </Link>
-      </main>
+      ></main>
     </div>
   );
 };
