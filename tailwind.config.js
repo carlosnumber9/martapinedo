@@ -5,8 +5,11 @@ module.exports = {
     extend: {
       colors: {
         primary: '#1c0f13',
-      }
+      },
+      boxShadow: {
+        custom: '0 2px 4px rgba(255, 255, 255, 0.15)',
+      },
     },
   },
   plugins: [],
-}
+};

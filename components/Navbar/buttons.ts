@@ -5,5 +5,6 @@ export interface ButtonConfig {
 
 export const buttons: ButtonConfig[] = [
   { text: 'The blog', route: '/blog' },
-  { text: 'Contact', route: '/contact' },
+  { text: 'Services', route: '/services' },
+  { text: 'About me', route: '/about' },
 ];
