@@ -8,6 +8,7 @@ module.exports = {
       },
       boxShadow: {
         custom: '0 2px 4px rgba(255, 255, 255, 0.15)',
+        contact: '0 0 15px rgba(255, 255, 255, 0.3)',
       },
     },
   },

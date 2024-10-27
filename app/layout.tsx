@@ -1,4 +1,4 @@
-import { Navbar } from '../components';
+import { Contact, Navbar } from '../components';
 import '../styles/globals.css';
 
 interface Props {
@@ -15,6 +15,7 @@ const RootLayout: React.FC<Props> = ({
       <body className={'text-white bg-primary'}>
         <Navbar />
         <div className={'py-0 px-8 h-screen'}>{children}</div>
+        <Contact />
         <footer className={'flex items-center justify-center flex-grow'}>
           © Marta Pinedo Sánchez. All right reserved.
         </footer>
