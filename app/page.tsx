@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Services } from '../components';
+import { About, Services } from '../components';
 
 const Page: React.FC = () => {
   return (
@@ -21,6 +21,7 @@ const Page: React.FC = () => {
         <h2 className="text-xl">Abogada</h2>
 
         <Services />
+        <About />
       </main>
     </div>
   );
