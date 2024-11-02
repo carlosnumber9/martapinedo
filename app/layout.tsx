@@ -13,16 +13,20 @@ const RootLayout: React.FC<Props> = ({
   return (
     <html lang="en">
       <body className={'text-white bg-primary'}>
-        <Navbar />
-        <div
-          className={
-            'py-0 px-8 h-screen flex flex-col justify-center items-center'
-          }
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          <div
+            className={'py-0 px-8 flex flex-col justify-center items-center'}
+          >
+            {children}
+          </div>
+          <Contact />
+        </main>
+        <footer
+          className={'relative flex items-center justify-center flex-grow'}
         >
-          {children}
-        </div>
-        <Contact />
-        <footer className={'flex items-center justify-center flex-grow'}>
           © Marta Pinedo Sánchez. All right reserved.
         </footer>
       </body>

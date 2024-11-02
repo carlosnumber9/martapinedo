@@ -1,10 +1,16 @@
 import Image from 'next/image';
 import { About, Services } from '../components';
 
+export async function generateMetadata() {
+  return {
+    title: `Marta Pinedo Sánchez`,
+  };
+}
+
 const Page: React.FC = () => {
   return (
     <div className="min-h-screen relative">
-      <main
+      <div
         className={
           'flex flex-col items-center justify-start flex-grow min-h-screen px-0 py-16 top-16'
         }
@@ -22,7 +28,7 @@ const Page: React.FC = () => {
 
         <Services />
         <About />
-      </main>
+      </div>
     </div>
   );
 };
