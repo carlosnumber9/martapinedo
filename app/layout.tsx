@@ -24,9 +24,7 @@ const RootLayout: React.FC<Props> = ({
           </div>
           <Contact />
         </main>
-        <footer
-          className={'relative flex items-center justify-center flex-grow'}
-        >
+        <footer className={'flex items-center justify-center flex-grow'}>
           © Marta Pinedo Sánchez. All right reserved.
         </footer>
       </body>
