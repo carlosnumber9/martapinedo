@@ -7,7 +7,7 @@ export const Services = () => (
       {services.map(({ id, name, description }: Service) => (
         <div
           key={id}
-          className="bg-primary p-10 flex flex-col justify-center items-center bg-opacity-80"
+          className="bg-darkSecondary p-10 flex flex-col justify-center items-center bg-opacity-80"
         >
           <span>{name}</span>
           <p>{description}</p>

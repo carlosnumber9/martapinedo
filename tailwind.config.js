@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1c0f13',
+        darkPrimary: '#1c0f13',
+        darkSecondary: '#113240',
+        bluePrimary: '#120d44',
+        blueSecondary: '#5ef1f1',
+        reddy: '#ee7c7c',
       },
       boxShadow: {
         custom: '0 2px 4px rgba(255, 255, 255, 0.15)',

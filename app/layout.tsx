@@ -12,7 +12,7 @@ const RootLayout: React.FC<Props> = ({
 }) => {
   return (
     <html lang="en">
-      <body className={'text-white bg-primary'}>
+      <body className={'text-white bg-darkPrimary'}>
         <header>
           <Navbar />
         </header>
