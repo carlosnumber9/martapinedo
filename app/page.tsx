@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { About, Services } from '../components';
+import Link from 'next/link';
 
 export async function generateMetadata() {
   return {
@@ -28,6 +29,13 @@ const Page: React.FC = () => {
       </div>
       <About />
       <Services />
+      <div className="py-10 sm:hidden">
+        <Link href={'/blog'}>
+          <button className="p-10 border-2 border-solid border-blue-50 bg-bluePrimary hover:bg-blueSecondary transition-colors duration-500 hover:text-black">
+            Blog
+          </button>
+        </Link>
+      </div>
     </>
   );
 };
