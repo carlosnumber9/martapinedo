@@ -10,7 +10,21 @@ export async function generateMetadata() {
 async function Blog() {
   const posts = await fetchPosts();
 
-  return <>{posts?.map((post: Post) => <p key={post.id}>{post.id}</p>)}</>;
+  return (
+    <div className="p-8">
+      <h1 className="text-3xl font-bold text-center mb-6">Blog Posts</h1>
+      <div className="space-y-4">
+        {posts?.map((post: Post) => (
+          <p
+            key={post.id}
+            className="text-lg text-gray-800 bg-white p-4 rounded shadow"
+          >
+            {post.id}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default Blog;
