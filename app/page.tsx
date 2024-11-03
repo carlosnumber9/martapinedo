@@ -9,10 +9,10 @@ export async function generateMetadata() {
 
 const Page: React.FC = () => {
   return (
-    <div className="min-h-screen relative">
+    <>
       <div
         className={
-          'flex flex-col items-center justify-start flex-grow min-h-screen px-0 py-16 top-16'
+          'flex flex-col items-center justify-start flex-grow px-0 py-16 top-16'
         }
       >
         <div className={'rounded-full w-max h-max overflow-hidden'}>
@@ -25,11 +25,10 @@ const Page: React.FC = () => {
         </div>
         <h1 className={'text-3xl mt-5'}>Marta Pinedo Sánchez</h1>
         <h2 className="text-xl">Abogada</h2>
-
-        <Services />
-        <About />
       </div>
-    </div>
+      <About />
+      <Services />
+    </>
   );
 };
 
