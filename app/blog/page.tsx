@@ -4,7 +4,7 @@ import fetchPosts from './utils/dataFetching';
 
 export async function generateMetadata() {
   return {
-    title: `The Blog - Marta Pinedo Sánchez`,
+    title: `El Blog - Marta Pinedo Sánchez`,
   };
 }
 

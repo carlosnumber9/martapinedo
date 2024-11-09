@@ -12,7 +12,7 @@ export const Navbar = () => {
       <Link href={'/'}>
         <Image src="/logo.png" alt="Logo" width={150} height={60} />
       </Link>
-      <NavbarButton text="The Blog" route="/blog" />
+      <NavbarButton text="El Blog" route="/blog" />
     </nav>
   );
 };
