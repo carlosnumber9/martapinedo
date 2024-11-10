@@ -10,7 +10,7 @@ export const Navbar = () => {
       }
     >
       <Link href={'/'}>
-        <Image src="/logo.png" alt="Logo" width={150} height={60} />
+        <Image src="/logo.svg" alt="Logo" width={150} height={45} />
       </Link>
       <NavbarButton text="El Blog" route="/blog" />
     </nav>
