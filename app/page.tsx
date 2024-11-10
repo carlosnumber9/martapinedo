@@ -13,7 +13,7 @@ const Page: React.FC = () => {
     <>
       <div
         className={
-          'flex flex-col items-center justify-start flex-grow px-0 py-16 top-16'
+          'flex flex-col items-center justify-start flex-grow px-0 py-16'
         }
       >
         <div className={'rounded-full w-max h-max overflow-hidden'}>
