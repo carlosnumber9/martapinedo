@@ -20,7 +20,7 @@ const RootLayout: React.FC<Props> = ({
         <main>
           <div
             className={
-              'py-0 px-8 flex flex-col justify-center items-center flex-grow'
+              'py-0 flex flex-col justify-center items-center flex-grow'
             }
           >
             {children}
