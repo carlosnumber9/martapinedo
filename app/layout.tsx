@@ -1,3 +1,4 @@
+import { mainFont } from 'utils/fonts';
 import { Contact, Navbar } from '../components';
 import '../styles/globals.css';
 
@@ -11,7 +12,7 @@ const RootLayout: React.FC<Props> = ({
   readonly children: React.ReactNode;
 }) => {
   return (
-    <html lang="en">
+    <html lang="en" className={mainFont.className}>
       <body className={'text-white bg-darkPrimary min-h-screen flex flex-col'}>
         <header>
           <Navbar />

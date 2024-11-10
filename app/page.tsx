@@ -24,8 +24,7 @@ const Page: React.FC = () => {
             height={300}
           />
         </div>
-        <h1 className={'text-3xl mt-5'}>Marta Pinedo Sánchez</h1>
-        <h2 className="text-xl">Abogada</h2>
+        <h1 className={'text-3xl md:text-5xl mt-5'}>Marta Pinedo Sánchez</h1>
       </div>
       <About />
       <Services />

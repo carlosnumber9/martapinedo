@@ -30,7 +30,8 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     ".next/types/**/*.ts",
-    "components/**/*.tsx"
+    "components/**/*.tsx",
+    "utils/**/*.ts"
   ],
   "exclude": [
     "node_modules"
