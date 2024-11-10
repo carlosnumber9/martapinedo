@@ -24,7 +24,9 @@ const Page: React.FC = () => {
             height={300}
           />
         </div>
-        <h1 className={'text-3xl md:text-5xl mt-5'}>Marta Pinedo Sánchez</h1>
+        <h1 className={'text-5xl md:text-4xl mt-5 text-center'}>
+          Honestidad · Eficacia · Profesionalidad
+        </h1>
       </div>
       <About />
       <Services />
