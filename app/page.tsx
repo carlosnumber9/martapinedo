@@ -60,9 +60,13 @@ const Page: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-start flex-grow px-0 py-16">
+      <div
+        className={
+          'flex flex-col items-center justify-start flex-grow px-0 py-16'
+        }
+      >
         <div
-          className="w-max h-max overflow-hidden"
+          className="w-max h-max p-8"
           style={{
             perspective: '1000px',
           }}
@@ -77,16 +81,19 @@ const Page: React.FC = () => {
             }}
             transition={{ type: 'spring', stiffness: 200, damping: 20 }}
           >
-            <Image
-              className="rounded-full"
-              src={'/marta.jpeg'}
-              alt="Marta Pinedo Sánchez"
-              width={300}
-              height={300}
-            />
+            <div className="rounded-full overflow-hidden w-[300px] h-[300px] relative border-4 border-white shadow-lg">
+              <Image
+                className="object-cover"
+                src={'/marta.jpeg'}
+                alt="Marta Pinedo Sánchez"
+                fill
+                sizes="300px"
+                priority
+              />
+            </div>
           </motion.div>
         </div>
-        <h1 className="text-5xl md:text-4xl mt-5 text-center">
+        <h1 className={'text-5xl md:text-4xl mt-5 text-center'}>
           Honestidad · Eficacia · Profesionalidad
         </h1>
       </div>
