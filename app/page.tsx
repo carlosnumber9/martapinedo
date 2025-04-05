@@ -1,40 +1,66 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { About, Services } from '../components';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { isMobile } from 'react-device-detect';
 
 const Page: React.FC = () => {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    document.title = "Marta Pinedo Sánchez";
+    document.title = 'Marta Pinedo Sánchez';
   }, []);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
+      if (isMobile) return;
+
       const { clientX, clientY } = event;
       const x = -((clientX / window.innerWidth) * 2 - 1) * 15;
       const y = -((clientY / window.innerHeight) * 2 - 1) * -15;
       setRotation({ x, y });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    const handleDeviceOrientation = (event: DeviceOrientationEvent) => {
+      if (!isMobile) return;
+
+      const beta = event.beta;
+      const gamma = event.gamma;
+
+      if (beta !== null && gamma !== null) {
+        const x = Math.min(Math.max(gamma, -15), 15);
+        const y = Math.min(Math.max(beta - 45, -15), 15);
+
+        setRotation({ x, y: -y });
+      }
+    };
+
+    let touchHandler: (() => void) | null = null;
+
+    if (isMobile) {
+      touchHandler = () => {
+        document.removeEventListener('touchstart', touchHandler!);
+      };
+      document.addEventListener('touchstart', touchHandler);
+    } else {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('deviceorientation', handleDeviceOrientation);
+      if (touchHandler) {
+        document.removeEventListener('touchstart', touchHandler);
+      }
     };
   }, []);
 
   return (
     <>
-      <div
-        className={
-          'flex flex-col items-center justify-start flex-grow px-0 py-16'
-        }
-      >
+      <div className="flex flex-col items-center justify-start flex-grow px-0 py-16">
         <div
           className="w-max h-max overflow-hidden"
           style={{
@@ -60,7 +86,7 @@ const Page: React.FC = () => {
             />
           </motion.div>
         </div>
-        <h1 className={'text-5xl md:text-4xl mt-5 text-center'}>
+        <h1 className="text-5xl md:text-4xl mt-5 text-center">
           Honestidad · Eficacia · Profesionalidad
         </h1>
       </div>
