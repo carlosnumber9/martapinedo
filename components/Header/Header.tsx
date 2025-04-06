@@ -42,9 +42,9 @@ export const Header = () => {
         </motion.div>
       </div>
       <div className={'text-5xl md:text-4xl mt-5 flex flex-col'}>
-        <span> Honestidad </span>
-        <span> Eficacia </span>
+        <span> Excelencia </span>
         <span> Profesionalidad </span>
+        <span> Confianza </span>
       </div>
     </div>
   );
