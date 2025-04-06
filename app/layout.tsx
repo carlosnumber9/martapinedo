@@ -32,7 +32,7 @@ const RootLayout: React.FC<Props> = ({
             'flex items-center justify-center flex-grow py-4 text-center'
           }
         >
-          © Marta Pinedo Sánchez. All right reserved.
+          © Marta Pinedo Sánchez. Todos los derechos reservados.
         </footer>
       </body>
     </html>
