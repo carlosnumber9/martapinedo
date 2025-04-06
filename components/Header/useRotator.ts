@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 
 export const useRotator = () => {
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState({ rotateX: 0, rotateY: 0 });
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       if (isMobile) return;
 
       const { clientX, clientY } = event;
-      const x = -((clientX / window.innerWidth) * 2 - 1) * 15;
-      const y = -((clientY / window.innerHeight) * 2 - 1) * -15;
-      setRotation({ x, y });
+      const rotateX = -((clientX / window.innerWidth) * 2 - 1) * 15;
+      const rotateY = -((clientY / window.innerHeight) * 2 - 1) * -15;
+      setRotation({ rotateX, rotateY });
     };
 
     const handleDeviceOrientation = (event: DeviceOrientationEvent) => {
@@ -21,10 +21,10 @@ export const useRotator = () => {
       const gamma = event.gamma;
 
       if (beta !== null && gamma !== null) {
-        const x = Math.min(Math.max(gamma, -15), 15);
-        const y = Math.min(Math.max(beta - 45, -15), 15);
+        const rotateX = Math.min(Math.max(gamma, -15), 15);
+        const rotateY = Math.min(Math.max(beta - 45, -15), 15);
 
-        setRotation({ x, y: -y });
+        setRotation({ rotateX, rotateY: -rotateY });
       }
     };
 

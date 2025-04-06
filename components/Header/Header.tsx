@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useRotator } from './useRotator';
 
 export const Header = () => {
-  const rotation = useRotator();
+  const { rotateX, rotateY } = useRotator();
 
   return (
     <div
@@ -24,8 +24,8 @@ export const Header = () => {
             transformStyle: 'preserve-3d',
           }}
           animate={{
-            rotateX: rotation.y,
-            rotateY: rotation.x,
+            rotateX,
+            rotateY,
           }}
           transition={{ type: 'spring', stiffness: 200, damping: 20 }}
         >
