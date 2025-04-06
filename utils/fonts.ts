@@ -1,6 +1,7 @@
-import { Schibsted_Grotesk } from '@next/font/google';
+import { Raleway as Font } from '@next/font/google';
 
-export const mainFont = Schibsted_Grotesk({
+export const mainFont = Font({
+  weight: ['400'],
   subsets: ['latin'],
   variable: '--font-main',
 });

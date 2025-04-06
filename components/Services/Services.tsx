@@ -11,7 +11,7 @@ export const Services = () => (
           className="bg-darkSecondary p-10 flex flex-col justify-center items-center bg-opacity-80 sm:w-3/4 md:w-2/5 lg:w-1/4 gap-5 mx-5"
         >
           <h2 className="text-xl text-center">{name}</h2>
-          <p className="text-justify">{description}</p>
+          <p>{description}</p>
         </div>
       ))}
     </div>

@@ -62,7 +62,7 @@ const Page: React.FC = () => {
     <>
       <div
         className={
-          'flex flex-col items-center justify-start flex-grow px-0 py-16'
+          'flex flex-row items-center flex-grow px-0 py-16 flex-wrap justify-center'
         }
       >
         <div
@@ -93,9 +93,11 @@ const Page: React.FC = () => {
             </div>
           </motion.div>
         </div>
-        <h1 className={'text-5xl md:text-4xl mt-5 text-center'}>
-          Honestidad · Eficacia · Profesionalidad
-        </h1>
+        <div className={'text-5xl md:text-4xl mt-5 flex flex-col'}>
+          <span> Honestidad </span>
+          <span> Eficacia </span>
+          <span> Profesionalidad </span>
+        </div>
       </div>
       <About />
       <Services />
