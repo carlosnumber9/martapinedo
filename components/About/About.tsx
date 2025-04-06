@@ -1,17 +1,15 @@
 export const About = () => (
-  <div className="flex flex-col justify-around items-center w-screen relative gap-10 pt-5 pb-5 bg-darkSecondary">
-    <h1 className={'text-3xl mt-5'}>Sobre mí</h1>
-    <p className="p-10 text-justify">
-      Soy Marta Pinedo, abogada con experiencia en derecho civil y mercantil,
-      actualmente ejerciendo en EJO Abogados y en mi propio despacho
-      profesional. A lo largo de mi carrera he tenido la oportunidad de trabajar
-      en entornos de diversa índole, desde despachos familiares hasta grandes
-      empresas y juzgados, lo que me ha permitido desarrollarme en áreas como la
-      resolución de disputas, la gestión de procedimientos judiciales y la
-      revisión de contratos. Estas experiencias han fortalecido mi capacidad de
-      comunicación y mi enfoque en la atención al cliente. En mi tiempo libre,
-      soy una apasionada de la lectura y me esfuerzo por mantenerme en forma a
-      través de una rutina de gimnasio que me ayuda a equilibrar cuerpo y mente.{' '}
+  <div className="flex flex-col w-screen relative p-5 sm:p-20 bg-darkSecondary">
+    <h2 className="text-3xl mt-5 ml-5 self-start">Sobre mí</h2>
+    <hr className="ml-5 mr-5 self-stretch border-white/20" />
+    <p className="w-11/12 sm:w-3/4 ml-5 sm:mx-0 sm:self-end mt-5">
+      Soy Marta Pinedo, abogada especializada en derecho civil y mercantil. Mi
+      experiencia en despachos familiares, grandes empresas y juzgados me ha
+      permitido desarrollar habilidades en resolución de disputas, gestión
+      judicial y revisión de contratos. Actualmente ejerzo en EJO Abogados y en
+      mi propio despacho, donde priorizo la comunicación efectiva y la atención
+      personalizada. En mi tiempo libre, disfruto de la lectura y de actividades
+      que me ayudan a mantener un equilibrio personal.
     </p>
   </div>
 );
