@@ -3,8 +3,9 @@ import { services, Service } from './servicesList';
 
 export const Services = () => (
   <VideoContainer>
-    <h1 className={'text-3xl mt-5'}>Servicios</h1>
-    <div className=" flex items-center justify-center gap-5 flex-wrap">
+    <h2 className="text-3xl mt-5 ml-5 self-start">Servicios</h2>
+    <hr className="ml-5 mr-5 self-stretch border-white/20" />
+    <div className=" flex items-center justify-center gap-5 flex-wrap mt-5">
       {services.map(({ id, name, description }: Service) => (
         <div
           key={id}

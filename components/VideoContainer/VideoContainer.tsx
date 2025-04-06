@@ -15,7 +15,7 @@ export const VideoContainer: React.FC<Props> = ({ children }) => {
         loop
         playsInline
       />
-      <div className="relative z-10 flex flex-col justify-around items-center min-h-screen pt-5 pb-5 gap-10">
+      <div className="relative z-10 flex flex-col justify-around items-center min-h-screen p-5">
         {children}
       </div>
     </div>
