@@ -10,7 +10,7 @@ export const BlogButton = () => {
   return (
     <motion.div
       className={
-        'fixed z-50 bottom-5 left-5 w-20 h-20 flex justify-center items-center rounded-full shadow-contact bg-darkPrimary hover:bg-darkSecondary transition-colors duration-500 ease-in-out cursor-pointer'
+        'fixed z-50 bottom-5 left-5 w-20 h-20 flex justify-center items-center rounded-full shadow-contact bg-darkPrimary hover:bg-darkSecondary transition-colors duration-500 ease-in-out cursor-pointer sm:hidden'
       }
       style={{ opacity }}
     >
