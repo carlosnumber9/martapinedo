@@ -11,12 +11,11 @@ export async function generateMetadata() {
 async function Blog() {
   const posts = await fetchPosts();
 
+  console.debug('posts', posts);
+
   return (
-    <div className="p-8">
-      <h1 className="text-3xl text-center mb-6">Blog</h1>
-      <div className="space-y-4">
-        {posts?.map((post: Post) => <SinglePost key={post.id} {...post} />)}
-      </div>
+    <div className="p-8 w-screen flex flex-wrap justify-center h-auto">
+      {posts?.map((post: Post) => <SinglePost key={post.id} {...post} />)}
     </div>
   );
 }
