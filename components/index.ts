@@ -4,3 +4,4 @@ export * from './Services/Services';
 export * from './About/About';
 export * from './VideoContainer/VideoContainer';
 export * from './Header/Header';
+export * from './BlogButton/BlogButton';
