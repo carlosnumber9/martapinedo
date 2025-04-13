@@ -27,7 +27,7 @@ const RootLayout: React.FC<Props> = ({
           </Link>
           <Contact />
         </main>
-        <footer className="flex items-center justify-center py-4 text-center">
+        <footer className="flex items-center justify-center py-4 text-center text-gray-400 text-xs">
           © Marta Pinedo Sánchez. Todos los derechos reservados.
         </footer>
       </body>

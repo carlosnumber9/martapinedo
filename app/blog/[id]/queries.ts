@@ -9,6 +9,10 @@ export const GET_POST = gql`
       body {
         html
       }
+      createdBy {
+        name
+        picture
+      }
       publishDate
     }
   }
