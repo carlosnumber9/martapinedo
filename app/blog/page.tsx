@@ -1,6 +1,7 @@
+import { apolloClient } from 'utils';
 import { Post } from '../types';
 import { SinglePost } from './Post';
-import fetchPosts from './utils/dataFetching';
+import { GET_POSTS as query } from './queries';
 
 export async function generateMetadata() {
   return {
@@ -9,13 +10,11 @@ export async function generateMetadata() {
 }
 
 async function Blog() {
-  const posts = await fetchPosts();
-
-  console.debug('posts', posts);
+  const { data } = await apolloClient.query({ query });
 
   return (
     <div className="p-8 w-screen flex flex-wrap justify-center h-auto">
-      {posts?.map((post: Post) => <SinglePost key={post.id} {...post} />)}
+      {data.posts?.map((post: Post) => <SinglePost key={post.id} {...post} />)}
     </div>
   );
 }
