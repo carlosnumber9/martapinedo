@@ -4,7 +4,7 @@ import { GET_POST as query } from './queries';
 import DOMPurify from 'isomorphic-dompurify';
 
 interface PostPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 const PostPage = async ({ params }: PostPageProps) => {
