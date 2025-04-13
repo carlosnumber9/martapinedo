@@ -18,12 +18,6 @@ const PostPage = async ({ params }: PostPageProps) => {
 
     if (error) {
       console.error('Error fetching post:', error);
-      if (error.networkError) {
-        console.error('Network Error:', error.networkError);
-      }
-      if (error.graphQLErrors) {
-        console.error('GraphQL Errors:', error.graphQLErrors);
-      }
       notFound();
     }
 
