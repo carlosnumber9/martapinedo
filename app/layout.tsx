@@ -1,5 +1,5 @@
 import { mainFont } from 'utils/fonts';
-import { BlogButton, Contact, Navbar } from '../components';
+import { BlogButton, Contact, Navbar, PageTransition } from '../components';
 import '../styles/globals.css';
 import Link from 'next/link';
 
@@ -19,9 +19,7 @@ const RootLayout: React.FC<Props> = ({
           <Navbar />
         </header>
         <main className="flex-grow">
-          <div className="py-0 flex flex-col justify-center items-center flex-grow">
-            {children}
-          </div>
+          <PageTransition>{children}</PageTransition>
           <Link href={'/blog'}>
             <BlogButton />
           </Link>

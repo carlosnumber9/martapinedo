@@ -1,4 +1,4 @@
-import { VideoContainer } from 'components/VideoContainer/VideoContainer';
+import { VideoContainer } from 'components/VideoContainer';
 import { services, Service } from './servicesList';
 
 export const Services = () => (

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'motion/react';
-import { useRotator } from './useRotator';
+import { useRotator } from '../hooks/useRotator';
 
 export const Header = () => {
   const { rotateX, rotateY } = useRotator();
