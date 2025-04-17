@@ -7,3 +7,4 @@ export * from './Header';
 export * from './BlogButton';
 export * from './Transition';
 export * from './Navbar';
+export * from './Loader';
