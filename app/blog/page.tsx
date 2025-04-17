@@ -3,12 +3,14 @@ import { Post } from '../types';
 import { SinglePost } from './Post';
 import { GET_POSTS as query } from './queries';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-export async function generateMetadata() {
-  return {
-    title: `El Blog - Marta Pinedo Sánchez`,
-  };
-}
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Blog | Marta Pinedo Sánchez',
+  },
+  description: 'Blog de Marta Pinedo Sánchez',
+};
 
 async function Blog() {
   try {

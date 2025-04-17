@@ -3,6 +3,34 @@ import { apolloClient } from 'utils';
 import { GET_POST as query } from './queries';
 import DOMPurify from 'isomorphic-dompurify';
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const { data } = await apolloClient.query({
+      query,
+      variables: { id },
+    });
+
+    if (!data.posts || data.posts.length === 0) {
+      notFound();
+    }
+
+    const { title } = data.posts[0];
+
+    return {
+      title: `${title} | Marta Pinedo Sánchez`,
+      description: 'Blog de Marta Pinedo Sánchez',
+    };
+  } catch (err) {
+    console.error('Error fetching metadata:', err);
+    notFound();
+  }
+}
 
 interface PostPageProps {
   params: Promise<{ id: string }>;

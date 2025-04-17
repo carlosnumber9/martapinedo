@@ -1,13 +1,15 @@
-'use client';
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import { About, Header, Services } from '../components';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Marta Pinedo Sánchez',
+  },
+  description: 'Sitio oficial de Marta Pinedo Sánchez',
+};
 
 const Page: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Marta Pinedo Sánchez';
-  }, []);
-
   return (
     <div className="flex flex-row flex-wrap">
       <Header />
