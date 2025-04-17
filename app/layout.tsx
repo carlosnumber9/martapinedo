@@ -5,13 +5,12 @@ import Link from 'next/link';
 
 interface Props {
   children: React.ReactNode;
+  params: { blog?: string };
 }
 
-const RootLayout: React.FC<Props> = ({
-  children,
-}: {
-  readonly children: React.ReactNode;
-}) => {
+const RootLayout: React.FC<Props> = ({ children, params }: Props) => {
+  const isBlogPage = params?.blog === 'blog';
+
   return (
     <html lang="en" className={mainFont.className}>
       <body className="text-white bg-darkPrimary min-h-screen flex flex-col">
@@ -20,9 +19,11 @@ const RootLayout: React.FC<Props> = ({
         </header>
         <main className="flex-grow">
           <PageTransition>{children}</PageTransition>
-          <Link href={'/blog'}>
-            <BlogButton />
-          </Link>
+          {!isBlogPage && (
+            <Link href={'/blog'}>
+              <BlogButton />
+            </Link>
+          )}
           <Contact />
         </main>
         <footer className="flex items-center justify-center py-4 text-center text-gray-400 text-xs">
