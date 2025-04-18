@@ -7,7 +7,9 @@ import { Metadata } from 'next';
 
 export async function generateMetadata({
   params,
-}: PostPageProps): Promise<Metadata> {
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const { id } = params;
 
   try {
@@ -32,13 +34,7 @@ export async function generateMetadata({
   }
 }
 
-interface PostPageProps {
-  params: { id: string };
-}
-
-const PostPage = async ({ params }: PostPageProps) => {
-  await new Promise((r) => setTimeout(r, 2000));
-
+const PostPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
 
   try {
