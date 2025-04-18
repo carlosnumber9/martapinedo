@@ -34,8 +34,8 @@ export async function generateMetadata({
   }
 }
 
-const PostPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
 
   try {
     const { data, error } = await apolloClient.query({
