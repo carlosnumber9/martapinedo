@@ -1,7 +1,8 @@
-import { Raleway as Font } from 'next/font/google';
+import { Merriweather as Font } from 'next/font/google';
 
 export const mainFont = Font({
-  weight: ['400'],
+  weight: ['300'],
   subsets: ['latin'],
   variable: '--font-main',
+  display: 'swap',
 });
