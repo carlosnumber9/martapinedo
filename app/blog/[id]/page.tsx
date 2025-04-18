@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const { id } = await params;
+  const { id } = params;
 
   try {
     const { data } = await apolloClient.query({
@@ -33,11 +33,13 @@ export async function generateMetadata({
 }
 
 interface PostPageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 const PostPage = async ({ params }: PostPageProps) => {
-  const { id } = await params;
+  await new Promise((r) => setTimeout(r, 2000));
+
+  const { id } = params;
 
   try {
     const { data, error } = await apolloClient.query({
