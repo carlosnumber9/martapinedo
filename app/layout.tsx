@@ -13,7 +13,7 @@ const RootLayout: React.FC<Props> = ({ children, params }: Props) => {
 
   return (
     <html lang="en" className={mainFont.className}>
-      <body className="text-white bg-darkPrimary min-h-screen flex flex-col">
+      <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col">
         <header>
           <Navbar />
         </header>
