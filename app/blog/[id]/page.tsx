@@ -8,9 +8,9 @@ import { Metadata } from 'next';
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
 
   try {
     const { data } = await apolloClient.query({
