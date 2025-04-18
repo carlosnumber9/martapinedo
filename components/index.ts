@@ -5,6 +5,5 @@ export * from './About';
 export * from './VideoContainer';
 export * from './Header';
 export * from './BlogButton';
-export * from './Transition';
 export * from './Navbar';
 export * from './Loader';
