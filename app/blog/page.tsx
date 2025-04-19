@@ -14,10 +14,11 @@ export const metadata: Metadata = {
 
 async function Blog() {
   try {
+    await new Promise((resolve) => setTimeout(resolve, 10000));
     const { data } = await apolloClient.query({ query });
 
     return (
-      <div className="p-8 w-screen flex flex-row flex-wrap justify-center h-auto">
+      <div className="p-8 w-screen flex flex-row flex-wrap h-auto justify-center xl:justify-start">
         {data.posts?.map((post: Post) => (
           <SinglePost key={post.id} {...post} />
         ))}
