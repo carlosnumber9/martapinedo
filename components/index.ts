@@ -1,5 +1,5 @@
 export * from './Navbar/Navbar';
-export * from './Contact';
+export * from './Contact/ContactButton';
 export * from './Services/Services';
 export * from './About';
 export * from './VideoContainer';

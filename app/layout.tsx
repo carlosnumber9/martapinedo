@@ -1,5 +1,5 @@
 import { mainFont } from 'utils/fonts';
-import { BlogButton, Contact, Navbar } from '../components';
+import { BlogButton, ContactButton, Navbar } from '../components';
 import '../styles/globals.css';
 import Link from 'next/link';
 
@@ -24,7 +24,7 @@ const RootLayout: React.FC<Props> = ({ children, params }: Props) => {
               <BlogButton />
             </Link>
           )}
-          <Contact />
+          <ContactButton />
         </main>
         <footer className="flex items-center justify-center py-4 text-center text-gray-400 text-xs">
           © Marta Pinedo Sánchez. Todos los derechos reservados.
