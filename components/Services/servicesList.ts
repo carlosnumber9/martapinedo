@@ -9,30 +9,30 @@ export const services: Service[] = [
     id: 'asesoria',
     name: 'Asesoría y Consultoría Legal',
     description:
-      'Ofrezco asesoramiento personalizado en derecho civil, mercantil y administrativo, ayudando a mis clientes a tomar decisiones informadas en situaciones legales complejas.',
+      'Derecho civil, mercantil y administrativo para ayudarte a tomar decisiones legales con seguridad',
   },
   {
     id: 'redaccion',
     name: 'Revisión y Redacción de Contratos',
     description:
-      'Me especializo en la revisión y redacción de contratos, asegurando que cada acuerdo proteja los intereses de mis clientes y prevenga posibles conflictos.',
+      'Garantizo acuerdos claros y seguros que protejan tus intereses y prevengan conflictos.',
   },
   {
     id: 'representacion',
     name: 'Representación Legal en Litigios',
     description:
-      'Acompaño a mis clientes en cada etapa de su litigio, desde la preparación de documentos hasta la representación en audiencias, con una defensa comprometida y cercana.',
+      'Defiendo tu caso con compromiso y cercanía, desde la preparación hasta las audiencias.',
   },
   {
     id: 'gestion',
     name: 'Gestión de Procedimientos Administrativos',
     description:
-      'Me encargo de gestionar procedimientos administrativos como citaciones y sanciones, facilitando el cumplimiento de obligaciones legales de manera eficaz.',
+      'Tramito citaciones, sanciones y otros procedimientos para que cumplas con tus obligaciones legales sin complicaciones.',
   },
   {
     id: 'resolucion',
     name: 'Resolución Alternativa de Disputas',
     description:
-      'Ayudo a resolver conflictos a través de la mediación y negociación, buscando soluciones pacíficas que eviten el juicio y preserven relaciones.',
+      'Busco soluciones pacíficas mediante mediación y negociación, evitando el juicio y cuidando las relaciones.',
   },
 ];
