@@ -9,15 +9,14 @@ export const SinglePost: React.FC<Post> = ({
   subtitle,
   publishDate,
 }) => (
-  <div className="flex flex-col items-center justify-center bg-darkSecondary m-1 w-96 md:w-1/2 lg:w-1/4 p-5 gap-2 h-64">
-    <h2>{title}</h2>
-    <p className="text-sm italic text-gray-300 text-center">{subtitle}</p>
-    <span className="text-gray-400 text-xs">{`Publicado ${formatDate(new Date(publishDate))}`}</span>
+  <div className="bg-darkSecondary m-1 w-96 md:w-1/2 lg:w-1/4 h-64 transition ease-in-out duration-300 hover:bg-darkSecondary/70 hover:scale-110 cursor-pointer">
     <Link
       href={`/blog/${id}`}
-      className="text-blueSecondary hover:text-blue-400"
+      className="text-decoration-none flex flex-col items-center justify-center gap-2 p-5 h-full"
     >
-      Leer más
+      <h2>{title}</h2>
+      <p className="text-sm italic text-gray-300 text-center">{subtitle}</p>
+      <span className="text-gray-400 text-xs">{`Publicado ${formatDate(new Date(publishDate))}`}</span>
     </Link>
   </div>
 );
