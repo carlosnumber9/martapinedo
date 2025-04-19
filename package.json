@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.13.7",
+    "@emailjs/browser": "^4.4.1",
+    "classnames": "^2.5.1",
     "graphql": "^16.10.0",
     "isomorphic-dompurify": "^2.23.0",
     "motion": "^12.6.5",

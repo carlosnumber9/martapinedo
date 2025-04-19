@@ -32,7 +32,7 @@
     ".next/types/**/*.ts",
     "components/**/*.tsx",
     "utils/**/*.ts"
-  ],
+, "hooks/useEmail.ts"  ],
   "exclude": [
     "node_modules"
   ]
