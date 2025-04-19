@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 
 async function Blog() {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 10000));
     const { data } = await apolloClient.query({ query });
 
     return (
