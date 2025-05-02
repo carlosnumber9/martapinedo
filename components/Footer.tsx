@@ -29,6 +29,15 @@ export const Footer = () => (
           className="mx-2 cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out"
         />
       </Link>
+      <Link href={'https://lexgoapp.com/marta-pinedo-i4447'} target="_blank">
+        <Image
+          src={'/lexgoapp.png'}
+          alt="LexGoApp logo linking to Marta Pinedo's LexGoApp profile"
+          width={70}
+          height={70}
+          className="mx-2 cursor-pointer hover:scale-105 transition-transform duration-200 ease-in-out"
+        />
+      </Link>
     </div>
   </footer>
 );
