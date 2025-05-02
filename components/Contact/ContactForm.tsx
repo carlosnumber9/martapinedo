@@ -49,21 +49,15 @@ export const ContactModal = ({ onClose }: Props) => {
         transition={{ duration: 0.3, type: 'tween', ease: 'easeOut' }}
       >
         <div
-          className="w-80 h-90 flex flex-col items-center justify-center bg-darkSecondary p-10 cursor-default"
+          className="w-80 h-90 flex flex-col items-center justify-center bg-darkSecondary px-10 py-5 cursor-default"
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            onClick={onClose}
-            className="top-4 right-4 text-gray-500 hover:text-white self-end"
-          >
-            ✕
-          </button>
           <h2 className="text-2xl font-semibold mb-4">Contacto</h2>
           <form className="space-y-4">
             <input
               type="text"
-              placeholder="Nombre"
-              className="w-full border border-gray-300 p-2 text-darkSecondary"
+              placeholder="Nombre*"
+              className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300 autofill:!bg-transparent"
               required
               onChange={(e) =>
                 setFormValues({ ...formValues, name: e.target.value })
@@ -73,8 +67,8 @@ export const ContactModal = ({ onClose }: Props) => {
             />
             <input
               type="email"
-              placeholder="Email"
-              className="w-full border border-gray-300 p-2 text-darkSecondary"
+              placeholder="Email*"
+              className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300"
               required
               onChange={(e) =>
                 setFormValues({ ...formValues, email: e.target.value })
@@ -84,8 +78,8 @@ export const ContactModal = ({ onClose }: Props) => {
             />
             <input
               type="text"
-              placeholder="Asunto (opcional)"
-              className="w-full border border-gray-300 p-2 text-darkSecondary"
+              placeholder="Asunto"
+              className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300"
               onChange={(e) =>
                 setFormValues({ ...formValues, subject: e.target.value })
               }
@@ -93,9 +87,9 @@ export const ContactModal = ({ onClose }: Props) => {
               name="subject"
             />
             <textarea
-              placeholder="Mensaje"
+              placeholder="Mensaje*"
               rows={4}
-              className="w-full border border-gray-300 p-2 text-darkSecondary"
+              className="w-full border border-none focus:outline-none p-2 text-white bg-gray-800/50 focus:bg-white/20 transition-colors ease-in-out duration-300"
               required
               onChange={(e) =>
                 setFormValues({ ...formValues, message: e.target.value })
