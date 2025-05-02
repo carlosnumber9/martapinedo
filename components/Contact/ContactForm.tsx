@@ -39,7 +39,10 @@ export const ContactModal = ({ onClose }: Props) => {
   };
 
   return (
-    <div className="w-80 h-90 flex flex-col items-center justify-center bg-darkSecondary p-10 cursor-default">
+    <div
+      className="w-80 h-90 flex flex-col items-center justify-center bg-darkSecondary p-10 cursor-default"
+      onClick={(e) => e.stopPropagation()}
+    >
       <button
         onClick={onClose}
         className="top-4 right-4 text-gray-500 hover:text-white self-end"
