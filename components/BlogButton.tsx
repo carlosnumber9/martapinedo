@@ -1,25 +1,28 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'motion/react';
 import { useScrollOpacity } from 'hooks';
+import { LottieOptions, useLottie } from 'lottie-react';
+import animationData from '../public/lotties/blog.json';
+
+const defaultOptions: LottieOptions = {
+  animationData: animationData,
+  loop: true,
+};
 
 export const BlogButton = () => {
   const opacity = useScrollOpacity();
 
+  const { View: BlogIcon } = useLottie(defaultOptions);
+
   return (
     <motion.div
       className={
-        'fixed z-50 bottom-5 left-5 w-20 h-20 flex justify-center items-center rounded-full shadow-contact bg-darkPrimary hover:bg-darkSecondary transition-colors duration-500 ease-in-out cursor-pointer sm:hidden'
+        'fixed z-50 bottom-0 left-0 w-36 h-36 flex justify-center items-center cursor-pointer sm:hidden'
       }
       style={{ opacity }}
     >
-      <Image
-        src={'/blog.png'}
-        alt={'Blog button icon'}
-        width={50}
-        height={50}
-      />
+      {BlogIcon}
     </motion.div>
   );
 };
