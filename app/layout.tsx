@@ -2,14 +2,15 @@ import { mainFont } from 'utils/fonts';
 import { BlogButton, ContactButton, Footer, Navbar } from '../components';
 import '../styles/globals.css';
 import Link from 'next/link';
+import { PropsWithChildren } from 'react';
 
-interface Props {
-  children: React.ReactNode;
-  params: { blog?: string };
-}
+type Props = PropsWithChildren<{
+  params: Promise<{ blog?: string | string[] }>;
+}>;
 
-const RootLayout: React.FC<Props> = ({ children, params }: Props) => {
-  const isBlogPage = params?.blog === 'blog';
+const RootLayout: React.FC<Props> = async ({ children, params }) => {
+  const resolvedParams = await params;
+  const isBlogPage = resolvedParams?.blog === 'blog';
 
   return (
     <html lang="en" className={mainFont.className}>

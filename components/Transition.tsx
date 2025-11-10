@@ -13,7 +13,7 @@ export const PageTransition = ({ children }: { children: ReactNode }) => {
         key={pathname}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, easeInOut }}
+        transition={{ duration: 0.3, ease: easeInOut }}
         className="py-0 flex flex-col justify-center items-center flex-grow"
       >
         {children}

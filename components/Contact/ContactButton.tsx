@@ -2,7 +2,7 @@
 
 import { useScrollOpacity } from 'hooks';
 import { AnimatePresence, motion } from 'motion/react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ContactModal } from './ContactForm';
 import { useLottie } from 'lottie-react';
 import animationData from '../../public/lotties/contact.json';
@@ -13,7 +13,8 @@ const defaultOptions = {
 };
 
 export const ContactButton = () => {
-  const opacity = useScrollOpacity();
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const opacity = useScrollOpacity(buttonRef);
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -37,6 +38,7 @@ export const ContactButton = () => {
         )}
       </AnimatePresence>
       <motion.div
+        ref={buttonRef}
         style={{ opacity, display: isOpen ? 'none' : 'flex' }}
         onClick={() => setIsOpen(true)}
         className="fixed z-50 bottom-5 right-5 w-36 h-36 flex justify-center items-center rounded-full transition-colors duration-500 ease-in-out cursor-pointer"
