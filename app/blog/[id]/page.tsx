@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { apolloClient } from 'utils';
 import { GET_POST as query } from './queries';
-import DOMPurify from 'dompurify';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { JSDOM } from 'jsdom';
+import DOMPurify from 'dompurify';
 
 export async function generateMetadata({
   params,
@@ -59,7 +60,10 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       publishDate,
       createdBy: { name, picture },
     } = data.posts[0];
-    const sanitizedBody = DOMPurify.sanitize(body.html);
+
+    const window = new JSDOM('').window;
+    const purify = DOMPurify(window);
+    const sanitizedBody = purify.sanitize(body.html);
 
     return (
       <div className="p-8 mt-5 flex flex-col items-center w-11/12 sm:w-3/4 bg-darkSecondary text-gray-200">
