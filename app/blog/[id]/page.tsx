@@ -3,6 +3,7 @@ import { apolloClient } from 'utils';
 import { GET_POST as query } from './queries';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { getCleanPostBody } from 'utils';
 
 export async function generateMetadata({
   params,
@@ -59,6 +60,8 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       createdBy: { name, picture },
     } = data.posts[0];
 
+    const cleanHTML = getCleanPostBody(body.html);
+
     return (
       <div className="p-8 mt-5 flex flex-col items-center w-11/12 sm:w-3/4 bg-darkSecondary text-gray-200">
         <h1 className="text-4xl font-bold mb-4">{title}</h1>
@@ -81,7 +84,7 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         <p className="italic mt-8 text-center">{subtitle}</p>
         <article
-          dangerouslySetInnerHTML={{ __html: body.html }}
+          dangerouslySetInnerHTML={{ __html: cleanHTML }}
           className="prose prose-invert prose-h3:mt-5 prose-headings:text-xl mt-5"
         />
       </div>

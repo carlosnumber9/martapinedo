@@ -18,16 +18,17 @@
     "next": "^16.0.1",
     "react": "^19.2.0",
     "react-device-detect": "^2.2.3",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "sanitize-html": "^2.17.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
     "@tailwindcss/typography": "^0.5.16",
     "@types/dompurify": "^3.0.5",
-    "@types/jsdom": "^27.0.0",
     "@types/node": "18.11.7",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
+    "@types/sanitize-html": "^2.16.0",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "@typescript-eslint/parser": "^8.11.0",
     "autoprefixer": "^10.4.19",
