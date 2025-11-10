@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { apolloClient } from 'utils';
 import { GET_POST as query } from './queries';
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from 'dompurify';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
