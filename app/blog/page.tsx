@@ -1,16 +1,32 @@
+import { apolloClient } from 'utils';
 import { Post } from '../types';
-import fetchPosts from './utils/dataFetching';
+import { SinglePost } from './Post';
+import { GET_POSTS as query } from './queries';
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-export async function generateMetadata() {
-  return {
-    title: `The Blog - Marta Pinedo Sánchez`,
-  };
-}
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Blog | Marta Pinedo Sánchez',
+  },
+  description: 'Blog de Marta Pinedo Sánchez',
+};
 
 async function Blog() {
-  const posts = await fetchPosts();
+  try {
+    const { data } = await apolloClient.query({ query });
 
-  return <>{posts?.map((post: Post) => <p key={post.id}>{post.id}</p>)}</>;
+    return (
+      <div className="p-8 w-screen flex flex-row flex-wrap h-auto justify-center xl:justify-start">
+        {data.posts?.map((post: Post) => (
+          <SinglePost key={post.id} {...post} />
+        ))}
+      </div>
+    );
+  } catch (_err: unknown) {
+    console.error('Error fetching posts:', _err);
+    notFound();
+  }
 }
 
 export default Blog;

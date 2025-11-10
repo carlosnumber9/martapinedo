@@ -11,10 +11,20 @@
   "dependencies": {
     "next": "^16.0.1",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "@apollo/client": "^3.13.7",
+    "@emailjs/browser": "^4.4.1",
+    "classnames": "^2.5.1",
+    "graphql": "^16.10.0",
+    "isomorphic-dompurify": "^2.23.0",
+    "lottie-react": "^2.4.1",
+    "motion": "^12.6.5",
+    "react-device-detect": "^2.2.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/dompurify": "^3.0.5",
     "@types/node": "18.11.7",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
