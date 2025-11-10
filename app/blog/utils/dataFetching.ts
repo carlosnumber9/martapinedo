@@ -25,10 +25,11 @@ const fetchPosts = async () => {
         variables: null,
       };
 
-      const options = {
+      const options: RequestInit = {
         method: "POST",
         headers,
         body: JSON.stringify(requestBody),
+        cache: 'force-cache',
       };
 
       const response = await (await fetch(process.env.CONTENT_URL ?? '' , options)).json();
