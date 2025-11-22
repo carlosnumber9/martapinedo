@@ -1,51 +1,59 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
-import { useRotator } from '../hooks/useRotator';
+import { forwardRef, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
-export const Header = () => {
-  const { rotateX, rotateY } = useRotator();
+export const Header = forwardRef<HTMLDivElement>((_, ref) => {
+  const textsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (textsRef.current) {
+      const spans = textsRef.current.querySelectorAll('span');
+
+      gsap.fromTo(
+        spans,
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.2,
+          ease: 'power2.out',
+          delay: 0.5,
+        }
+      );
+    }
+  }, []);
 
   return (
     <div
       className={
-        'flex flex-row items-center flex-grow px-0 py-16 flex-wrap justify-center lg:w-1/2 xl:w-2/3'
+        'flex flex-row items-center flex-grow px-0 flex-wrap justify-center lg:w-1/2 xl:w-2/3'
       }
+      ref={ref}
     >
-      <div
-        className="w-max h-max p-8"
-        style={{
-          perspective: '1000px',
-        }}
-      >
-        <motion.div
-          style={{
-            transformStyle: 'preserve-3d',
-          }}
-          animate={{
-            rotateX,
-            rotateY,
-          }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-        >
-          <div className="rounded-full overflow-hidden w-[300px] h-[300px] relative border-4 border-white shadow-lg">
-            <Image
-              className="object-cover"
-              src={'/marta.jpeg'}
-              alt="Marta Pinedo Sánchez"
-              fill
-              sizes="300px"
-              priority
-            />
-          </div>
-        </motion.div>
+      <div className="overflow-hidden w-[400px] h-[400px] relative shadow-lg">
+        <Image
+          className="object-cover"
+          src={'/marta.png'}
+          alt="Marta Pinedo Sánchez"
+          fill
+          sizes="400px"
+          priority
+        />
       </div>
-      <div className={'text-5xl md:text-4xl mt-5 flex flex-col text-white'}>
+      <div
+        ref={textsRef}
+        className={'text-5xl md:text-4xl mt-5 flex flex-col text-white'}
+      >
         <span> Excelencia </span>
         <span> Profesionalidad </span>
         <span> Confianza </span>
       </div>
     </div>
   );
-};
+});

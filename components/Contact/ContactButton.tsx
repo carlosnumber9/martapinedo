@@ -1,50 +1,29 @@
 'use client';
 
-import { useScrollOpacity } from 'hooks';
-import { AnimatePresence, motion } from 'motion/react';
 import { useRef, useState } from 'react';
-import { ContactModal } from './ContactForm';
 import { useLottie } from 'lottie-react';
-import animationData from '../../public/lotties/contact.json';
-
-const defaultOptions = {
-  animationData: animationData,
-  loop: true,
-};
+import { useScrollOpacity } from 'hooks';
+import { LOTTIE_OPTIONS } from 'utils/animations';
+import { ContactModal } from './ContactForm';
 
 export const ContactButton = () => {
   const buttonRef = useRef<HTMLDivElement>(null);
-  const opacity = useScrollOpacity(buttonRef);
   const [isOpen, setIsOpen] = useState(false);
+  useScrollOpacity(buttonRef);
 
-  const closeModal = () => setIsOpen(false);
-
-  const { View: ContactIcon } = useLottie(defaultOptions);
+  const { View: ContactIcon } = useLottie(LOTTIE_OPTIONS.CONTACT);
 
   return (
     <div>
-      <AnimatePresence mode="wait">
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed top-0 left-0 flex items-center justify-center z-50 w-full h-full bg-darkPrimary/80 cursor-pointer"
-            onClick={closeModal}
-            transition={{ duration: 0.3, type: 'tween', ease: 'easeOut' }}
-          >
-            <ContactModal onClose={closeModal} />{' '}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <motion.div
+      {isOpen && <ContactModal onClose={() => setIsOpen(false)} />}
+      <div
         ref={buttonRef}
-        style={{ opacity, display: isOpen ? 'none' : 'flex' }}
         onClick={() => setIsOpen(true)}
         className="fixed z-50 bottom-5 right-5 w-36 h-36 flex justify-center items-center rounded-full transition-colors duration-500 ease-in-out cursor-pointer"
+        style={{ opacity: isOpen ? 'none' : 'flex' }}
       >
         {ContactIcon}
-      </motion.div>
+      </div>
     </div>
   );
 };
