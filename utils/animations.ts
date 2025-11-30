@@ -1,12 +1,12 @@
 import { RefObject } from "react";
 import gsap from "gsap";
 import { LottieOptions } from "lottie-react";
-import animationData from '../public/lotties/contact.json';
+import menuAnimation from '../public/lotties/menu.json';
 
 export const LOTTIE_OPTIONS: Record<string, LottieOptions> = {
-    CONTACT: {
-        loop: true,
-        animationData,
+    MENU: {
+        loop: false,
+        animationData: menuAnimation,
     },
 };
 

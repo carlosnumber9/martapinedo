@@ -1,36 +1,22 @@
-import { mainFont } from 'utils/fonts';
-import { BlogButton, ContactButton, Footer, Navbar } from '../components';
-import '../styles/globals.css';
-import Link from 'next/link';
 import { PropsWithChildren } from 'react';
+import { mainFont } from 'utils/fonts';
+import { Footer, Navbar } from '../components';
+import '../styles/globals.css';
 
-type Props = PropsWithChildren<{
-  params: Promise<{ blog?: string | string[] }>;
-}>;
+type Props = PropsWithChildren<{}>;
 
-const RootLayout: React.FC<Props> = async ({ children, params }) => {
-  const resolvedParams = await params;
-  const isBlogPage = resolvedParams?.blog === 'blog';
-
-  return (
-    <html lang="en" className={mainFont.className}>
-      <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col">
-        <header>
-          <Navbar />
-        </header>
-        <main className="py-0 flex flex-col items-center flex-grow">
-          {children}
-          {!isBlogPage && (
-            <Link href={'/blog'}>
-              <BlogButton />
-            </Link>
-          )}
-          <ContactButton />
-        </main>
-        <Footer />
-      </body>
-    </html>
-  );
-};
+const RootLayout: React.FC<Props> = ({ children }) => (
+  <html lang="en" className={mainFont.className}>
+    <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col">
+      <header>
+        <Navbar />
+      </header>
+      <main className="py-0 flex flex-col items-center flex-grow">
+        {children}
+      </main>
+      <Footer />
+    </body>
+  </html>
+);
 
 export default RootLayout;

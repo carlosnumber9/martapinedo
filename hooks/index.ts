@@ -1,3 +1,3 @@
-export * from './useScrollOpacity';
 export * from './useEmail';
 export * from './useFadeToggle';
+export * from './useMobileMenu';
