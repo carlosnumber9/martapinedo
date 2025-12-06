@@ -16,7 +16,7 @@ async function Blog() {
   try {
     const { data } = await apolloClient.query({ query });
     return (
-      <div className="p-8 w-screen flex flex-row flex-wrap h-auto justify-center xl:justify-start">
+      <div className="p-8 w-screen flex flex-row flex-wrap gap-5 h-auto justify-center xl:justify-start">
         {data.posts?.map((post: Post) => (
           <SinglePost key={post.id} {...post} />
         ))}
