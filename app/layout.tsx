@@ -2,6 +2,16 @@ import { PropsWithChildren } from 'react';
 import { mainFont } from 'utils/fonts';
 import { Footer, Navbar } from '../components';
 import '../styles/globals.css';
+import { Metadata } from 'next';
+import StructuredData from 'components/StructuredData';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Marta Pinedo Sánchez | Abogada',
+  },
+  description:
+    'Soluciones jurídicas con cercanía, claridad y compromiso.',
+};
 
 type Props = PropsWithChildren<{}>;
 
@@ -11,6 +21,7 @@ const RootLayout: React.FC<Props> = ({ children }) => (
       <header>
         <Navbar />
       </header>
+      <StructuredData />
       <main className="py-0 flex flex-col items-center flex-grow">
         {children}
       </main>
