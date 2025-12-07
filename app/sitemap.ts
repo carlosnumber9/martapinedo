@@ -7,27 +7,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { data: { posts } } = await apolloClient.query({ query });
 
     const blogPosts = posts.map((post: Post) => ({
-        url: `https://tudominio.com/blog/${post.id}`,
-        lastModified: post.updatedAt,
+        url: `https://martapinedoabogada.es/blog/${post.id}`,
+        lastModified: post.lastModificationDate ? new Date(post.lastModificationDate) : new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.8,
     }));
 
     return [
         {
-            url: 'https://tudominio.com',
+            url: 'https://www.martapinedoabogada.es',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 1,
         },
         {
-            url: 'https://tudominio.com/about',
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.8,
-        },
-        {
-            url: 'https://tudominio.com/blog',
+            url: 'https://www.martapinedoabogada.es/blog',
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.9,
