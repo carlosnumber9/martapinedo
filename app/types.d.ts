@@ -10,6 +10,10 @@ export interface Post {
   body: {
     text: string;
   };
+  createdBy: {
+    name: string;
+    picture: string;
+  };
 }
 
 export type SendingState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';

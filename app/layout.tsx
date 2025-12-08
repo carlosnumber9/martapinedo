@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
-import { mainFont } from 'utils/fonts';
+import { bodyFont, mainFont, subtitleFont } from 'utils/fonts';
 import { Footer, Navbar } from '../components';
 import '../styles/globals.css';
 import { Metadata } from 'next';
@@ -18,8 +18,9 @@ export const metadata: Metadata = {
 type Props = PropsWithChildren<{}>;
 
 const RootLayout: React.FC<Props> = ({ children }) => (
-  <html lang="en" className={mainFont.className}>
-    <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col">
+  <html lang="en" className={`${mainFont.variable} ${subtitleFont.variable} ${bodyFont.variable}`}
+  >
+    <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col font-body select-none">
       <header>
         <Navbar />
       </header>

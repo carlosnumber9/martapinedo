@@ -15,7 +15,9 @@ module.exports = {
         contact: '0 0 15px rgba(255, 255, 255, 0.3)',
       },
       fontFamily: {
-        sans: ['var(--font-main)', 'sans-serif'],
+        main: ['var(--font-main)', 'sans-serif'],
+        subtitle: ['var(--font-subtitle)', 'sans-serif'],
+        body: ['var(--font-body)', 'serif'],
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],

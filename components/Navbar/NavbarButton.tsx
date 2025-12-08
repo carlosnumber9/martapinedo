@@ -7,6 +7,6 @@ interface Props {
 
 export const NavbarButton: React.FC<Props> = ({ text, route }) => (
   <Link href={route} className={'hidden sm:block'}>
-    <div className={'h-full'}>{text}</div>
+    <div className={'h-full font-subtitle text-lg'}>{text}</div>
   </Link>
 );

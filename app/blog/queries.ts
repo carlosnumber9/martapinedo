@@ -6,6 +6,9 @@ export const GET_POSTS = gql`
       id
       title
       subtitle
+      createdBy {
+        name
+      }
       publishDate
     }
   }

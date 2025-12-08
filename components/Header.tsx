@@ -36,7 +36,7 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
       }
       ref={ref}
     >
-      <div className="overflow-hidden w-[400px] h-[400px] relative shadow-lg">
+      <div className="overflow-hidden w-[500px] h-[500px] relative shadow-lg mt-auto">
         <Image
           className="object-cover"
           src={'/marta.png'}
@@ -48,7 +48,7 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
       <div
         ref={textsRef}
-        className={'text-5xl md:text-4xl mt-5 flex flex-col text-white/90'}
+        className={'text-5xl md:text-4xl mt-5 flex flex-col text-white/90 font-main'}
       >
         <span> Excelencia </span>
         <span> Profesionalidad </span>
