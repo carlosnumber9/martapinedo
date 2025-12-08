@@ -10,8 +10,11 @@ export const useEmail = () => {
     email: string;
     message: string;
     subject?: string;
-  }) => {
+  }, captchaToken: string | null) => {
     try {
+      if(!captchaToken) {
+        throw new Error('Captcha token is missing');
+      }
       setSendingState('SENDING');
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',

@@ -5,6 +5,7 @@ import Head from 'next/head';
 import classNames from 'classnames';
 import { Loader } from 'components';
 import { useEmail } from 'hooks';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const SUBMIT_BUTTON_CONTENT: Record<string, string | ReactNode> = {
     IDLE: 'Enviar',
@@ -22,10 +23,11 @@ export const ContactForm = () => {
         subject: '',
     });
     const { sendingState, sendEmail } = useEmail();
+    const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        await sendEmail(formValues);
+        await sendEmail(formValues, captchaToken);
     };
 
     return (
@@ -78,9 +80,14 @@ export const ContactForm = () => {
                     value={formValues.message}
                     name="message"
                 />
+                <Turnstile
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} 
+                    onSuccess={(token) => setCaptchaToken(token)}
+                    onExpire={() => setCaptchaToken(null)}
+                    />
                 <button
                     type="submit"
-                    disabled={sendingState === 'SENDING' || sendingState === 'SENT'}
+                    disabled={!captchaToken || sendingState === 'SENDING' || sendingState === 'SENT'}
                     className={classNames(
                         'bg-darkPrimary hover:bg-darkSecondary text-white font-semibold py-2 px-4 w-full transition',
                         sendingState === 'SENT' && 'bg-green-500 hover:bg-green-600',
