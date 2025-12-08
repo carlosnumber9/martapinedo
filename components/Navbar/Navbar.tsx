@@ -64,6 +64,7 @@ export const Navbar: React.FC = () => {
           {MenuIcon}
         </div>
       </nav>
+      <div className="h-20" />
       {isMobileMenuOpen && <MobileMenu onClose={closeMobileMenu} ref={menuRef} />}
     </>
   );
