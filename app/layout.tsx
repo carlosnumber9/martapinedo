@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 import { mainFont } from 'utils/fonts';
 import { Footer, Navbar } from '../components';
 import '../styles/globals.css';
@@ -23,6 +24,7 @@ const RootLayout: React.FC<Props> = ({ children }) => (
         <Navbar />
       </header>
       <SpeedInsights />
+      <Analytics />
       <StructuredData />
       <main className="py-0 flex flex-col items-center flex-grow">
         {children}
