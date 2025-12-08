@@ -48,7 +48,7 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
       <div
         ref={textsRef}
-        className={'text-5xl md:text-4xl mt-5 flex flex-col text-white'}
+        className={'text-5xl md:text-4xl mt-5 flex flex-col text-white/90'}
       >
         <span> Excelencia </span>
         <span> Profesionalidad </span>
