@@ -1,31 +1,70 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useMobileMenu } from 'hooks';
+import { useGSAP } from '@gsap/react';
+import { useMobileMenu, useScrollPosition } from 'hooks';
 import { NavbarButton } from './NavbarButton';
 import { MobileMenu } from './MobileMenu';
 
 export const Navbar: React.FC = () => {
-  const menuRef: React.RefObject<HTMLDivElement | null> = useRef<HTMLDivElement>(null);
-  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu, MenuIcon } = useMobileMenu(menuRef);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
 
-  return (<>
-    <nav
-      className={
-        'w-screen relative flex flex-row items-center gap-9 h-15 h-20 shadow-custom z-50 bg-darkPrimary'
-      }
-      aria-label="main-navigation"
-    >
-      <Link href={'/'}>
-        <Image src="/logo.svg" alt="Logo" width={150} height={45} />
-      </Link>
-      <NavbarButton text="Blog" route="/blog" />
-      <NavbarButton text="Contacto" route="/contact" />
-      <div className='w-24 sm:hidden ml-auto' onClick={isMobileMenuOpen ? closeMobileMenu : openMobileMenu}>{MenuIcon}</div>
-    </nav>
-    {isMobileMenuOpen && (<MobileMenu onClose={closeMobileMenu} ref={menuRef} />)}
-  </>
+  const { isMobileMenuOpen, openMobileMenu, closeMobileMenu, MenuIcon } = useMobileMenu(menuRef);
+  const isScrolled = useScrollPosition(50);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useGSAP(() => {
+    if (!logoRef.current) return;
+
+    gsap.to(logoRef.current, {
+      scale: isScrolled ? 0.9 : 1,
+      duration: 0.3,
+      ease: 'power2.out',
+    });
+  }, [isScrolled]);
+
+  useGSAP(() => {
+    if (!navRef.current) return;
+
+    gsap.to(navRef.current, {
+      opacity: isScrolled && !isHovered ? 0.95 : 1,
+      duration: 0.3,
+      ease: 'power2.inOut',
+    });
+  }, [isScrolled, isHovered]);
+
+  return (
+    <>
+      <nav
+        ref={navRef}
+        className={`w-full fixed top-0 left-0 flex flex-row items-center gap-9 h-20 z-50 px-6 transition-all duration-300 ${isScrolled
+            ? 'bg-darkPrimary/85 backdrop-blur-xl shadow-lg'
+            : 'bg-darkPrimary shadow-custom'
+          }`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        aria-label="main-navigation"
+      >
+        <Link href="/">
+          <div ref={logoRef}>
+            <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
+          </div>
+        </Link>
+        <NavbarButton text="Blog" route="/blog" />
+        <NavbarButton text="Contacto" route="/contact" />
+        <div
+          className="w-24 sm:hidden ml-auto cursor-pointer"
+          onClick={isMobileMenuOpen ? closeMobileMenu : openMobileMenu}
+        >
+          {MenuIcon}
+        </div>
+      </nav>
+      {isMobileMenuOpen && <MobileMenu onClose={closeMobileMenu} ref={menuRef} />}
+    </>
   );
 };
