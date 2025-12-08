@@ -1,19 +1,9 @@
-import emailjs from '@emailjs/browser';
 import { useState } from 'react';
-
-const SENDING_STATE = {
-  IDLE: 'IDLE',
-  SENDING: 'SENDING',
-  SENT: 'SENT',
-  ERROR: 'ERROR',
-};
-
-type SendingState = keyof typeof SENDING_STATE;
+import emailjs from '@emailjs/browser';
+import { SendingState } from 'app/types';
 
 export const useEmail = () => {
-  const [sendingState, setSendingState] = useState<SendingState>(
-    SENDING_STATE.IDLE as SendingState
-  );
+  const [sendingState, setSendingState] = useState<SendingState>('IDLE');
 
   const sendEmail = async (formValues: {
     name: string;
@@ -22,16 +12,16 @@ export const useEmail = () => {
     subject?: string;
   }) => {
     try {
-      setSendingState(SENDING_STATE.SENDING as SendingState);
+      setSendingState('SENDING');
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
         formValues,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
-      setSendingState(SENDING_STATE.SENT as SendingState);
+      setSendingState('SENT');
     } catch (error) {
-      setSendingState(SENDING_STATE.ERROR as SendingState);
+      setSendingState('ERROR');
       console.error('Error sending email:', error);
     }
   };

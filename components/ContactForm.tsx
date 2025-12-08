@@ -33,13 +33,6 @@ export const ContactForm = () => {
             className="w-80 h-90 flex flex-col items-center justify-center px-10 py-5 cursor-default mt-20"
             onClick={(e) => e.stopPropagation()}
         >
-            <Head>
-                <title>Contacto | Marta Pinedo Sánchez</title>
-                <meta
-                    name="description"
-                    content="Página de contacto de Marta Pinedo Sánchez"
-                />
-            </Head>
             <h2 className="text-2xl font-semibold mb-4">Contacto</h2>
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <input

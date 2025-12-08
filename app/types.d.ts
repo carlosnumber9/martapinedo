@@ -11,3 +11,6 @@ export interface Post {
     text: string;
   };
 }
+
+export type SendingState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
+
