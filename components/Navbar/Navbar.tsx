@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,8 +9,10 @@ import { useGSAP } from '@gsap/react';
 import { useMobileMenu, useScrollPosition } from 'hooks';
 import { NavbarButton } from './NavbarButton';
 import { MobileMenu } from './MobileMenu';
+import LanguageSwitcher from 'components/LanguageSwitcher';
 
 export const Navbar: React.FC = () => {
+  const t = useTranslations('navbar');
   const menuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -43,8 +46,8 @@ export const Navbar: React.FC = () => {
       <nav
         ref={navRef}
         className={`w-full fixed top-0 left-0 flex flex-row items-center gap-9 h-20 z-50 px-6 transition-all duration-300 ${isScrolled
-            ? 'bg-darkPrimary/85 backdrop-blur-xl shadow-lg'
-            : 'bg-darkPrimary shadow-custom'
+          ? 'bg-darkPrimary/85 backdrop-blur-xl shadow-lg'
+          : 'bg-darkPrimary shadow-custom'
           }`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -55,8 +58,13 @@ export const Navbar: React.FC = () => {
             <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
           </div>
         </Link>
-        <NavbarButton text="Blog" route="/blog" />
-        <NavbarButton text="Contacto" route="/contact" />
+        <NavbarButton text={t('buttons.blog')} route="/blog" />
+        <NavbarButton text={t('buttons.contact')} route="/contact" />
+        <div
+          className="w-24 hidden sm:block ml-auto cursor-pointer lg:hover:scale-110 transition-transform duration-700 ease-in-out"
+        >
+          <LanguageSwitcher />
+        </div>
         <div
           className="w-24 sm:hidden ml-auto cursor-pointer"
           onClick={isMobileMenuOpen ? closeMobileMenu : openMobileMenu}

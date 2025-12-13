@@ -1,0 +1,134 @@
+{
+    "navbar": {
+        "ariaLabel": "main-navigation",
+        "logoAlt": "Logo",
+        "buttons": {
+            "blog": "Blog",
+            "contact": "Contact"
+        },
+        "mobileMenu": {
+            "blog": "Blog",
+            "contact": "Contact"
+        }
+    },
+    "header": {
+        "imageAlt": "Marta Pinedo Sánchez",
+        "tagline": {
+            "line1": "Excellence",
+            "line2": "Professionalism",
+            "line3": "Trust"
+        }
+    },
+    "about": {
+        "title": "About",
+        "description": "I am Marta Pinedo, a lawyer specialising in civil and commercial law. My experience in family law firms, large companies and courts has enabled me to develop skills in dispute resolution, case management and contract review. I currently practise at EJO Abogados and in my own practice, where I prioritise clear communication and personalised service. In my free time, I enjoy reading and activities that help me maintain a healthy personal balance."
+    },
+    "services": {
+        "title": "Services",
+        "items": {
+            "asesoria": {
+                "name": "Legal Advice & Consultancy",
+                "description": "Civil, commercial and administrative law support to help you make informed legal decisions with confidence."
+            },
+            "redaccion": {
+                "name": "Contract Review & Drafting",
+                "description": "I ensure clear, secure contracts that protect your interests and help prevent disputes."
+            },
+            "representacion": {
+                "name": "Legal Representation in Litigation",
+                "description": "I defend your case with dedication and a personal approach, from preparation through hearings."
+            },
+            "gestion": {
+                "name": "Administration Proceedings Management",
+                "description": "I manage summons, fines and other procedures so you can meet legal obligations without hassle."
+            },
+            "resolucion": {
+                "name": "Alternative Dispute Resolution",
+                "description": "I pursue peaceful solutions via mediation and negotiation to avoid litigation and preserve relationships."
+            }
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "placeholders": {
+            "name": "Name*",
+            "email": "Email*",
+            "subject": "Subject",
+            "message": "Message*"
+        },
+        "button": {
+            "idle": "Send",
+            "sending": "Sending...",
+            "sent": "Message sent",
+            "error": "Error sending message"
+        }
+    },
+    "footer": {
+        "copyright": "© Marta Pinedo Sánchez. All rights reserved.",
+        "linkedInAlt": "LinkedIn logo linking to Marta Pinedo's profile",
+        "ejoAlt": "EJO Abogados logo linking to the firm",
+        "lexgoAlt": "LexGoApp logo linking to Marta Pinedo's LexGoApp profile"
+    },
+    "blog": {
+        "title": "Blog | Marta Pinedo Sánchez",
+        "description": "Blog by Marta Pinedo Sánchez",
+        "byLabel": "by",
+        "publishedLabel": "Published"
+    },
+    "layout": {
+        "siteTitle": "Marta Pinedo Sánchez | Lawyer",
+        "siteDescription": "Legal solutions with a personal approach, clarity and commitment."
+    },
+    "aboutPage": {
+        "metadataTitle": "About - Marta Pinedo Sánchez",
+        "content": "About"
+    },
+    "structuredData": {
+        "name": "Marta Pinedo Sánchez",
+        "image": "https://www.martapinedoabogada.es/_next/image?url=%2Fmarta.png&w=828&q=75",
+        "url": "https://www.martapinedoabogada.es",
+        "telephone": "+34-676-841-354",
+        "email": "martapinedo@icam.es",
+        "address": {
+            "streetAddress": "Calle Cebreros, 103",
+            "addressLocality": "Madrid",
+            "postalCode": "28011",
+            "addressCountry": "ES"
+        },
+        "openingHours": {
+            "days": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "priceRange": "€€",
+        "areaServed": "Madrid",
+        "knowsAbout": [
+            "Civil Law",
+            "Commercial Law",
+            "Administrative Law"
+        ]
+    },
+    "dates": {
+        "ago": "ago",
+        "minute": "minute",
+        "minutes": "minutes",
+        "hour": "hour",
+        "hours": "hours",
+        "yesterday": "yesterday",
+        "on": "on"
+    },
+    "console": {
+        "errorFetchingPosts": "Error fetching posts:",
+        "errorFetchingPost": "Error fetching post:",
+        "errorFetchingMetadata": "Error fetching metadata:",
+        "errorSendingEmail": "Error sending email:",
+        "captchaMissing": "Captcha token is missing",
+        "genericError": "Error:"
+    }
+}

@@ -18,3 +18,5 @@ export interface Post {
 
 export type SendingState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
+export type SupportedLocale = 'es' | 'en';
+
