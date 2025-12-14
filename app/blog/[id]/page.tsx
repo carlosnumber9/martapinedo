@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 import { apolloClient } from 'utils';
 import { GET_POST as query } from './queries';
 import Image from 'next/image';
@@ -10,6 +11,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
+  const t = await getTranslations('blog');
   const { id } = await params;
 
   try {
@@ -26,7 +28,7 @@ export async function generateMetadata({
 
     return {
       title: `${title} | Marta Pinedo Sánchez`,
-      description: 'Blog de Marta Pinedo Sánchez',
+      description: t('description'),
     };
   } catch (err) {
     console.error('Error fetching metadata:', err);

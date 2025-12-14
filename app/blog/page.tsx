@@ -1,16 +1,26 @@
 import { apolloClient } from 'utils';
-import { Post } from '../types';
+import { Post, SupportedLocale } from '../types';
 import { SinglePost } from './Post';
 import { GET_POSTS as query } from './queries';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: {
-    absolute: 'Blog | Marta Pinedo Sánchez',
-  },
-  description: 'Blog de Marta Pinedo Sánchez',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale?: SupportedLocale };
+}): Promise<Metadata> {
+  const locale: SupportedLocale = params?.locale ?? 'es';
+  const t = await getTranslations('blog');
+
+  return {
+    title: {
+      absolute: t('title'),
+    },
+    description: t('description'),
+  };
+}
 
 async function Blog() {
   try {

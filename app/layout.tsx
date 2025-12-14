@@ -7,14 +7,23 @@ import { Footer, Navbar } from '../components';
 import '../styles/globals.css';
 import { Metadata } from 'next';
 import StructuredData from 'components/StructuredData';
+import { SupportedLocale } from './types';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: {
-    absolute: 'Marta Pinedo Sánchez | Abogada',
-  },
-  description:
-    'Soluciones jurídicas con cercanía, claridad y compromiso.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale?: SupportedLocale };
+}): Promise<Metadata> {
+  const t = await getTranslations('layout');
+
+  return {
+    title: {
+      absolute: t('siteTitle'),
+    },
+    description: t('siteDescription'),
+  };
+}
 
 type Props = PropsWithChildren<{}>;
 

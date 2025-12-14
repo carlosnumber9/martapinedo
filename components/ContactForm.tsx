@@ -1,21 +1,29 @@
 'use client';
 
 import { ReactNode, useState } from 'react';
-import Head from 'next/head';
 import classNames from 'classnames';
 import { Loader } from 'components';
 import { useEmail } from 'hooks';
 import { Turnstile } from '@marsidev/react-turnstile';
+import { useTranslations } from 'next-intl';
 
-const SUBMIT_BUTTON_CONTENT: Record<string, string | ReactNode> = {
-    IDLE: 'Enviar',
-    SENDING: <Loader />,
-    SENT: 'Mensaje enviado',
-    ERROR: 'Error al enviar',
-};
+const getSubmitButtonContent = (state: string, t: (key: string) => string) => {
+    switch (state) {
+        case 'IDLE':
+            return t('button.idle');
+        case 'SENDING':
+            return <Loader />;
+        case 'SENT':
+            return t('button.sent');
+        case 'ERROR':
+            return t('button.error');
+        default:
+            return t('button.idle');
+    }
+}
 
 export const ContactForm = () => {
-
+    const t = useTranslations('contact');
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
@@ -35,11 +43,11 @@ export const ContactForm = () => {
             className="w-80 h-90 flex flex-col items-center justify-center px-10 py-5 cursor-default mt-20"
             onClick={(e) => e.stopPropagation()}
         >
-            <h2 className="text-2xl font-semibold mb-4">Contacto</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t('title')}</h2>
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    placeholder="Nombre*"
+                    placeholder={t('placeholders.name')}
                     className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300 autofill:!bg-transparent"
                     required
                     onChange={(e) =>
@@ -50,7 +58,7 @@ export const ContactForm = () => {
                 />
                 <input
                     type="email"
-                    placeholder="Email*"
+                    placeholder={t('placeholders.email')}
                     className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300"
                     required
                     onChange={(e) =>
@@ -61,7 +69,7 @@ export const ContactForm = () => {
                 />
                 <input
                     type="text"
-                    placeholder="Asunto"
+                    placeholder={t('placeholders.subject')}
                     className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300"
                     onChange={(e) =>
                         setFormValues({ ...formValues, subject: e.target.value })
@@ -70,7 +78,7 @@ export const ContactForm = () => {
                     name="subject"
                 />
                 <textarea
-                    placeholder="Mensaje*"
+                    placeholder={t('placeholders.message')}
                     rows={4}
                     className="w-full border border-none focus:outline-none p-2 text-white bg-gray-800/50 focus:bg-white/20 transition-colors ease-in-out duration-300"
                     required
@@ -81,10 +89,10 @@ export const ContactForm = () => {
                     name="message"
                 />
                 <Turnstile
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} 
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
                     onSuccess={(token) => setCaptchaToken(token)}
                     onExpire={() => setCaptchaToken(null)}
-                    />
+                />
                 <button
                     type="submit"
                     disabled={!captchaToken || sendingState === 'SENDING' || sendingState === 'SENT'}
@@ -96,7 +104,7 @@ export const ContactForm = () => {
                         'bg-bluePrimary/50 cursor-not-allowed'
                     )}
                 >
-                    {SUBMIT_BUTTON_CONTENT[sendingState]}
+                    {getSubmitButtonContent(sendingState, t)}
                 </button>
             </form>
         </div>

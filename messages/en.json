@@ -49,6 +49,8 @@
         }
     },
     "contact": {
+        "metaTitle": "Contact - Marta Pinedo Sánchez",
+        "metaDescription": "Contact page for Marta Pinedo Sánchez",
         "title": "Contact",
         "placeholders": {
             "name": "Name*",

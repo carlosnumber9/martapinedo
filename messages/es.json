@@ -20,6 +20,8 @@
         }
     },
     "about": {
+        "metaTitle": "Sobre mí - Marta Pinedo Sánchez",
+        "metaDescription": "Página sobre Marta Pinedo Sánchez",
         "title": "Sobre mí",
         "description": "Soy Marta Pinedo, abogada especializada en derecho civil y mercantil. Mi experiencia en despachos familiares, grandes empresas y juzgados me ha permitido desarrollar habilidades en resolución de disputas, gestión judicial y revisión de contratos. Actualmente ejerzo en EJO Abogados y en mi propio despacho, donde priorizo la comunicación efectiva y la atención personalizada. En mi tiempo libre, disfruto de la lectura y de actividades que me ayudan a mantener un equilibrio personal."
     },
@@ -49,6 +51,8 @@
         }
     },
     "contact": {
+        "metaTitle": "Contacto - Marta Pinedo Sánchez",
+        "metaDescription": "Página de contacto de Marta Pinedo Sánchez",
         "title": "Contacto",
         "placeholders": {
             "name": "Nombre*",
