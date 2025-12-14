@@ -4,14 +4,13 @@ import { SinglePost } from './Post';
 import { GET_POSTS as query } from './queries';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale?: SupportedLocale };
 }): Promise<Metadata> {
-  const locale: SupportedLocale = params?.locale ?? 'es';
   const t = await getTranslations('blog');
 
   return {
@@ -24,7 +23,8 @@ export async function generateMetadata({
 
 async function Blog() {
   try {
-    const { data } = await apolloClient.query({ query });
+    const locale = await getLocale() as SupportedLocale;
+    const { data } = await apolloClient.query({ query, variables: { locale } });
     return (
       <div className="p-8 w-screen flex flex-row flex-wrap gap-7 h-auto justify-center items-stretch xl:justify-start">
         {data.posts?.map((post: Post) => (

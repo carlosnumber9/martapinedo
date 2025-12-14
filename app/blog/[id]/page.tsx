@@ -1,23 +1,25 @@
 import { notFound } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { apolloClient } from 'utils';
 import { GET_POST as query } from './queries';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { getCleanPostBody } from 'utils';
+import { SupportedLocale } from 'app/types';
 
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
+  const locale: SupportedLocale = await getLocale() as SupportedLocale;
   const t = await getTranslations('blog');
   const { id } = await params;
 
   try {
     const { data } = await apolloClient.query({
       query,
-      variables: { id },
+      variables: { id, locale },
     });
 
     if (!data.posts || data.posts.length === 0) {
@@ -38,11 +40,12 @@ export async function generateMetadata({
 
 const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
+  const locale = await getLocale() as SupportedLocale;
 
   try {
     const { data, error } = await apolloClient.query({
       query,
-      variables: { id },
+      variables: { id, locale },
     });
 
     if (error) {

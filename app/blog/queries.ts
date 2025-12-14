@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_POSTS = gql`
-  query GetPosts {
-    posts(locales: [es]) {
+  query GetPosts($locale: Locale!) {
+    posts(locales: [$locale]) {
       id
       title
       subtitle
