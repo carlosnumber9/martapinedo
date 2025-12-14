@@ -6,12 +6,11 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale?: SupportedLocale };
-}): Promise<Metadata> {
-  const t = await getTranslations('blog');
+export const dynamic = 'force-dynamic';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale() as SupportedLocale; // ⚠️ FALTABA ESTO
+  const t = await getTranslations({ locale, namespace: 'blog' }); // ✅ Pasar locale explícitamente
 
   return {
     title: {

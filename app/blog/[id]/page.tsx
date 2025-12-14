@@ -7,6 +7,8 @@ import { Metadata } from 'next';
 import { getCleanPostBody } from 'utils';
 import { SupportedLocale } from 'app/types';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params,
 }: {
