@@ -1,10 +1,14 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 
-export const apolloClient = new ApolloClient({
-  uri: process.env.CONTENT_URL,
-  cache: new InMemoryCache(),
+const httpLink = new HttpLink({
+  uri: process.env.CONTENT_URL!,
   headers: {
     Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
   },
-  ssrMode: true,
+});
+
+export const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+  ssrMode: typeof window === 'undefined',
 });

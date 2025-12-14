@@ -9,8 +9,8 @@ import { getLocale, getTranslations } from 'next-intl/server';
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale() as SupportedLocale; // ⚠️ FALTABA ESTO
-  const t = await getTranslations({ locale, namespace: 'blog' }); // ✅ Pasar locale explícitamente
+  const locale = await getLocale() as SupportedLocale;
+  const t = await getTranslations({ locale, namespace: 'blog' });
 
   return {
     title: {
