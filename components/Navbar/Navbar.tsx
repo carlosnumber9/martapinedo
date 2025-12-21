@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
         </div>
       </nav>
       <div className="h-20" />
-      {isMobileMenuOpen && <MobileMenu onClose={closeMobileMenu} ref={menuRef} />}
+      {isMobileMenuOpen && <MobileMenu onClickLink={closeMobileMenu} ref={menuRef} />}
     </>
   );
 };

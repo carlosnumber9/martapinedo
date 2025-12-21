@@ -27,3 +27,5 @@ export interface Service {
 
 export type SubmitButtonState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
+export type Path = '/' | '/blog' | '/contact' | `/blog/${string}`;
+

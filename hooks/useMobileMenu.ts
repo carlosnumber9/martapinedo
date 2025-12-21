@@ -20,8 +20,8 @@ export const useMobileMenu = (menuRef: React.RefObject<HTMLDivElement | null>) =
 
             timelineRef.current.fromTo(
                 menuRef.current,
-                { opacity: 0 },
-                { opacity: 1, duration: 0.2, ease: 'power3.out' }
+                { transform: 'translateX(-100%)' },
+                { transform: 'translateX(0)', duration: 0.2, ease: 'power3.out' }
             );
         }
     }, { 
