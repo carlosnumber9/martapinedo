@@ -22,7 +22,10 @@
         "noUnwantedPolyfillio": "warn",
         "useGoogleFontPreconnect": "warn"
       },
-      "style": { "noHeadElement": "warn", "useConst": "error" },
+      "style": {
+        "noHeadElement": "warn",
+        "useConst": "error"
+      },
       "suspicious": {
         "noDocumentImportInPage": "error",
         "noHeadImportInDocument": "error",
@@ -54,10 +57,17 @@
       "bracketSpacing": true
     }
   },
-  "html": { "formatter": { "indentScriptAndStyle": false, "selfCloseVoidElements": "always" } },
+  "html": {
+    "formatter": {
+      "indentScriptAndStyle": false,
+      "selfCloseVoidElements": "always"
+    }
+  },
   "overrides": [
     {
-      "includes": ["**/*.{js,jsx,mjs,ts,tsx,mts,cts}"],
+      "includes": [
+        "**/*.{js,jsx,mjs,ts,tsx,mts,cts}"
+      ],
       "javascript": {
         "globals": [
           "onanimationend",
@@ -209,8 +219,12 @@
             "noUnwantedPolyfillio": "warn",
             "useGoogleFontPreconnect": "warn"
           },
-          "security": { "noDangerouslySetInnerHtmlWithChildren": "error" },
-          "style": { "noHeadElement": "warn" },
+          "security": {
+            "noDangerouslySetInnerHtmlWithChildren": "error"
+          },
+          "style": {
+            "noHeadElement": "warn"
+          },
           "suspicious": {
             "noCommentText": "error",
             "noDocumentImportInPage": "error",
@@ -221,7 +235,22 @@
         }
       }
     },
-    { "includes": ["**/*.ts", "**/*.tsx"], "javascript": { "globals": [] } }
+    {
+      "includes": [
+        "**/*.ts",
+        "**/*.tsx"
+      ],
+      "javascript": {
+        "globals": []
+      }
+    }
   ],
-  "assist": { "enabled": null, "actions": { "source": { "organizeImports": "on" } } }
+  "assist": {
+    "enabled": null,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  }
 }

@@ -1,8 +1,8 @@
 'use client';
 
+import { gsap } from 'gsap';
 import Image from 'next/image';
 import { forwardRef, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
 import { useTranslations } from 'use-intl';
 
 export const Header = forwardRef<HTMLDivElement>((_, ref) => {
@@ -50,7 +50,7 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
       <div
         ref={textsRef}
-        className={'text-5xl md:text-4xl mt-5 flex flex-col text-white/90 font-main'}
+        className={'text-4xl md:text-5xl mt-5 flex flex-col text-white/90 font-main'}
       >
         <span> {t('tagline.line1')} </span>
         <span> {t('tagline.line2')} </span>
