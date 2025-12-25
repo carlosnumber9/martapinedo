@@ -1,11 +1,11 @@
-import { notFound } from 'next/navigation';
-import { getTranslations, getLocale } from 'next-intl/server';
-import { apolloClient } from 'utils';
-import { GET_POST as query } from './queries';
-import Image from 'next/image';
-import { Metadata } from 'next';
-import { getCleanPostBody } from 'utils';
 import { SupportedLocale } from 'app/types';
+import { BackToTopButton } from 'components';
+import { Metadata } from 'next';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { getLocale, getTranslations } from 'next-intl/server';
+import { apolloClient, getCleanPostBody } from 'utils';
+import { GET_POST as query } from './queries';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,7 +14,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const locale: SupportedLocale = await getLocale() as SupportedLocale;
+  const locale: SupportedLocale = (await getLocale()) as SupportedLocale;
   const t = await getTranslations('blog');
   const { id } = await params;
 
@@ -42,7 +42,7 @@ export async function generateMetadata({
 
 const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
-  const locale = await getLocale() as SupportedLocale;
+  const locale = (await getLocale()) as SupportedLocale;
 
   try {
     const { data, error } = await apolloClient.query({
@@ -72,7 +72,6 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     return (
       <div className="min-h-screen bg-darkSecondary py-12 px-14 md:my-6">
         <article className="mx-auto max-w-3xl">
-
           <header className="mb-12">
             <h1 className="text-2xl md:text-4xl font-bold mb-2 text-white leading-tight font-main">
               {title}
@@ -100,7 +99,7 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                 {new Date(publishDate).toLocaleDateString('es-ES', {
                   year: 'numeric',
                   month: 'long',
-                  day: 'numeric'
+                  day: 'numeric',
                 })}
               </time>
             </div>
@@ -122,6 +121,7 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
                        prose-img:mx-auto"
           />
         </article>
+        <BackToTopButton />
       </div>
     );
   } catch (err: unknown) {
