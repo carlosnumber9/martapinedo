@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
 import { Post } from 'app/types';
-import Link from 'next/link';
 import { useFormatDate } from 'hooks';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 export const SinglePost: React.FC<Post> = ({
   id,
@@ -21,11 +21,11 @@ export const SinglePost: React.FC<Post> = ({
         href={`/blog/${id}`}
         className="text-decoration-none flex flex-col items-center justify-between gap-2 p-5 h-full"
       >
-        <h2 className='font-main text-2xl text-center'>{title}</h2>
+        <h2 className="font-main text-2xl text-center">{title}</h2>
         <p className="text-lg italic text-center font-subtitle">{subtitle}</p>
         <span className="text-gray-400 text-md">{`${t('byLabel')} ${name}`}</span>
         <span className="text-gray-400 text-md">{`${t('publishedLabel')} ${formatDate(new Date(publishDate))}`}</span>
       </Link>
     </div>
-  )
+  );
 };
