@@ -16,7 +16,7 @@ export const SinglePost: React.FC<Post> = ({
   const t = useTranslations('blog');
   const formatDate = useFormatDate();
   return (
-    <div className="bg-darkSecondary/70 w-96 md:w-1/2 lg:w-1/3 transition ease-in-out duration-300 md:hover:bg-darkSecondary md:hover:scale-110 cursor-pointer text-white/80">
+    <div className="bg-darkSecondary/70 md:w-1/2 lg:w-1/3 transition ease-in-out duration-300 md:hover:bg-darkSecondary md:hover:scale-110 cursor-pointer text-white/80">
       <Link
         href={`/blog/${id}`}
         className="text-decoration-none flex flex-col items-center justify-between gap-2 p-5 h-full"
