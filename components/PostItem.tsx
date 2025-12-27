@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-export const SinglePost: React.FC<Post> = ({
+export const PostItem: React.FC<Post> = ({
   id,
   title,
   subtitle,

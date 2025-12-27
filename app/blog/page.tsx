@@ -1,9 +1,9 @@
+import { PostItem } from 'components';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { apolloClient } from 'utils';
 import { Post, SupportedLocale } from '../types';
-import { SinglePost } from './Post';
 import { GET_POSTS as query } from './queries';
 
 export const dynamic = 'force-dynamic';
@@ -27,7 +27,7 @@ async function Blog() {
     return (
       <div className="p-8 w-screen flex flex-row flex-wrap gap-7 h-auto justify-center items-stretch xl:justify-start">
         {data.posts?.map((post: Post) => (
-          <SinglePost key={post.id} {...post} />
+          <PostItem key={post.id} {...post} />
         ))}
       </div>
     );

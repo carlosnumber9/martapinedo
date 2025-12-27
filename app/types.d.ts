@@ -9,6 +9,7 @@ export interface Post {
   updatedAt: string;
   body: {
     text: string;
+    html: string;
   };
   createdBy: {
     name: string;
@@ -28,4 +29,3 @@ export interface Service {
 export type SubmitButtonState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
 export type Path = '/' | '/blog' | '/contact' | `/blog/${string}`;
-

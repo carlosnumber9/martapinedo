@@ -6,6 +6,8 @@ export * from './Header';
 export * from './Loader';
 export * from './Navbar';
 export * from './Navbar/Navbar';
+export * from './Post';
+export * from './PostItem';
 export * from './Services/Services';
 export * from './StructuredData';
 export * from './VideoContainer';
