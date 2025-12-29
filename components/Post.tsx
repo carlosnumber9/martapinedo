@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { getCleanPostBody } from 'utils/posts';
 import { BackToTopButton } from './BackToTopButton';
-import { PostIndex } from './PostIndex';
+import { TableOfContents } from './TableOfContents';
 
 interface Props {
   post: Post;
@@ -86,7 +86,7 @@ export const PostContent: React.FC<Props> = ({
         )}
       </article>
 
-      {cleanHTML && <PostIndex postRef={postRef} />}
+      {cleanHTML && <TableOfContents postRef={postRef} />}
     </div>
   );
 };
