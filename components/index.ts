@@ -7,6 +7,7 @@ export * from './Loader';
 export * from './Navbar';
 export * from './Navbar/Navbar';
 export * from './Post';
+export * from './PostIndex';
 export * from './PostItem';
 export * from './Services/Services';
 export * from './StructuredData';

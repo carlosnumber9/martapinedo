@@ -29,3 +29,7 @@ export interface Service {
 export type SubmitButtonState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
 export type Path = '/' | '/blog' | '/contact' | `/blog/${string}`;
+
+export type IndexHeading = { title: string; level: number; id: string };
+
+export type HeadingLevel = 2 | 3;
