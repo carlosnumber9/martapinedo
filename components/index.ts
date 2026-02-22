@@ -1,4 +1,3 @@
-export * from './About';
 export * from './BackToTopButton';
 export * from './ContactForm';
 export * from './Footer';

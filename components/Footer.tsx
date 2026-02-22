@@ -1,20 +1,14 @@
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export const Footer = () => {
   const t = useTranslations('footer');
   return (
-    <footer
-      className="flex flex-col items-center justify-center py-4 text-center text-gray-400 text-xs"
-      aria-label="Footer"
-    >
+    <footer className="flex flex-col items-center justify-center py-4 text-center text-gray-400 text-xs bg-darkSecondary z-50">
       <span>{t('copyright')}</span>
       <div className="flex flex-row mt-5 items-center">
-        <Link
-          href={'https://www.linkedin.com/in/marta-pinedo-7a8959195'}
-          target="_blank"
-        >
+        <Link href={'https://www.linkedin.com/in/marta-pinedo-7a8959195'} target="_blank">
           <Image
             src={'/linkedin.png'}
             alt="LinkedIn logo with linking to Marta Pinedo's LinkedIn profile"
@@ -43,5 +37,5 @@ export const Footer = () => {
         </Link>
       </div>
     </footer>
-  )
+  );
 };

@@ -1,19 +1,20 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { About, Header, Services } from '../components';
 import { introduceHeader } from 'utils/animations';
+import { Header, Services, VideoContainer } from '../components';
 
 const PageContent: React.FC = () => {
   const headerRef = useRef<HTMLDivElement>(null);
-  const aboutRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => introduceHeader(headerRef, aboutRef), []);
+  useEffect(() => introduceHeader(headerRef), []);
 
   return (
-    <div className="flex flex-row flex-wrap">
-      <Header ref={headerRef} />
-      <About ref={aboutRef} />
+    <div className="flex flex-row flex-wrap overflow-y-scroll">
+      <VideoContainer>
+        <Header ref={headerRef} />
+      </VideoContainer>
+      <div className="h-screen w-full" />
       <Services />
     </div>
   );

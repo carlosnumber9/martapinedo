@@ -15,10 +15,7 @@ export const LOTTIE_OPTIONS: Record<string, LottieOptions> = {
   },
 };
 
-export const introduceHeader = (
-  headerRef: RefObject<HTMLDivElement | null>,
-  aboutRef: RefObject<HTMLDivElement | null>
-) => {
+export const introduceHeader = (headerRef: RefObject<HTMLDivElement | null>) => {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   tl.fromTo(
@@ -32,15 +29,5 @@ export const introduceHeader = (
       opacity: 1,
       duration: 1.2,
     }
-  ).fromTo(
-    aboutRef.current,
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      duration: 0.8,
-    },
-    '-=0.3'
   );
 };
