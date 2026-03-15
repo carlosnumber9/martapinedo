@@ -3,6 +3,7 @@ export * from './ContactForm';
 export * from './Footer';
 export * from './Header';
 export * from './Loader';
+export * from './Marta';
 export * from './Navbar';
 export * from './Navbar/Navbar';
 export * from './Post';
