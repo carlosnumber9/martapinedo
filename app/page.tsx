@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { introduceHeader } from 'utils/animations';
-import { Header, Marta, Services, VideoContainer } from '../components';
+import { Header, Headline, Marta, Services, VideoContainer } from '../components';
 
 const PageContent: React.FC = () => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -12,6 +12,7 @@ const PageContent: React.FC = () => {
   return (
     <div className="flex flex-row flex-wrap overflow-y-scroll">
       <VideoContainer>
+        <Headline />
         <Marta />
         <Header ref={headerRef} />
       </VideoContainer>

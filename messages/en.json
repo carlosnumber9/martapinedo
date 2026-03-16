@@ -18,7 +18,7 @@
       "line2": "Professionalism",
       "line3": "Trust"
     },
-    "contactButton": "Feel free to contact"
+    "contactButton": "Get legal advice"
   },
   "about": {
     "title": "About",
@@ -65,6 +65,9 @@
       "sent": "Message sent",
       "error": "Error sending message"
     }
+  },
+  "headline": {
+    "text": "Civil law attorney"
   },
   "footer": {
     "copyright": "© Marta Pinedo Sánchez. All rights reserved.",

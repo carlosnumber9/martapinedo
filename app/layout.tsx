@@ -1,14 +1,14 @@
-import { PropsWithChildren } from 'react';
-import { NextIntlClientProvider } from 'next-intl';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/next"
-import { bodyFont, mainFont, subtitleFont } from 'utils/fonts';
-import { Footer, Navbar } from '../components';
-import '../styles/globals.css';
-import { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Footer, Navbar } from 'components';
 import StructuredData from 'components/StructuredData';
-import { SupportedLocale } from './types';
+import { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { PropsWithChildren } from 'react';
+import { bodyFont, mainFont, subtitleFont } from 'utils/fonts';
+import { SupportedLocale } from './types';
+import '../styles/globals.css';
 
 export async function generateMetadata({
   params,
@@ -28,18 +28,16 @@ export async function generateMetadata({
 type Props = PropsWithChildren<{}>;
 
 const RootLayout: React.FC<Props> = ({ children }) => (
-  <html lang="en" className={`${mainFont.variable} ${subtitleFont.variable} ${bodyFont.variable}`}
-  >
+  <html lang="en" className={`${mainFont.variable} ${subtitleFont.variable} ${bodyFont.variable}`}>
     <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col font-body select-none">
-      <NextIntlClientProvider><header>
-        <Navbar />
-      </header>
+      <NextIntlClientProvider>
+        <header>
+          <Navbar />
+        </header>
         <SpeedInsights />
         <Analytics />
         <StructuredData />
-        <main className="py-0 flex flex-col items-center flex-grow">
-          {children}
-        </main>
+        <main className="py-0 flex flex-col items-center flex-grow">{children}</main>
         <Footer />
       </NextIntlClientProvider>
     </body>

@@ -2,6 +2,7 @@ export * from './BackToTopButton';
 export * from './ContactForm';
 export * from './Footer';
 export * from './Header';
+export * from './Headline';
 export * from './Loader';
 export * from './Marta';
 export * from './Navbar';
