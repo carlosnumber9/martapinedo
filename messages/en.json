@@ -120,6 +120,13 @@
       "Administrative Law"
     ]
   },
+  "languageSwitcher": {
+    "changeLanguage": "Change language",
+    "currentLanguage": "Current language",
+    "nextLanguage": "Next language",
+    "spanish": "Spanish",
+    "english": "English"
+  },
   "dates": {
     "ago": "ago",
     "minute": "minute",

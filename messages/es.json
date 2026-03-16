@@ -122,6 +122,13 @@
             "Derecho Administrativo"
         ]
     },
+    "languageSwitcher": {
+        "changeLanguage": "Cambiar idioma",
+        "currentLanguage": "Idioma actual",
+        "nextLanguage": "Próximo idioma",
+        "spanish": "Español",
+        "english": "English"
+    },
     "dates": {
         "ago": "hace",
         "minute": "minuto",
