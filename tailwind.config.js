@@ -3,6 +3,15 @@ module.exports = {
   content: ["./components/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      animation: {
+        "pulse-bg": "pulse-bg 2s ease-in-out infinite",
+      },
+      keyframes: {
+        "pulse-bg": {
+          "0%, 100%": { backgroundColor: "#113240" },
+          "50%": { backgroundColor: "#1c0f13" },
+        },
+      },
       colors: {
         darkPrimary: "#1c0f13",
         darkSecondary: "#113240",
