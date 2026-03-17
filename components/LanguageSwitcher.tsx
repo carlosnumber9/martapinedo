@@ -14,30 +14,34 @@ export default function LanguageSwitcher() {
     router.refresh();
   };
 
-  const nextLocale = currentLocale === 'es' ? 'en' : 'es';
-  const isOn = currentLocale === 'en';
-  const currentLocaleLabel =
+  const nextLocale: SupportedLocale = currentLocale === 'es' ? 'en' : 'es';
+  const isOn: boolean = currentLocale === 'en';
+  const currentLocaleLabel: string =
     currentLocale === 'es' ? t('languageSwitcher.spanish') : t('languageSwitcher.english');
-  const nextLocaleLabel =
+  const nextLocaleLabel: string =
     nextLocale === 'es' ? t('languageSwitcher.spanish') : t('languageSwitcher.english');
-  const ariaLabel = `${t('languageSwitcher.changeLanguage')}. ${t('languageSwitcher.currentLanguage')}: ${currentLocaleLabel}. ${t('languageSwitcher.nextLanguage')}: ${nextLocaleLabel}`;
+  const ariaLabel: string = `${t('languageSwitcher.changeLanguage')}. ${t('languageSwitcher.currentLanguage')}: ${currentLocaleLabel}. ${t('languageSwitcher.nextLanguage')}: ${nextLocaleLabel}`;
 
   return (
     <button
       type="button"
       onClick={() => changeLanguage(nextLocale)}
-      className="relative w-[60px] h-10 rounded-full overflow-hidden cursor-pointer border-none p-0 bg-cover bg-center transition-all duration-300 flex items-center shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+      className="relative w-[55px] h-7 rounded-full overflow-hidden cursor-pointer border-none p-0 transition-all duration-300 flex items-center shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
       style={{
         backgroundImage: `url(/${nextLocale}.png)`,
+        backgroundSize: '45px',
+        backgroundPosition: isOn ? '-50%' : '100%',
+        backgroundRepeat: 'no-repeat',
       }}
       role="switch"
       aria-checked={isOn}
       aria-label={ariaLabel}
     >
       <div
-        className={`w-10 h-10 bg-white rounded-full shadow-md transition-transform duration-300 ${
-          isOn ? 'translate-x-5' : 'translate-x-0'
-        }`}
+        className={`w-7 h-7 bg-darkPrimary rounded-full shadow-md transition-transform duration-300 ${
+          isOn ? 'translate-x-7' : 'translate-x-0'
+        } border-blueSecondary/70 border-2`}
+        draggable
         aria-hidden="true"
       />
     </button>
