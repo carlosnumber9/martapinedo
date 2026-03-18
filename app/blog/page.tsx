@@ -25,7 +25,7 @@ async function Blog() {
     const locale = (await getLocale()) as SupportedLocale;
     const { data } = await apolloClient.query({ query, variables: { locale } });
     return (
-      <div className="p-8 w-screen flex flex-row flex-wrap gap-7 h-auto justify-center items-stretch xl:justify-start">
+      <div className="p-8 pt-24 w-screen flex flex-row flex-wrap gap-7 h-auto justify-center items-stretch xl:justify-start">
         {data.posts?.map((post: Post) => (
           <PostItem key={post.id} {...post} />
         ))}
