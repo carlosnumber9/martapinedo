@@ -64,7 +64,7 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
             hasMouseHover
               ? 'bg-bluePrimary/50 hover:bg-blueSecondary text-white/90 hover:text-darkPrimary'
               : 'bg-blueSecondary text-darkPrimary'
-          } font-semibold py-2 px-4 transition h-14 text-lg self-center mt-8 flex items-center justify-center whitespace-nowrap`}
+          } font-semibold py-2 px-4 transition h-14 text-lg self-center mt-8 flex items-center justify-center whitespace-nowrap border-blueSecondary border-2`}
           href={'/contact'}
         >
           {t('contactButton')}
