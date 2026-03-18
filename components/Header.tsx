@@ -55,11 +55,10 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
       <div
         ref={textsRef}
         className="text-4xl sm:text-6xl flex flex-col text-white/90 font-main p-5 overflow-hidden gap-0 max-w-2xl"
-        style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}
       >
-        <span>{t('tagline.line1')}</span>
-        <span>{t('tagline.line2')}</span>
-        <span>{t('tagline.line3')}</span>
+        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}>{t('tagline.line1')}</span>
+        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}>{t('tagline.line2')}</span>
+        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}>{t('tagline.line3')}</span>
         <Link
           className={`${
             hasMouseHover
