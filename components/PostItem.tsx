@@ -24,7 +24,7 @@ export const PostItem: React.FC<Post> = ({
         <h2 className="font-main text-2xl text-center">{title}</h2>
         <p className="text-lg italic text-center font-subtitle">{subtitle}</p>
         <span className="text-gray-400 text-md">{`${t('byLabel')} ${name}`}</span>
-        <span className="text-gray-400 text-md">{`${t('publishedLabel')} ${formatDate(new Date(publishDate))}`}</span>
+        <span className="text-gray-400 text-sm">{`${t('publishedLabel')} ${formatDate(new Date(publishDate))}`}</span>
       </Link>
     </div>
   );
