@@ -56,15 +56,21 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
         ref={textsRef}
         className="text-4xl sm:text-6xl flex flex-col text-white/90 font-main p-5 overflow-hidden gap-0 max-w-2xl"
       >
-        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}>{t('tagline.line1')}</span>
-        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}>{t('tagline.line2')}</span>
-        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }}>{t('tagline.line3')}</span>
+        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }} className="opacity-0">
+          {t('tagline.line1')}
+        </span>
+        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }} className="opacity-0">
+          {t('tagline.line2')}
+        </span>
+        <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }} className="opacity-0">
+          {t('tagline.line3')}
+        </span>
         <Link
           className={`${
             hasMouseHover
               ? 'bg-bluePrimary/50 hover:bg-blueSecondary text-white/90 hover:text-darkPrimary'
               : 'bg-blueSecondary text-darkPrimary'
-          } font-semibold py-2 px-4 transition h-14 text-lg self-center mt-8 flex items-center justify-center whitespace-nowrap border-blueSecondary border-2`}
+          } font-semibold py-2 px-4 transition h-14 text-lg self-center mt-8 flex items-center justify-center whitespace-nowrap border-blueSecondary border-2 opacity-0`}
           href={'/contact'}
         >
           {t('contactButton')}
