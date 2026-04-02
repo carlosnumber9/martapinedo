@@ -1,3 +1,4 @@
+export * from './AnalyticsProvider';
 export * from './BackToTopButton';
 export * from './ContactForm';
 export * from './CookieConsentBanner';

@@ -1,3 +1,4 @@
+export * from './useCookieConsent';
 export * from './useEmail';
 export * from './useFadeToggle';
 export * from './useFormatDate';

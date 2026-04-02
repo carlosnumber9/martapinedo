@@ -1,6 +1,4 @@
-import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from '@vercel/speed-insights/next';
-import { CookieConsentBanner, Footer, Navbar } from 'components';
+import { AnalyticsProvider, CookieConsentBanner, Footer, Navbar } from 'components';
 import StructuredData from 'components/StructuredData';
 import { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -34,8 +32,7 @@ const RootLayout: React.FC<Props> = ({ children }) => (
         <header>
           <Navbar />
         </header>
-        <SpeedInsights />
-        <Analytics />
+        <AnalyticsProvider />
         <StructuredData />
         <main className="py-0 flex flex-col items-center flex-grow">{children}</main>
         <Footer />
