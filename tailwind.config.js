@@ -5,11 +5,16 @@ module.exports = {
     extend: {
       animation: {
         "pulse-bg": "pulse-bg 2s ease-in-out infinite",
+        "fade-in": "fade-in 0.3s ease-in-out",
       },
       keyframes: {
         "pulse-bg": {
           "0%, 100%": { backgroundColor: "#113240" },
           "50%": { backgroundColor: "#1c0f13" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       colors: {

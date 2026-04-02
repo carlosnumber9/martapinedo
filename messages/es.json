@@ -149,6 +149,12 @@
     "yesterday": "ayer",
     "on": "el"
   },
+  "cookieConsent": {
+    "message": "Este sitio web utiliza cookies para mejorar la experiencia de usuario y analizar el tráfico.",
+    "accept": "Aceptar",
+    "decline": "Rechazar",
+    "learnMore": "Más información"
+  },
   "console": {
     "errorFetchingPosts": "Error fetching posts:",
     "errorFetchingPost": "Error fetching post:",
