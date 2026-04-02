@@ -28,7 +28,7 @@ export interface Service {
 
 export type SubmitButtonState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
-export type Path = '/' | '/blog' | '/contact' | `/blog/${string}`;
+export type Path = '/' | '/blog' | '/contact' | `/blog/${string}` | '/legal';
 
 export type IndexHeading = { title: string; level: number; id: string };
 

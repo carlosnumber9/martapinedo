@@ -30,6 +30,7 @@ export const ContactForm = () => {
     message: '',
     subject: '',
   });
+  const [legalsAreAccepted, setLegalsAreAccepted] = useState(false);
   const { sendingState, sendEmail } = useEmail();
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
@@ -92,9 +93,29 @@ export const ContactForm = () => {
             />
           </div>
         </div>
+        <label>
+          <input
+            type="checkbox"
+            required
+            className="mt-5 mr-5 w-5 h-5"
+            onChange={(e) => setLegalsAreAccepted(e.target.checked)}
+          />
+          {t.rich('legalsCheckbox', {
+            legalsInfo: (chunks) => (
+              <a href="/legal" className="text-blueSecondary cursor-pointer underline">
+                {chunks}
+              </a>
+            ),
+          })}
+        </label>
         <button
           type="submit"
-          disabled={!captchaToken || sendingState === 'SENDING' || sendingState === 'SENT'}
+          disabled={
+            !captchaToken ||
+            sendingState === 'SENDING' ||
+            sendingState === 'SENT' ||
+            !legalsAreAccepted
+          }
           className={classNames(
             'bg-darkPrimary hover:bg-darkSecondary text-white font-semibold py-2 px-4 w-full transition',
             sendingState === 'SENT' && 'bg-green-500 hover:bg-green-600',
