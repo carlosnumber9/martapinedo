@@ -20,6 +20,9 @@ export async function generateMetadata({
       absolute: t('siteTitle'),
     },
     description: t('siteDescription'),
+    icons: {
+      icon: '/favicon.ico',
+    },
   };
 }
 
