@@ -20,8 +20,10 @@ export async function generateMetadata({
       absolute: t('siteTitle'),
     },
     description: t('siteDescription'),
+    manifest: '/manifest.webmanifest',
     icons: {
       icon: '/favicon.ico',
+      apple: '/apple-icon.png',
     },
   };
 }
