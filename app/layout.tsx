@@ -39,7 +39,7 @@ const RootLayout: React.FC<Props> = ({ children }) => (
         </header>
         <AnalyticsProvider />
         <StructuredData />
-        <main className="py-0 flex flex-col items-center flex-grow">{children}</main>
+        <main className="py-0 flex flex-col items-center flex-1 w-full">{children}</main>
         <Footer />
         <CookieConsentBanner />
       </NextIntlClientProvider>

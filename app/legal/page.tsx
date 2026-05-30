@@ -22,7 +22,7 @@ export async function generateMetadata({
 export default async function LegalsPage() {
   const t = await getTranslations('legal');
   return (
-    <section className="relative top-24 p-8 max-w-4xl">
+    <section className="p-8 pt-28 pb-12 max-w-4xl">
       <h1 className="text-3xl font-bold mb-4">{t('title')}</h1>
       <h2 className="text-2xl mb-2 font-subtitle">{t('dataProtection.title')}</h2>
       <p className="mb-4 font-body">{t('dataProtection.description')}</p>
