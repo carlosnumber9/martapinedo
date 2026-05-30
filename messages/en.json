@@ -104,6 +104,14 @@
     "byLabel": "by",
     "publishedLabel": "Published"
   },
+  "notFound": {
+    "metaTitle": "Page not found - Marta Pinedo Sánchez",
+    "metaDescription": "The requested page does not exist or is no longer available.",
+    "title": "Content not found",
+    "description": "The page you are looking for does not exist, has moved or is no longer available. You can return home or get in touch with any enquiry.",
+    "homeButton": "Back home",
+    "contactButton": "Contact"
+  },
   "layout": {
     "siteTitle": "Marta Pinedo Sánchez | Lawyer",
     "siteDescription": "Legal solutions with a personal approach, clarity and commitment."

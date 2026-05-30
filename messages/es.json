@@ -106,6 +106,14 @@
     "byLabel": "por",
     "publishedLabel": "Publicado"
   },
+  "notFound": {
+    "metaTitle": "Página no encontrada - Marta Pinedo Sánchez",
+    "metaDescription": "La página solicitada no existe o ya no está disponible.",
+    "title": "Contenido no encontrado",
+    "description": "La página que busca no existe, se ha movido o ya no está disponible. Puede volver al inicio o contactar para resolver cualquier consulta.",
+    "homeButton": "Volver al inicio",
+    "contactButton": "Contactar"
+  },
   "layout": {
     "siteTitle": "Marta Pinedo Sánchez | Abogada",
     "siteDescription": "Soluciones jurídicas con cercanía, claridad y compromiso."
