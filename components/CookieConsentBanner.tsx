@@ -2,8 +2,9 @@
 
 import { COOKIE_CONSENT_EVENT, COOKIE_CONSENT_NAME } from 'app/constants';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CookieConsent from 'react-cookie-consent';
+import { hasCookieConsentPreference } from 'utils';
 
 export const CookieConsentBanner: React.FC = () => {
   const t = useTranslations('cookieConsent');
@@ -15,6 +16,18 @@ export const CookieConsentBanner: React.FC = () => {
     window.dispatchEvent(new Event(COOKIE_CONSENT_EVENT));
     setTimeout(() => setIsDismissed(true), 300);
   };
+
+  useEffect(() => {
+    const handleUpdate = (): void => {
+      if (hasCookieConsentPreference()) {
+        setIsVisible(false);
+        setTimeout(() => setIsDismissed(true), 300);
+      }
+    };
+
+    window.addEventListener(COOKIE_CONSENT_EVENT, handleUpdate);
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, handleUpdate);
+  }, []);
 
   if (isDismissed) return null;
 

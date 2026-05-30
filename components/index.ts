@@ -2,6 +2,7 @@ export * from './AnalyticsProvider';
 export * from './BackToTopButton';
 export * from './ContactForm';
 export * from './CookieConsentBanner';
+export * from './CookieConsentToggle';
 export * from './Footer';
 export * from './Header';
 export * from './Headline';

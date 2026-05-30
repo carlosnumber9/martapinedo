@@ -77,6 +77,18 @@
     "dataProtection": {
       "title": "Protección de Datos",
       "description": "De conformidad con lo dispuesto en la normativa vigente de Protección de Datos, le informamos que los datos que nos facilite serán incorporados a un fichero automatizado del que es responsable MARTA PINEDO SÁNCHEZ con NIF: 01190225K, cuya finalidad es la gestión de datos personales para el ejercicio de la Abogacía y la defensa procesal en procedimientos judiciales y extrajudiciales, con la legitimación de la ejecución de un contrato o servicio y/o consentimiento del interesado. Así mismo, se le informa que no se cederán datos a terceros salvo obligación legal y que podrá ejercitar los derechos de acceder, rectificar y suprimir los datos, así como otros derechos, como se explica en la información adicional. Los datos proceden del Representante legal, Registros públicos, Administraciones públicas. Puede consultar la información adicional y detallada sobre protección de datos enviando un email a: martapinedo@icam.es"
+    },
+    "cookies": {
+      "title": "Cookies y herramientas similares",
+      "description": "Esta web utiliza solo las cookies y herramientas necesarias para recordar preferencias, proteger formularios y medir el uso del sitio cuando usted lo permite.",
+      "items": {
+        "consent": "Preferencia de cookies: recuerda si ha aceptado o rechazado el uso de cookies no esenciales.",
+        "locale": "Idioma: guarda el idioma elegido cuando usa el selector de idioma.",
+        "analytics": "Vercel Analytics y Speed Insights: miden visitas y rendimiento únicamente si acepta las cookies.",
+        "turnstile": "Cloudflare Turnstile: ayuda a proteger el formulario de contacto frente a envíos automáticos."
+      },
+      "enableButton": "Aceptar cookies",
+      "disableButton": "Rechazar cookies"
     }
   },
   "headline": {

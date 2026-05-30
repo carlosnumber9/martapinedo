@@ -75,6 +75,18 @@
     "dataProtection": {
       "title": "Data Protection",
       "description": "In accordance with the current data protection regulations, we inform you that the data you provide will be incorporated into an automated file for which MARTA PINEDO SÁNCHEZ is responsible, with tax ID: 01190225K. The purpose of this file is the management of personal data for the exercise of the legal profession and the defense in judicial and extrajudicial procedures, with the legitimacy of executing a contract or service and/or the consent of the interested party. Likewise, you are informed that the data will not be transferred to third parties except in cases of legal obligation and that you can exercise your rights to access, rectify and delete the data, as well as other rights, as explained in the additional information. The data comes from the legal representative, public records, and public administrations. You can consult the additional detailed information about data protection by sending an email to: martapinedo@icam.es"
+    },
+    "cookies": {
+      "title": "Cookies and similar tools",
+      "description": "This website only uses the cookies and tools needed to remember preferences, protect forms and measure site usage when you allow it.",
+      "items": {
+        "consent": "Cookie preference: remembers whether you accepted or declined non-essential cookies.",
+        "locale": "Language: stores the language selected through the language switcher.",
+        "analytics": "Vercel Analytics and Speed Insights: measure visits and performance only if you accept cookies.",
+        "turnstile": "Cloudflare Turnstile: helps protect the contact form against automated submissions."
+      },
+      "enableButton": "Accept cookies",
+      "disableButton": "Decline cookies"
     }
   },
   "headline": {
