@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 export const Footer = () => {
   const t = useTranslations('footer');
   return (
-    <footer className="w-full shrink-0 flex flex-col items-center justify-center py-4 text-center text-gray-400 text-xs bg-darkSecondary z-50">
+    <footer className="w-full shrink-0 flex flex-col items-center justify-center py-4 text-center text-gray-400 text-xs bg-darkSecondary z-40">
       <span>{t('copyright')}</span>
       <div className="flex flex-row mt-5 items-center">
         <Link href={'https://www.linkedin.com/in/marta-pinedo-7a8959195'} target="_blank">

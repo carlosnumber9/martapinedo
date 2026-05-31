@@ -12,7 +12,7 @@ export const BackToTopButton = () => {
   return (
     <div
       className={classNames(
-        'fixed bottom-10 right-10 w-24 h-24 cursor-pointer rounded-full md:hover:scale-125 transition-all duration-300',
+        'fixed bottom-10 right-10 w-24 h-24 cursor-pointer rounded-full md:hover:scale-125 transition-all duration-300 z-50',
         {
           'opacity-100 visible': isScrolled,
           'opacity-0 invisible': !isScrolled,
