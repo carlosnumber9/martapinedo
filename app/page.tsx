@@ -10,14 +10,16 @@ const PageContent: React.FC = () => {
   useEffect(() => introduceHeader(headerRef), []);
 
   return (
-    <div className="flex flex-row flex-wrap overflow-y-scroll">
+    <div className="relative w-full overflow-x-hidden">
       <VideoContainer>
         <Headline />
         <Marta />
         <Header ref={headerRef} />
       </VideoContainer>
       <div className="h-screen w-full" />
-      <Services />
+      <div className="relative z-10 w-full">
+        <Services />
+      </div>
     </div>
   );
 };

@@ -6,16 +6,18 @@ interface Props {
 
 export const VideoContainer: React.FC<Props> = ({ children }) => {
   return (
-    <div className="fixed w-full min-h-screen overflow-hidden">
+    <div className="fixed inset-0 z-0 h-screen w-full overflow-hidden">
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover scale-150 md:scale-100 blur-sm"
+        className="absolute inset-0 h-full w-full object-cover scale-150 blur-sm md:scale-100"
         src="/night.mp4"
         autoPlay
         muted
         loop
         playsInline
       />
-      <div className="justify-center items-end flex flex-row flex-wrap h-screen">{children}</div>
+      <div className="relative h-screen w-full flex flex-row flex-wrap items-end justify-center">
+        {children}
+      </div>
     </div>
   );
 };
