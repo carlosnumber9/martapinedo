@@ -58,7 +58,10 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
       notFound();
     }
 
-    return <PostContent post={data.posts[0]} />;
+    const post = data.posts[0];
+    const cleanHTML = getCleanPostBody(post.body.html);
+
+    return <PostContent post={post} cleanHTML={cleanHTML} />;
   } catch (err: unknown) {
     console.error('Error:', err);
     notFound();

@@ -2,31 +2,25 @@
 
 import { Post } from 'app/types';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
-import { getCleanPostBody } from 'utils/posts';
+import { useRef } from 'react';
 import { BackToTopButton } from './BackToTopButton';
 import { TableOfContents } from './TableOfContents';
 
 interface Props {
   post: Post;
+  cleanHTML: string;
 }
 
 export const PostContent: React.FC<Props> = ({
+  cleanHTML,
   post: {
     title,
     subtitle,
     createdBy: { name, picture },
     publishDate,
-    body: { html },
   },
 }) => {
-  const [cleanHTML, setCleanHTML] = useState('');
   const postRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const cleanHTML: string = getCleanPostBody(html);
-    setCleanHTML(cleanHTML);
-  }, [html]);
 
   return (
     <div className="flex flex-row max-w-7xl mx-auto gap-8 relative">
