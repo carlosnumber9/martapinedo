@@ -5,6 +5,7 @@ import { useServices } from 'hooks';
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
+import { Button } from 'components/Button';
 import { ServicesImage } from './ServicesImage';
 import { ServiceItem } from './ServiceItem';
 
@@ -97,6 +98,10 @@ export const Services = () => {
             })}
           </div>
         </div>
+
+        <Button href="/contact" variant="secondary" size="lg" className="mt-12">
+          {t('cta')}
+        </Button>
       </div>
     </div>
   );
