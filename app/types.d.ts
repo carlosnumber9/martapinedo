@@ -17,6 +17,14 @@ export interface Post {
   };
 }
 
+export type BlogPostMetadata = Pick<Post, 'title'>;
+
+export type BlogSitemapPost = Pick<Post, 'id' | 'lastModificationDate'>;
+
+export interface PostsResponse<PostType> {
+  posts?: PostType[] | null;
+}
+
 export type SendingState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
 export type SupportedLocale = 'es' | 'en';
