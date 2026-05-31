@@ -1,5 +1,6 @@
 export * from './AnalyticsProvider';
 export * from './BackToTopButton';
+export * from './Button';
 export * from './ContactForm';
 export * from './CookieConsentBanner';
 export * from './CookieConsentToggle';

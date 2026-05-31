@@ -1,7 +1,7 @@
 'use client';
 
 import { gsap } from 'gsap';
-import Link from 'next/link';
+import { Button } from 'components/Button';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'use-intl';
 
@@ -65,16 +65,18 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
         <span style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.4)' }} className="opacity-0">
           {t('tagline.line3')}
         </span>
-        <Link
+        <Button
           className={`${
             hasMouseHover
               ? 'bg-bluePrimary/50 hover:bg-blueSecondary text-white/90 hover:text-darkPrimary'
               : 'bg-blueSecondary text-darkPrimary'
-          } font-semibold py-2 px-4 transition h-14 text-lg self-center mt-8 flex items-center justify-center whitespace-nowrap border-blueSecondary border-2 opacity-0`}
+          } self-center mt-8 whitespace-nowrap opacity-0`}
           href={'/contact'}
+          variant="secondary"
+          size="lg"
         >
           {t('contactButton')}
-        </Link>
+        </Button>
       </div>
     </div>
   );

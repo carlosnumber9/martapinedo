@@ -1,6 +1,7 @@
 'use client';
 
 import { COOKIE_CONSENT_EVENT, COOKIE_CONSENT_NAME } from 'app/constants';
+import { Button } from 'components/Button';
 import { useCookieConsent } from 'hooks';
 import { useTranslations } from 'next-intl';
 
@@ -17,13 +18,14 @@ export const CookieConsentToggle: React.FC = () => {
 
   return (
     <div className="flex justify-center mt-8">
-      <button
+      <Button
         type="button"
         onClick={() => setCookieConsent(!hasCookieConsent)}
-        className="bg-blueSecondary text-darkPrimary font-semibold px-6 py-2 cursor-pointer hover:opacity-90 transition-opacity"
+        variant="accent"
+        className="px-6"
       >
         {hasCookieConsent ? t('disableButton') : t('enableButton')}
-      </button>
+      </Button>
     </div>
   );
 };

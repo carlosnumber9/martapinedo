@@ -1,5 +1,5 @@
+import { Button } from 'components/Button';
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,18 +24,22 @@ export default async function NotFound() {
           {t('description')}
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link
+          <Button
             href="/"
-            className="flex h-14 items-center justify-center border-2 border-blueSecondary bg-blueSecondary px-6 font-subtitle text-lg font-semibold text-darkPrimary transition-colors duration-300 hover:bg-bluePrimary/50 hover:text-white/90"
+            variant="primary"
+            size="lg"
+            className="font-subtitle"
           >
             {t('homeButton')}
-          </Link>
-          <Link
+          </Button>
+          <Button
             href="/contact"
-            className="flex h-14 items-center justify-center border-2 border-blueSecondary px-6 font-subtitle text-lg font-semibold text-white/90 transition-colors duration-300 hover:bg-blueSecondary hover:text-darkPrimary"
+            variant="secondary"
+            size="lg"
+            className="font-subtitle"
           >
             {t('contactButton')}
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

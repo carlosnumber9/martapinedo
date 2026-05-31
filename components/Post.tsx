@@ -2,10 +2,10 @@
 
 import { IndexHeading, Post } from 'app/types';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 import { BackToTopButton } from './BackToTopButton';
+import { Button } from './Button';
 import { TableOfContents } from './TableOfContents';
 
 interface Props {
@@ -81,18 +81,22 @@ export const PostContent: React.FC<Props> = ({
                          prose-img:mx-auto prose-img:block prose-img:h-auto prose-img:max-w-full"
             />
             <div className="mt-12 flex flex-col items-center justify-center gap-4 border-t border-gray-700 pt-10 sm:flex-row">
-              <Link
+              <Button
                 href="/blog"
-                className="flex h-14 items-center justify-center border-2 border-blueSecondary bg-blueSecondary px-6 font-subtitle text-lg font-semibold text-darkPrimary transition-colors duration-300 hover:bg-bluePrimary/50 hover:text-white/90"
+                variant="primary"
+                size="lg"
+                className="font-subtitle"
               >
                 {t('backBlogButton')}
-              </Link>
-              <Link
+              </Button>
+              <Button
                 href="/"
-                className="flex h-14 items-center justify-center border-2 border-blueSecondary px-6 font-subtitle text-lg font-semibold text-white/90 transition-colors duration-300 hover:bg-blueSecondary hover:text-darkPrimary"
+                variant="secondary"
+                size="lg"
+                className="font-subtitle"
               >
                 {t('backHomeButton')}
-              </Link>
+              </Button>
             </div>
             <BackToTopButton />
           </>

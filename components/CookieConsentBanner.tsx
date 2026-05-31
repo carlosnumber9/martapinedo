@@ -1,7 +1,9 @@
 'use client';
 
 import { COOKIE_CONSENT_EVENT, COOKIE_CONSENT_NAME } from 'app/constants';
+import { Button, getButtonClassName } from 'components/Button';
 import { useTranslations } from 'next-intl';
+import type { ComponentProps } from 'react';
 import { useEffect, useState } from 'react';
 import CookieConsent from 'react-cookie-consent';
 import { hasCookieConsentPreference } from 'utils';
@@ -43,8 +45,14 @@ export const CookieConsentBanner: React.FC = () => {
         isVisible ? 'animate-fade-in opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       contentClasses="flex-1 text-white/90"
-      buttonClasses="bg-blueSecondary text-darkPrimary font-semibold px-5 py-2 cursor-pointer mx-2"
-      declineButtonClasses="bg-transparent border border-white/30 text-white/80 px-5 py-2 cursor-pointer mx-2"
+      buttonClasses={getButtonClassName({ variant: 'accent', className: 'mx-2' })}
+      declineButtonClasses={getButtonClassName({
+        variant: 'unstyled',
+        className: 'mx-2 border border-white/30 text-white/80 hover:bg-white/10',
+      })}
+      ButtonComponent={(props: ComponentProps<typeof Button>) => (
+        <Button {...props} variant="unstyled" />
+      )}
       onAccept={handleDismiss}
       onDecline={handleDismiss}
       hideOnAccept={false}

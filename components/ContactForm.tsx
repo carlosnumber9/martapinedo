@@ -2,7 +2,7 @@
 
 import { Turnstile } from '@marsidev/react-turnstile';
 import classNames from 'classnames';
-import { Loader } from 'components';
+import { Button, Loader } from 'components';
 import { useEmail } from 'hooks';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -108,7 +108,7 @@ export const ContactForm = () => {
             ),
           })}
         </label>
-        <button
+        <Button
           type="submit"
           disabled={
             !captchaToken ||
@@ -116,15 +116,16 @@ export const ContactForm = () => {
             sendingState === 'SENT' ||
             !legalsAreAccepted
           }
+          variant="surface"
+          fullWidth
           className={classNames(
-            'bg-darkPrimary hover:bg-darkSecondary text-white font-semibold py-2 px-4 w-full transition',
             sendingState === 'SENT' && 'bg-green-500 hover:bg-green-600',
             sendingState === 'ERROR' && 'bg-red-500 hover:bg-red-600',
             sendingState === 'SENDING' && 'bg-bluePrimary/50 cursor-not-allowed'
           )}
         >
           {getSubmitButtonContent(sendingState, t)}
-        </button>
+        </Button>
       </form>
     </div>
   );
