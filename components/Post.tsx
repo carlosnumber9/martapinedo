@@ -25,7 +25,7 @@ export const PostContent: React.FC<Props> = ({
   const postRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="flex flex-row max-w-7xl mx-auto gap-8 relative">
+    <div className="flex flex-row max-w-7xl mx-auto gap-8 relative pt-24">
       <article className="flex-1 min-h-screen bg-darkSecondary py-12 px-14 md:my-6 max-w-3xl scroll-smooth">
         <header className="mb-12">
           <h1 className="text-2xl md:text-4xl font-bold mb-2 text-white leading-tight font-main">
