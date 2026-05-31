@@ -20,5 +20,9 @@ export async function generateMetadata({
 }
 
 export default function ContactPage() {
-  return <ContactForm />;
+  return (
+    <section className="flex w-full flex-1 items-center justify-center px-6 pb-12 pt-28">
+      <ContactForm />
+    </section>
+  );
 }

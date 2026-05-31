@@ -41,12 +41,14 @@ export const ContactForm = () => {
 
   return (
     <div
-      className="w-full max-w-md flex flex-col items-center justify-center px-6 py-5 cursor-default mt-20"
+      className="w-full max-w-lg flex flex-col items-center justify-center cursor-default"
       onClick={(e) => e.stopPropagation()}
     >
-      <h2 className="text-2xl font-semibold mb-4">{t('title')}</h2>
+      <h1 className="mb-10 text-center font-main text-4xl uppercase text-white/95 sm:text-5xl">
+        {t('title')}
+      </h1>
       <form
-        className="w-full space-y-4 flex-col items-center justify-center"
+        className="w-full max-w-md space-y-4 flex-col items-center justify-center"
         onSubmit={handleSubmit}
       >
         <input
