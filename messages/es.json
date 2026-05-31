@@ -104,7 +104,9 @@
     "title": "Blog | Marta Pinedo Sánchez",
     "description": "Blog de Marta Pinedo Sánchez",
     "byLabel": "por",
-    "publishedLabel": "Publicado"
+    "publishedLabel": "Publicado",
+    "backBlogButton": "Volver al blog",
+    "backHomeButton": "Volver al inicio"
   },
   "notFound": {
     "metaTitle": "Página no encontrada - Marta Pinedo Sánchez",
