@@ -1,9 +1,16 @@
 import { IndexHeading } from 'app/types';
 import sanitize from 'sanitize-html';
 
+const getPlainText = (html: string): string =>
+  sanitize(html.replace(/<br\s*\/?>/gi, ' '), {
+    allowedTags: [],
+    allowedAttributes: {},
+  })
+    .replace(/\s+/g, ' ')
+    .trim();
+
 export const getHeadingID = (text: string): string => {
-  return text
-    .replace(/<br\s*\/?>/gi, ' ')
+  return getPlainText(text)
     .trim()
     .toLowerCase()
     .normalize('NFD')
@@ -15,9 +22,11 @@ export const getHeadingID = (text: string): string => {
 };
 
 const addIDsToHeadings = (html: string): string => {
-  return html.replace(/<(h[1-6])>(.*?)<\/\1>/g, (match, tag, content) => {
+  return html.replace(/<(h[1-6])([^>]*)>([\s\S]*?)<\/\1>/gi, (match, tag, attributes, content) => {
     const id = getHeadingID(content);
-    return `<${tag} id="${id}">${content}</${tag}>`;
+    const attributesWithoutID = attributes.replace(/\s+id=(["']).*?\1/i, '');
+
+    return `<${tag}${attributesWithoutID} id="${id}">${content}</${tag}>`;
   });
 };
 
@@ -35,24 +44,15 @@ export const getCleanPostBody = (html: string): string =>
     },
   });
 
-export const extractHeadings = (
-  postRef: React.RefObject<HTMLDivElement | null>
-): IndexHeading[] => {
-  if (!postRef || !postRef.current) {
-    return [];
-  }
+export const extractHeadingsFromHTML = (html: string): IndexHeading[] =>
+  Array.from(html.matchAll(/<h([23])(?:\s[^>]*)?>([\s\S]*?)<\/h\1>/gi)).map(
+    ([, level, content]) => {
+      const title = getPlainText(content);
 
-  const allHeadings: NodeListOf<HTMLHeadingElement> = postRef?.current?.querySelectorAll('h2, h3');
-
-  if (!allHeadings || allHeadings.length === 0) {
-    return [];
-  }
-
-  return Array.from(allHeadings).map((heading) => {
-    return {
-      title: heading.textContent || '',
-      level: parseInt(heading.tagName.charAt(1)),
-      id: getHeadingID(heading.textContent || ''),
-    };
-  });
-};
+      return {
+        title,
+        level: Number(level),
+        id: getHeadingID(title),
+      };
+    }
+  );

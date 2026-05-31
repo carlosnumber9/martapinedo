@@ -1,15 +1,17 @@
 'use client';
 
+import { IndexHeading } from 'app/types';
 import classNames from 'classnames';
 import { useTableOfContents } from 'hooks/useTableOfContents';
 import React from 'react';
 
 interface Props {
+  headings: IndexHeading[];
   postRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export const TableOfContents: React.FC<Props> = ({ postRef }) => {
-  const { headings, currentHeadingID } = useTableOfContents(postRef);
+export const TableOfContents: React.FC<Props> = ({ headings, postRef }) => {
+  const { currentHeadingID } = useTableOfContents(postRef);
 
   if (!headings || headings.length === 0) {
     return null;

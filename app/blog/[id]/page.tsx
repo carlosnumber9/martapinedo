@@ -3,7 +3,7 @@ import { PostContent } from 'components';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { apolloClient, getCleanPostBody } from 'utils';
+import { apolloClient, extractHeadingsFromHTML, getCleanPostBody } from 'utils';
 import { GET_POST as query } from './queries';
 
 export const dynamic = 'force-dynamic';
@@ -60,8 +60,9 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
     const post = data.posts[0];
     const cleanHTML = getCleanPostBody(post.body.html);
+    const headings = extractHeadingsFromHTML(cleanHTML);
 
-    return <PostContent post={post} cleanHTML={cleanHTML} />;
+    return <PostContent post={post} cleanHTML={cleanHTML} headings={headings} />;
   } catch (err: unknown) {
     console.error('Error:', err);
     notFound();

@@ -1,18 +1,8 @@
-import { IndexHeading } from 'app/types';
 import { useEffect, useState } from 'react';
-import { extractHeadings } from 'utils';
 
 export const useTableOfContents = (postRef: React.RefObject<HTMLDivElement | null>) => {
   const [currentHeadingID, setCurrentHeadingID] = useState<string | undefined>(undefined);
-  const [headings, setHeadings] = useState<IndexHeading[]>([]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: I disagree with the suggestion here
-  useEffect(() => {
-    const extractedHeadings: IndexHeading[] = extractHeadings(postRef);
-    setHeadings(extractedHeadings);
-  }, [postRef.current?.innerHTML]);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: I disagree with the suggestion here
   useEffect(() => {
     const observer: IntersectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -28,7 +18,7 @@ export const useTableOfContents = (postRef: React.RefObject<HTMLDivElement | nul
     return () => {
       observer.disconnect();
     };
-  }, [headings]);
+  }, [postRef.current]);
 
-  return { headings, currentHeadingID };
+  return { currentHeadingID };
 };

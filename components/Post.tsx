@@ -1,6 +1,6 @@
 'use client';
 
-import { Post } from 'app/types';
+import { IndexHeading, Post } from 'app/types';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { BackToTopButton } from './BackToTopButton';
@@ -9,10 +9,12 @@ import { TableOfContents } from './TableOfContents';
 interface Props {
   post: Post;
   cleanHTML: string;
+  headings: IndexHeading[];
 }
 
 export const PostContent: React.FC<Props> = ({
   cleanHTML,
+  headings,
   post: {
     title,
     subtitle,
@@ -80,7 +82,7 @@ export const PostContent: React.FC<Props> = ({
         )}
       </article>
 
-      {cleanHTML && <TableOfContents postRef={postRef} />}
+      {cleanHTML && <TableOfContents headings={headings} postRef={postRef} />}
     </div>
   );
 };
