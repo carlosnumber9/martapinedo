@@ -32,6 +32,7 @@ This repository should be treated with care: preserve the current user experienc
 ## Dedicated Agent Notes
 
 - For performance, Core Web Vitals, CLS, hydration stability, media loading, SSR, query shape, React rendering cost, and observability tasks, read `next-performance-optimizer.md` first.
+- For UX/UI design, visual consistency, reusable component styling, Tailwind tokens, interaction states, accessibility, responsive layout, and GSAP motion tasks, read `ux-ui-designer.md` first.
 - Future dedicated agent notes should live in focused Markdown files at the repository root and be referenced here.
 - Keep `AGENTS.md` limited to general development guidance and routing to those dedicated notes.
 
