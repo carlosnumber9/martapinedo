@@ -36,11 +36,21 @@ export const getCleanPostBody = (html: string): string =>
     allowedAttributes: {
       ...sanitize.defaults.allowedAttributes,
       '*': ['class', 'id'],
-      img: ['src', 'alt', 'title', 'width', 'height'],
+      img: ['src', 'alt', 'title', 'width', 'height', 'loading', 'decoding'],
       a: ['href', 'target', 'rel'],
     },
     allowedClasses: {
       '*': ['*'],
+    },
+    transformTags: {
+      img: sanitize.simpleTransform(
+        'img',
+        {
+          loading: 'lazy',
+          decoding: 'async',
+        },
+        true
+      ),
     },
   });
 

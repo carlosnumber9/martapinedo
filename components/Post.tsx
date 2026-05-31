@@ -75,7 +75,7 @@ export const PostContent: React.FC<Props> = ({
                          prose-a:text-blueSecondary prose-a:no-underline hover:prose-a:underline
                          prose-ul:my-6 prose-ol:my-6
                          prose-li:text-gray-200 prose-li:my-2
-                         prose-img:mx-auto"
+                         prose-img:mx-auto prose-img:block prose-img:h-auto prose-img:max-w-full"
             />
             <BackToTopButton />
           </>
