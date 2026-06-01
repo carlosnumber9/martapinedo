@@ -1,5 +1,4 @@
 import { Path } from 'app/types';
-import { on } from 'events';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 

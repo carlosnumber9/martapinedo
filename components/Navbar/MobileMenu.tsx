@@ -17,6 +17,8 @@ export const MobileMenu: React.FC<Props> = ({ onClickLink, ref }) => {
       <hr className="mt-12 border-white/20" />
       <NavbarButton text={t('buttons.blog')} route="/blog" isMobile onClick={onClickLink} />
       <hr className="w-3/4 border-white/20" />
+      <NavbarButton text={t('buttons.cases')} route="/cases" isMobile onClick={onClickLink} />
+      <hr className="w-3/4 border-white/20" />
       <NavbarButton text={t('buttons.contact')} route="/contact" isMobile onClick={onClickLink} />
       <hr className="w-3/4 border-white/20" />
       <NavbarButton text={t('buttons.legal')} route="/legal" isMobile onClick={onClickLink} />

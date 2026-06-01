@@ -4,6 +4,7 @@
     "logoAlt": "Logo",
     "buttons": {
       "blog": "Blog",
+      "cases": "Casos",
       "contact": "Contacto",
       "legal": "Condiciones legales"
     },
@@ -124,6 +125,9 @@
   "aboutPage": {
     "metadataTitle": "Sobre mí - Marta Pinedo Sánchez",
     "content": "Sobre mí"
+  },
+  "cases": {
+    "placeholder": "Contenido en construcción. Vuelve más tarde"
   },
   "structuredData": {
     "name": "Marta Pinedo Sánchez",
