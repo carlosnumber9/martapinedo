@@ -68,8 +68,8 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
         <Button
           className={`${
             hasMouseHover
-              ? 'bg-bluePrimary/50 hover:bg-blueSecondary text-white/90 hover:text-darkPrimary'
-              : 'bg-blueSecondary text-darkPrimary'
+              ? 'bg-blueSecondary !text-darkPrimary sm:bg-bluePrimary/50 sm:!text-white/90 sm:hover:bg-blueSecondary sm:hover:!text-darkPrimary'
+              : 'bg-blueSecondary !text-darkPrimary'
           } self-center mt-8 whitespace-nowrap opacity-0`}
           href={'/contact'}
           variant="secondary"
