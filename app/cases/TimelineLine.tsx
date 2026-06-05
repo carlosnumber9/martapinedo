@@ -29,7 +29,7 @@ export const Timeline: React.FC = () => {
     <div
       ref={lineRef}
       aria-hidden="true"
-      className="absolute left-1/2 top-20 h-[calc(100vh-5rem)] w-12 -translate-x-1/2 bg-blueSecondary opacity-0 blur-2xl shadow-[0_0_96px_40px_rgba(94,241,241,0.7)]"
+      className="absolute bottom-0 left-1/2 top-20 z-0 w-12 -translate-x-1/2 bg-blueSecondary opacity-0 blur-2xl shadow-[0_0_96px_40px_rgba(94,241,241,0.7)]"
     />
   );
 };
