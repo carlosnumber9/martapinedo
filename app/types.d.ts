@@ -17,6 +17,16 @@ export interface Post {
   };
 }
 
+export interface Case {
+  heading: string;
+  caseName: string;
+  description: {
+    text: string;
+    html: string;
+  };
+  solvedAt: string;
+}
+
 export type BlogPostMetadata = Pick<Post, 'title'>;
 
 export type BlogSitemapPost = Pick<Post, 'id' | 'lastModificationDate'>;
