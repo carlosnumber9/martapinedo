@@ -23,6 +23,10 @@ type ViewTransitionDocument = Document & {
   startViewTransition?: (updateCallback: () => void) => void;
 };
 
+const PROXIMITY_RADIUS = 250;
+const MAX_SCALE_OFFSET = 0.18;
+const SCALE_LERP = 0.12;
+
 const getCaseIdFromPath = () => {
   const match = window.location.pathname.match(/^\/cases\/([^/]+)$/);
 
@@ -40,6 +44,7 @@ const shouldUseDefaultNavigation = (event: MouseEvent<HTMLAnchorElement>) =>
 export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
   const listRef = useRef<HTMLOListElement>(null);
+  const cardStatesRef = useRef<Array<{ element: HTMLElement; scale: number; targetScale: number }>>([]);
 
   useGSAP(
     () => {
@@ -79,6 +84,76 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => 
 
     return () => window.removeEventListener('popstate', syncSelectedCaseWithPath);
   }, [cases]);
+
+  useEffect(() => {
+    if (selectedCase || !listRef.current) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const cards = Array.from(listRef.current.querySelectorAll<HTMLElement>('.case-timeline-card-scale'));
+
+    if (!cards.length || prefersReducedMotion) return;
+
+    cardStatesRef.current = cards.map((element) => ({ element, scale: 1, targetScale: 1 }));
+
+    const resetScales = () => {
+      cardStatesRef.current.forEach((cardState) => {
+        cardState.targetScale = 1;
+        cardState.element.style.zIndex = '0';
+      });
+    };
+
+    const tick = () => {
+      cardStatesRef.current.forEach((cardState) => {
+        cardState.scale += (cardState.targetScale - cardState.scale) * SCALE_LERP;
+        cardState.element.style.scale = cardState.scale.toFixed(4);
+      });
+    };
+
+    gsap.ticker.add(tick);
+    document.addEventListener('mouseleave', resetScales);
+    window.addEventListener('blur', resetScales);
+
+    return () => {
+      gsap.ticker.remove(tick);
+      document.removeEventListener('mouseleave', resetScales);
+      window.removeEventListener('blur', resetScales);
+      resetScales();
+      cardStatesRef.current = [];
+    };
+  }, [selectedCase]);
+
+  const updateCardProximity = (event: MouseEvent<HTMLElement>) => {
+    if (selectedCase) return;
+
+    let closestCard: HTMLElement | null = null;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    cardStatesRef.current.forEach((cardState) => {
+      const rect = cardState.element.getBoundingClientRect();
+      const cardCenterX = rect.left + rect.width / 2;
+      const cardCenterY = rect.top + rect.height / 2;
+      const distance = Math.hypot(event.clientX - cardCenterX, event.clientY - cardCenterY);
+      const proximity = Math.max(0, 1 - distance / PROXIMITY_RADIUS);
+
+      cardState.targetScale = 1 + proximity * MAX_SCALE_OFFSET;
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = cardState.element;
+      }
+    });
+
+    cardStatesRef.current.forEach((cardState) => {
+      cardState.element.style.zIndex = cardState.element === closestCard ? '20' : '0';
+    });
+  };
+
+  const resetCardProximity = () => {
+    cardStatesRef.current.forEach((cardState) => {
+      cardState.targetScale = 1;
+      cardState.element.style.zIndex = '0';
+    });
+  };
 
   const openCase = (caseItem: Case) => {
     setSelectedCase(caseItem);
@@ -125,7 +200,11 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => 
   }
 
   return (
-    <section className="relative min-h-screen w-full overflow-x-hidden bg-darkPrimary pt-20">
+    <section
+      className="relative min-h-screen w-full overflow-x-hidden bg-darkPrimary pt-20"
+      onMouseLeave={resetCardProximity}
+      onMouseMove={updateCardProximity}
+    >
       <Timeline />
       <ol ref={listRef} className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-28 px-6 py-28">
         {cases.map((caseItem, index) => (
