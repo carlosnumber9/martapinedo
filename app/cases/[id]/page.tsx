@@ -1,8 +1,9 @@
 import type { SupportedLocale } from 'app/types';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { getCleanPostBody } from 'utils';
+import { CaseDetailArea } from '../CaseDetailArea';
 import { CaseDetailContent } from '../CaseDetailContent';
 import { CASES_MOCKS } from '../mocks';
 
@@ -30,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseDetailPage({ params }: Props) {
   const locale = (await getLocale()) as SupportedLocale;
+  const t = await getTranslations('cases');
   const { id } = await params;
   const caseItem = getCaseById(id, locale);
 
@@ -40,12 +42,13 @@ export default async function CaseDetailPage({ params }: Props) {
   const cleanDescription = getCleanPostBody(caseItem.description.html);
 
   return (
-    <section className="w-full bg-darkPrimary px-6 py-28">
+    <CaseDetailArea>
       <CaseDetailContent
+        backLabel={t('backButton')}
         caseItem={caseItem}
         cleanDescription={cleanDescription}
         locale={locale}
       />
-    </section>
+    </CaseDetailArea>
   );
 }

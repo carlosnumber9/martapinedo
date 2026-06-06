@@ -127,6 +127,7 @@
     "content": "Sobre mí"
   },
   "cases": {
+    "backButton": "Volver a casos",
     "placeholder": "Contenido en construcción. Vuelve más tarde"
   },
   "structuredData": {

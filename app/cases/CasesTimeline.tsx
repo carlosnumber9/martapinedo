@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import type { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
+import { CaseDetailArea } from './CaseDetailArea';
 import { CaseDetailContent } from './CaseDetailContent';
 import { CaseItem } from './CaseItem';
 import { Timeline } from './TimelineLine';
@@ -13,6 +14,7 @@ import { Timeline } from './TimelineLine';
 gsap.registerPlugin(useGSAP);
 
 interface Props {
+  backLabel: string;
   cases: Case[];
   locale: SupportedLocale;
 }
@@ -35,7 +37,7 @@ const shouldUseDefaultNavigation = (event: MouseEvent<HTMLAnchorElement>) =>
   event.ctrlKey ||
   event.shiftKey;
 
-export const CasesTimeline: React.FC<Props> = ({ cases, locale }) => {
+export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
   const listRef = useRef<HTMLOListElement>(null);
 
@@ -84,6 +86,12 @@ export const CasesTimeline: React.FC<Props> = ({ cases, locale }) => {
     window.scrollTo(0, 0);
   };
 
+  const closeCase = () => {
+    setSelectedCase(null);
+    window.history.pushState(null, '', '/cases');
+    window.scrollTo(0, 0);
+  };
+
   const handleSelectCase = (event: MouseEvent<HTMLAnchorElement>, caseItem: Case) => {
     if (shouldUseDefaultNavigation(event)) return;
 
@@ -104,13 +112,15 @@ export const CasesTimeline: React.FC<Props> = ({ cases, locale }) => {
 
   if (selectedCase) {
     return (
-      <section className="w-full bg-darkPrimary px-6 py-28">
+      <CaseDetailArea onBack={closeCase}>
         <CaseDetailContent
+          backLabel={backLabel}
           caseItem={selectedCase}
           cleanDescription={selectedCase.description.html}
           locale={locale}
+          onBack={closeCase}
         />
-      </section>
+      </CaseDetailArea>
     );
   }
 

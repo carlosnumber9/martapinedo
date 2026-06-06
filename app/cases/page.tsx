@@ -24,5 +24,5 @@ export default async function Cases() {
     );
   }
 
-  return <CasesTimeline cases={cleanCases} locale={locale} />;
+  return <CasesTimeline backLabel={t('backButton')} cases={cleanCases} locale={locale} />;
 }

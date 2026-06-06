@@ -125,6 +125,7 @@
     "content": "About"
   },
   "cases": {
+    "backButton": "Back to cases",
     "placeholder": "Content under construction. Come back later"
   },
   "structuredData": {
