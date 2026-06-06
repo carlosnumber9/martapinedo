@@ -29,6 +29,7 @@
   "services": {
     "title": "Services",
     "cta": "Start your consultation",
+    "scrollCueLabel": "Go to services",
     "items": {
       "asesoria": {
         "name": "Legal Advice & Consultancy",

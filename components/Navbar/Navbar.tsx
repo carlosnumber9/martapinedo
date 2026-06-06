@@ -6,13 +6,16 @@ import gsap from 'gsap';
 import { useMobileMenu, useScrollPosition } from 'hooks';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
+import type { MouseEvent } from 'react';
 import { MobileMenu } from './MobileMenu';
 import { NavbarButton } from './NavbarButton';
 
 export const Navbar: React.FC = () => {
   const t = useTranslations('navbar');
+  const pathname = usePathname();
   const menuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -41,6 +44,25 @@ export const Navbar: React.FC = () => {
     });
   }, [isScrolled, isHovered]);
 
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (isMobileMenuOpen) {
+      closeMobileMenu();
+    }
+
+    if (pathname !== '/') return;
+
+    event.preventDefault();
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
+
+    window.history.pushState(null, '', '/');
+  };
+
   return (
     <>
       <nav
@@ -54,7 +76,7 @@ export const Navbar: React.FC = () => {
         onMouseLeave={() => setIsHovered(false)}
         aria-label="main-navigation"
       >
-        <Link href="/" onClick={isMobileMenuOpen ? closeMobileMenu : undefined}>
+        <Link href="/" onClick={handleLogoClick}>
           <div ref={logoRef}>
             <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
           </div>

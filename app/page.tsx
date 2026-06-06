@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { introduceHeader } from 'utils/animations';
-import { Header, Headline, Marta, Services, VideoContainer } from '../components';
+import { Header, Headline, HomeScrollCue, Marta, Services, VideoContainer } from '../components';
 
 const PageContent: React.FC = () => {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -15,9 +15,10 @@ const PageContent: React.FC = () => {
         <Headline />
         <Marta />
         <Header ref={headerRef} />
+        <HomeScrollCue />
       </VideoContainer>
       <div className="h-screen w-full" />
-      <div className="relative z-10 w-full">
+      <div id="services" className="relative z-10 w-full">
         <Services />
       </div>
     </div>

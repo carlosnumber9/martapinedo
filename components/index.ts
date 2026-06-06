@@ -8,6 +8,7 @@ export * from './Footer';
 export * from './Header';
 export * from './Heading';
 export * from './Headline';
+export * from './HomeScrollCue';
 export * from './Loader';
 export * from './Marta';
 export * from './Navbar';

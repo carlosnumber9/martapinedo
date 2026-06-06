@@ -31,6 +31,7 @@
   "services": {
     "title": "Servicios",
     "cta": "Empieza tu consulta",
+    "scrollCueLabel": "Ir a servicios",
     "items": {
       "asesoria": {
         "name": "Asesoría y Consultoría Legal",
