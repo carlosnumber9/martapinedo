@@ -1,37 +1,23 @@
-import type { Case, CasesResponse, SupportedLocale } from 'app/types';
+import type { SupportedLocale } from 'app/types';
 import { Button } from 'components';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { apolloClient, getCleanPostBody } from 'utils';
+import { getCases } from './_data/cases';
 import { CasesTimeline } from './CasesTimeline';
-import { GET_CASES as query } from './queries';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Cases() {
   const locale = (await getLocale()) as SupportedLocale;
   const t = await getTranslations('cases');
-  let cases: Case[] = [];
+  let cases = [];
 
   try {
-    const { data } = await apolloClient.query<CasesResponse<Case>>({
-      query,
-      variables: { locale },
-    });
-
-    cases = data.cases ?? [];
+    cases = await getCases(locale);
   } catch (err: unknown) {
     console.error('Error fetching cases:', err);
     notFound();
   }
-
-  const cleanCases = cases.map((caseItem) => ({
-    ...caseItem,
-    description: {
-      ...caseItem.description,
-      html: getCleanPostBody(caseItem.description.html),
-    },
-  }));
 
   if (!cases.length) {
     return (
@@ -49,7 +35,7 @@ export default async function Cases() {
   return (
     <CasesTimeline
       backLabel={t('backButton')}
-      cases={cleanCases}
+      cases={cases}
       cta={t('cta')}
       locale={locale}
       title={t('title')}

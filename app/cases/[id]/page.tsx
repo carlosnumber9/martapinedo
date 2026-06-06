@@ -1,11 +1,10 @@
-import type { Case, CasesResponse, SupportedLocale } from 'app/types';
+import type { SupportedLocale } from 'app/types';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { apolloClient, getCleanPostBody } from 'utils';
+import { getCaseById, getCaseMetadata } from '../_data/cases';
 import { CaseDetailArea } from '../CaseDetailArea';
 import { CaseDetailContent } from '../CaseDetailContent';
-import { GET_CASE as query } from '../queries';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -13,19 +12,12 @@ interface Props {
 
 export const dynamic = 'force-dynamic';
 
-const getCaseById = (id: string, locale: SupportedLocale) =>
-  apolloClient.query<CasesResponse<Case>>({
-    query,
-    variables: { id, locale },
-  });
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = (await getLocale()) as SupportedLocale;
   const { id } = await params;
 
   try {
-    const { data } = await getCaseById(id, locale);
-    const caseItem = data.cases?.[0];
+    const caseItem = await getCaseMetadata(id, locale);
 
     if (!caseItem) {
       notFound();
@@ -46,21 +38,18 @@ export default async function CaseDetailPage({ params }: Props) {
   const t = await getTranslations('cases');
   const { id } = await params;
   try {
-    const { data } = await getCaseById(id, locale);
-    const caseItem = data.cases?.[0];
+    const caseItem = await getCaseById(id, locale);
 
     if (!caseItem) {
       notFound();
     }
-
-    const cleanDescription = getCleanPostBody(caseItem.description.html);
 
     return (
       <CaseDetailArea>
         <CaseDetailContent
           backLabel={t('backButton')}
           caseItem={caseItem}
-          cleanDescription={cleanDescription}
+          cleanDescription={caseItem.description.html}
           locale={locale}
         />
       </CaseDetailArea>
