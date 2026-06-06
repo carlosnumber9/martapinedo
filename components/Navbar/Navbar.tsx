@@ -54,7 +54,7 @@ export const Navbar: React.FC = () => {
         onMouseLeave={() => setIsHovered(false)}
         aria-label="main-navigation"
       >
-        <Link href="/">
+        <Link href="/" onClick={isMobileMenuOpen ? closeMobileMenu : undefined}>
           <div ref={logoRef}>
             <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
           </div>
