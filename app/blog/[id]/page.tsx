@@ -3,8 +3,8 @@ import { PostContent } from 'components';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { apolloClient, extractHeadingsFromHTML, getCleanPostBody } from 'utils';
-import { GET_POST as query } from './queries';
+import { extractHeadingsFromHTML, getCleanPostBody } from 'utils';
+import { getBlogPostById, getBlogPostMetadata } from '../_data/posts';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,19 +18,14 @@ export async function generateMetadata({
   const { id } = await params;
 
   try {
-    const { data } = await apolloClient.query({
-      query,
-      variables: { id, locale },
-    });
+    const post = await getBlogPostMetadata(id, locale);
 
-    if (!data.posts || data.posts.length === 0) {
+    if (!post) {
       notFound();
     }
 
-    const { title } = data.posts[0];
-
     return {
-      title: `${title} | Marta Pinedo Sánchez`,
+      title: `${post.title} | Marta Pinedo Sánchez`,
       description: t('description'),
     };
   } catch (err) {
@@ -44,21 +39,12 @@ const PostPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const locale = (await getLocale()) as SupportedLocale;
 
   try {
-    const { data, error } = await apolloClient.query({
-      query,
-      variables: { id, locale },
-    });
+    const post = await getBlogPostById(id, locale);
 
-    if (error) {
-      console.error('Error fetching post:', error);
+    if (!post) {
       notFound();
     }
 
-    if (!data.posts || data.posts.length === 0) {
-      notFound();
-    }
-
-    const post = data.posts[0];
     const cleanHTML = getCleanPostBody(post.body.html);
     const headings = extractHeadingsFromHTML(cleanHTML);
 

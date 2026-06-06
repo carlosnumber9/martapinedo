@@ -2,9 +2,8 @@ import { PostItem } from 'components';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { apolloClient } from 'utils';
-import { Post, SupportedLocale } from '../types';
-import { GET_POSTS as query } from './queries';
+import { SupportedLocale } from '../types';
+import { getBlogPosts } from './_data/posts';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,10 +22,11 @@ export async function generateMetadata(): Promise<Metadata> {
 async function Blog() {
   try {
     const locale = (await getLocale()) as SupportedLocale;
-    const { data } = await apolloClient.query({ query, variables: { locale } });
+    const posts = await getBlogPosts(locale);
+
     return (
       <div className="p-8 pt-24 w-screen flex flex-row flex-wrap gap-7 h-auto justify-center items-stretch xl:justify-start">
-        {data.posts?.map((post: Post) => (
+        {posts.map((post) => (
           <PostItem key={post.id} {...post} />
         ))}
       </div>

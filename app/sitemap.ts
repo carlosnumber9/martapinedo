@@ -1,18 +1,13 @@
 import { MetadataRoute } from 'next';
-import { GET_POSTS as query } from './blog/queries';
-import { apolloClient } from 'utils';
-import { Post } from './types';
+import { getSitemapPosts } from './blog/_data/posts';
 
 export const dynamic = 'force-dynamic';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     try {
-        const { data } = await apolloClient.query({
-            query,
-            variables: { locale: 'es' }
-        });
+        const posts = await getSitemapPosts('es');
 
-        const blogPosts = data.posts.map((post: Post) => ({
+        const blogPosts = posts.map((post) => ({
             url: `https://martapinedoabogada.es/blog/${post.id}`,
             lastModified: post.lastModificationDate
                 ? new Date(post.lastModificationDate)
