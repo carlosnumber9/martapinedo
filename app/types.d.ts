@@ -36,6 +36,10 @@ export interface PostsResponse<PostType> {
   posts?: PostType[] | null;
 }
 
+export interface CasesResponse<CaseType> {
+  cases?: CaseType[] | null;
+}
+
 export type SendingState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
 export type SupportedLocale = 'es' | 'en';

@@ -2,6 +2,7 @@
 
 import { useGSAP } from '@gsap/react';
 import type { Case, SupportedLocale } from 'app/types';
+import { Button } from 'components';
 import gsap from 'gsap';
 import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEvent } from 'react';
@@ -17,7 +18,9 @@ gsap.registerPlugin(useGSAP);
 interface Props {
   backLabel: string;
   cases: Case[];
+  cta: string;
   locale: SupportedLocale;
+  title: string;
 }
 
 type ViewTransitionDocument = Document & {
@@ -42,7 +45,7 @@ const shouldUseDefaultNavigation = (event: MouseEvent<HTMLAnchorElement>) =>
   event.ctrlKey ||
   event.shiftKey;
 
-export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => {
+export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, cta, locale, title }) => {
   const pathname = usePathname();
   const router = useRouter();
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
@@ -222,7 +225,12 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => 
       onMouseMove={updateCardProximity}
     >
       <Timeline />
-      <ol ref={listRef} className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-28 px-6 py-28">
+      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 pb-36 pt-24 text-center sm:pb-44">
+        <h1 className="max-w-3xl font-main text-4xl uppercase text-white/95 drop-shadow-[0_2px_18px_rgba(28,15,19,0.95)] sm:text-5xl">
+          {title}
+        </h1>
+      </div>
+      <ol ref={listRef} className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-28 px-6 pb-28">
         {cases.map((caseItem, index) => (
           <CaseItem
             key={caseItem.id}
@@ -233,6 +241,11 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => 
           />
         ))}
       </ol>
+      <div className="relative z-10 flex w-full justify-center px-6 pb-28">
+        <Button href="/contact" variant="secondary" size="lg" className="font-subtitle">
+          {cta}
+        </Button>
+      </div>
     </section>
   );
 };

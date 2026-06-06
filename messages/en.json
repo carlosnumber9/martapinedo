@@ -126,7 +126,9 @@
   },
   "cases": {
     "backButton": "Back to cases",
-    "placeholder": "Content under construction. Come back later"
+    "cta": "Let's start with your case",
+    "title": "Track record in legal cases",
+    "placeholder": "Section under construction. Come back later"
   },
   "structuredData": {
     "name": "Marta Pinedo Sánchez",

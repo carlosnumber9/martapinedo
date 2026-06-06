@@ -128,7 +128,9 @@
   },
   "cases": {
     "backButton": "Volver a casos",
-    "placeholder": "Contenido en construcción. Vuelve más tarde"
+    "cta": "Empecemos con tu caso",
+    "title": "Trayectoria en casos legales",
+    "placeholder": "Sección en construcción. Vuelve más tarde"
   },
   "structuredData": {
     "name": "Marta Pinedo Sánchez",
