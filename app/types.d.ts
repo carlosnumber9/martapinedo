@@ -28,6 +28,8 @@ export interface Case {
   solvedAt: string;
 }
 
+export type CaseMetadata = Pick<Case, 'caseName' | 'description'>;
+
 export type BlogPostMetadata = Pick<Post, 'title'>;
 
 export type BlogSitemapPost = Pick<Post, 'id' | 'lastModificationDate'>;
