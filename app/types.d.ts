@@ -18,6 +18,7 @@ export interface Post {
 }
 
 export interface Case {
+  id: string;
   heading: string;
   caseName: string;
   description: {
@@ -46,7 +47,14 @@ export interface Service {
 
 export type SubmitButtonState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
-export type Path = '/' | '/blog' | '/cases' | '/contact' | `/blog/${string}` | '/legal';
+export type Path =
+  | '/'
+  | '/blog'
+  | '/cases'
+  | `/cases/${string}`
+  | '/contact'
+  | `/blog/${string}`
+  | '/legal';
 
 export type IndexHeading = { title: string; level: number; id: string };
 

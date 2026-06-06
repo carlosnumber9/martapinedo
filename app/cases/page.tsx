@@ -1,13 +1,20 @@
 import type { SupportedLocale } from 'app/types';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { CaseItem } from './CaseItem';
+import { getCleanPostBody } from 'utils';
+import { CasesTimeline } from './CasesTimeline';
 import { CASES_MOCKS } from './mocks';
-import { Timeline } from './TimelineLine';
 
 export default async function Cases() {
   const locale = (await getLocale()) as SupportedLocale;
   const t = await getTranslations('cases');
   const cases = CASES_MOCKS[locale] ?? [];
+  const cleanCases = cases.map((caseItem) => ({
+    ...caseItem,
+    description: {
+      ...caseItem.description,
+      html: getCleanPostBody(caseItem.description.html),
+    },
+  }));
 
   if (!cases.length) {
     return (
@@ -17,19 +24,5 @@ export default async function Cases() {
     );
   }
 
-  return (
-    <section className="relative min-h-screen w-full overflow-x-hidden bg-darkPrimary pt-20">
-      <Timeline />
-      <ol className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-28 px-6 py-28">
-        {cases.map((caseItem, index) => (
-          <CaseItem
-            key={`${caseItem.solvedAt}-${caseItem.caseName}`}
-            caseItem={caseItem}
-            index={index}
-            locale={locale}
-          />
-        ))}
-      </ol>
-    </section>
-  );
+  return <CasesTimeline cases={cleanCases} locale={locale} />;
 }

@@ -3,6 +3,7 @@ import { Case, SupportedLocale } from 'app/types';
 export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
   es: [
     {
+      id: 'family-business-contract-agreement',
       heading: 'Resolucion contractual',
       caseName: 'Acuerdo extrajudicial para una empresa familiar',
       description: {
@@ -12,6 +13,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
       solvedAt: '2025-11-18',
     },
     {
+      id: 'negotiated-debt-recovery',
       heading: 'Reclamacion civil',
       caseName: 'Recuperacion de deuda mediante negociacion',
       description: {
@@ -21,6 +23,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
       solvedAt: '2025-07-04',
     },
     {
+      id: 'administrative-penalty-annulment',
       heading: 'Procedimiento administrativo',
       caseName: 'Anulacion de una sancion administrativa',
       description: {
@@ -30,6 +33,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
       solvedAt: '2024-12-12',
     },
     {
+      id: 'collaboration-agreement-review',
       heading: 'Contrato mercantil',
       caseName: 'Revision preventiva de acuerdo de colaboracion',
       description: {
@@ -41,6 +45,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
   ],
   en: [
     {
+      id: 'family-business-contract-agreement',
       heading: 'Contract resolution',
       caseName: 'Out-of-court agreement for a family business',
       description: {
@@ -50,6 +55,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
       solvedAt: '2025-11-18',
     },
     {
+      id: 'negotiated-debt-recovery',
       heading: 'Civil claim',
       caseName: 'Debt recovery through negotiation',
       description: {
@@ -59,6 +65,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
       solvedAt: '2025-07-04',
     },
     {
+      id: 'administrative-penalty-annulment',
       heading: 'Administrative proceeding',
       caseName: 'Annulment of an administrative penalty',
       description: {
@@ -68,6 +75,7 @@ export const CASES_MOCKS: Record<SupportedLocale, Case[]> = {
       solvedAt: '2024-12-12',
     },
     {
+      id: 'collaboration-agreement-review',
       heading: 'Commercial contract',
       caseName: 'Preventive review of a collaboration agreement',
       description: {
