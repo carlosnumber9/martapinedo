@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 import { BackToTopButton } from './BackToTopButton';
 import { Button } from './Button';
+import { Heading } from './Heading';
 import { TableOfContents } from './TableOfContents';
 
 interface Props {
@@ -31,9 +32,9 @@ export const PostContent: React.FC<Props> = ({
     <div className="flex flex-row max-w-7xl mx-auto gap-8 relative pt-24">
       <article className="flex-1 min-h-screen bg-darkSecondary py-12 px-14 md:my-6 max-w-3xl scroll-smooth">
         <header className="mb-12">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2 text-white leading-tight font-main">
+          <Heading variant="postTitle">
             {title}
-          </h1>
+          </Heading>
 
           {subtitle && (
             <p className="text-lg md:text-xl italic text-gray-100 mt-8 leading-relaxed mb-6 font-subtitle">

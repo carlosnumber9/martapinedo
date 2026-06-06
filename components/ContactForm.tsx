@@ -2,7 +2,7 @@
 
 import { Turnstile } from '@marsidev/react-turnstile';
 import classNames from 'classnames';
-import { Button, Loader } from 'components';
+import { Button, Heading, Loader } from 'components';
 import { useEmail } from 'hooks';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -44,9 +44,9 @@ export const ContactForm = () => {
       className="w-full max-w-lg flex flex-col items-center justify-center cursor-default"
       onClick={(e) => e.stopPropagation()}
     >
-      <h1 className="mb-10 text-center font-main text-4xl uppercase text-white/95 sm:text-5xl">
+      <Heading variant="contactTitle">
         {t('title')}
-      </h1>
+      </Heading>
       <form
         className="w-full max-w-md space-y-4 flex-col items-center justify-center"
         onSubmit={handleSubmit}

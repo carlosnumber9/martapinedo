@@ -1,4 +1,5 @@
 import type { Case, SupportedLocale } from 'app/types';
+import { Heading } from 'components/Heading';
 import type { CSSProperties } from 'react';
 import { getLocalizedDate } from 'utils';
 import { CaseBackButton } from './CaseBackButton';
@@ -31,7 +32,7 @@ export const CaseDetailContent: React.FC<Props> = ({
       <time className="font-body text-sm text-blueSecondary" dateTime={caseItem.solvedAt}>
         {getLocalizedDate(caseItem.solvedAt, locale)}
       </time>
-      <h1 className="mt-5 font-main text-3xl text-white sm:text-5xl">{caseItem.heading}</h1>
+      <Heading variant="caseDetailTitle">{caseItem.heading}</Heading>
       <p className="mt-5 max-w-3xl font-subtitle text-xl text-white/85 sm:text-2xl">
         {caseItem.caseName}
       </p>

@@ -1,6 +1,7 @@
 'use client';
 
 import type { Case, SupportedLocale } from 'app/types';
+import { Heading } from 'components/Heading';
 import type { CSSProperties } from 'react';
 import type { MouseEvent as ReactMouseEvent } from 'react';
 import { getLocalizedDate } from 'utils';
@@ -35,7 +36,7 @@ export const CaseItem: React.FC<Props> = ({ caseItem, index, locale, onSelect })
             <time className="font-body text-sm text-blueSecondary" dateTime={caseItem.solvedAt}>
               {getLocalizedDate(caseItem.solvedAt, locale)}
             </time>
-            <h2 className="mt-4 font-subtitle text-2xl text-white">{caseItem.heading}</h2>
+            <Heading variant="caseCardTitle">{caseItem.heading}</Heading>
             <p className="mt-3 font-body text-base text-white/80">{caseItem.caseName}</p>
           </div>
         </a>

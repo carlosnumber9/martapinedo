@@ -5,6 +5,7 @@ import { useFormatDate } from 'hooks';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import { Heading } from './Heading';
 
 export const PostItem: React.FC<Post> = ({
   id,
@@ -21,7 +22,7 @@ export const PostItem: React.FC<Post> = ({
         href={`/blog/${id}`}
         className="text-decoration-none flex flex-col items-center justify-between gap-2 p-5 h-full"
       >
-        <h2 className="font-main text-2xl text-center">{title}</h2>
+        <Heading variant="postCardTitle">{title}</Heading>
         <p className="text-lg italic text-center font-subtitle">{subtitle}</p>
         <span className="text-gray-400 text-md">{`${t('byLabel')} ${name}`}</span>
         <span className="text-gray-400 text-sm">{`${t('publishedLabel')} ${formatDate(new Date(publishDate))}`}</span>

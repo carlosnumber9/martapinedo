@@ -6,6 +6,7 @@ export * from './CookieConsentBanner';
 export * from './CookieConsentToggle';
 export * from './Footer';
 export * from './Header';
+export * from './Heading';
 export * from './Headline';
 export * from './Loader';
 export * from './Marta';

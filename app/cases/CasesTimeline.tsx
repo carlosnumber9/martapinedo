@@ -2,7 +2,7 @@
 
 import { useGSAP } from '@gsap/react';
 import type { Case, SupportedLocale } from 'app/types';
-import { Button } from 'components';
+import { Button, Heading } from 'components';
 import gsap from 'gsap';
 import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEvent } from 'react';
@@ -226,9 +226,9 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, cta, locale, 
     >
       <Timeline />
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 pb-36 pt-24 text-center sm:pb-44">
-        <h1 className="max-w-3xl font-main text-4xl uppercase text-white/95 drop-shadow-[0_2px_18px_rgba(28,15,19,0.95)] sm:text-5xl">
+        <Heading variant="caseTimelineTitle">
           {title}
-        </h1>
+        </Heading>
       </div>
       <ol ref={listRef} className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-28 px-6 pb-28">
         {cases.map((caseItem, index) => (

@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 import { Button } from 'components/Button';
+import { Heading } from 'components/Heading';
 import { ServicesImage } from './ServicesImage';
 import { ServiceItem } from './ServiceItem';
 
@@ -68,9 +69,9 @@ export const Services = () => {
   return (
     <div className="flex flex-row flex-wrap relative w-full min-h-[calc(100vh+5rem)] overflow-hidden bg-darkSecondary">
       <div className="flex w-full flex-col items-center px-6 py-24 text-white sm:px-8 lg:px-10">
-        <h2 className="font-main text-4xl uppercase text-white/95 sm:text-5xl">
+        <Heading variant="sectionTitle">
           {t('title')}
-        </h2>
+        </Heading>
 
         <div className="relative mt-14 flex w-full max-w-6xl flex-col items-center gap-6 lg:min-h-[44rem]">
           <ServicesImage ref={servicesImageRef} />
