@@ -21,7 +21,7 @@ export const CaseItem: React.FC<Props> = ({ caseItem, index, locale, onSelect })
     : '-translate-x-6 sm:-translate-x-24 lg:-translate-x-32';
 
   return (
-    <li className="flex w-full justify-center">
+    <li className="case-timeline-item flex w-full justify-center">
       <a
         href={`/cases/${caseItem.id}`}
         className={`relative z-10 block w-[calc(100%-3rem)] max-w-xs border-2 border-blueSecondary/25 bg-darkSecondary/95 p-6 shadow-contact transition-colors duration-300 hover:border-blueSecondary/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blueSecondary ${offsetClass}`}
