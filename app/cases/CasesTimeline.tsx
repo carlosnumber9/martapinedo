@@ -3,6 +3,7 @@
 import { useGSAP } from '@gsap/react';
 import type { Case, SupportedLocale } from 'app/types';
 import gsap from 'gsap';
+import { usePathname, useRouter } from 'next/navigation';
 import type { MouseEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
@@ -42,6 +43,8 @@ const shouldUseDefaultNavigation = (event: MouseEvent<HTMLAnchorElement>) =>
   event.shiftKey;
 
 export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => {
+  const pathname = usePathname();
+  const router = useRouter();
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
   const listRef = useRef<HTMLOListElement>(null);
   const cardStatesRef = useRef<Array<{ element: HTMLElement; scale: number; targetScale: number }>>([]);
@@ -84,6 +87,19 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => 
 
     return () => window.removeEventListener('popstate', syncSelectedCaseWithPath);
   }, [cases]);
+
+  useEffect(() => {
+    if (pathname === '/cases') {
+      setSelectedCase(null);
+      return;
+    }
+
+    const caseId = pathname.startsWith('/cases/') ? pathname.replace('/cases/', '') : null;
+
+    if (caseId) {
+      setSelectedCase(cases.find((caseItem) => caseItem.id === caseId) ?? null);
+    }
+  }, [cases, pathname]);
 
   useEffect(() => {
     if (selectedCase || !listRef.current) return;
@@ -157,13 +173,13 @@ export const CasesTimeline: React.FC<Props> = ({ backLabel, cases, locale }) => 
 
   const openCase = (caseItem: Case) => {
     setSelectedCase(caseItem);
-    window.history.pushState(null, '', `/cases/${caseItem.id}`);
+    router.push(`/cases/${caseItem.id}`, { scroll: false });
     window.scrollTo(0, 0);
   };
 
   const closeCase = () => {
     setSelectedCase(null);
-    window.history.pushState(null, '', '/cases');
+    router.push('/cases', { scroll: false });
     window.scrollTo(0, 0);
   };
 
