@@ -54,8 +54,8 @@
     }
   },
   "contact": {
-    "metaTitle": "Contact - Marta Pinedo Sánchez",
-    "metaDescription": "Contact page for Marta Pinedo Sánchez",
+    "metaTitle": "Contact | Madrid Lawyer - Marta Pinedo Sánchez",
+    "metaDescription": "Contact Marta Pinedo Sánchez, a Madrid lawyer, for civil law, commercial law, contract, litigation and administrative procedure enquiries.",
     "title": "Tell me about your case",
     "placeholders": {
       "name": "Name*",
@@ -93,7 +93,7 @@
     }
   },
   "headline": {
-    "text": "Civil law attorney"
+    "text": "Civil liability lawyer in Madrid"
   },
   "footer": {
     "copyright": "© 2026 Marta Pinedo Law. All rights reserved.",
@@ -102,8 +102,8 @@
     "lexgoAlt": "LexGoApp logo linking to Marta Pinedo's LexGoApp profile"
   },
   "blog": {
-    "title": "Blog | Marta Pinedo Sánchez",
-    "description": "Blog by Marta Pinedo Sánchez",
+    "title": "Legal blog | Marta Pinedo Sánchez",
+    "description": "Legal articles by Marta Pinedo Sánchez on civil law, commercial law, contracts, litigation and administrative procedures in Spain.",
     "byLabel": "by",
     "publishedLabel": "Published",
     "backBlogButton": "Back to blog",
@@ -118,8 +118,8 @@
     "contactButton": "Contact"
   },
   "layout": {
-    "siteTitle": "Marta Pinedo Sánchez | Lawyer",
-    "siteDescription": "Legal solutions with a personal approach, clarity and commitment."
+    "siteTitle": "Madrid Lawyer | Marta Pinedo Sánchez",
+    "siteDescription": "Legal guidance in Madrid with a personal approach, clarity and commitment in civil law, commercial law, contracts and litigation."
   },
   "aboutPage": {
     "metadataTitle": "About - Marta Pinedo Sánchez",

@@ -56,8 +56,8 @@
     }
   },
   "contact": {
-    "metaTitle": "Contacto - Marta Pinedo Sánchez",
-    "metaDescription": "Página de contacto de Marta Pinedo Sánchez",
+    "metaTitle": "Contacto | Abogada en Madrid - Marta Pinedo Sánchez",
+    "metaDescription": "Contacta con Marta Pinedo Sánchez, abogada en Madrid, para consultas de derecho civil, mercantil, contratos, litigios y procedimientos administrativos.",
     "title": "Cuéntame tu caso",
     "placeholders": {
       "name": "Nombre*",
@@ -95,7 +95,7 @@
     }
   },
   "headline": {
-    "text": "Abogada de responsabilidad civil"
+    "text": "Abogada de responsabilidad civil en Madrid"
   },
   "footer": {
     "copyright": "© 2026 Marta Pinedo Abogada. Todos los derechos reservados.",
@@ -104,8 +104,8 @@
     "lexgoAlt": "Logo de LexGoApp que enlaza al perfil de Marta Pinedo en LexGoApp"
   },
   "blog": {
-    "title": "Blog | Marta Pinedo Sánchez",
-    "description": "Blog de Marta Pinedo Sánchez",
+    "title": "Blog jurídico | Marta Pinedo Sánchez",
+    "description": "Artículos jurídicos de Marta Pinedo Sánchez sobre derecho civil, mercantil, contratos, litigios y procedimientos administrativos en España.",
     "byLabel": "por",
     "publishedLabel": "Publicado",
     "backBlogButton": "Volver al blog",
@@ -120,8 +120,8 @@
     "contactButton": "Contactar"
   },
   "layout": {
-    "siteTitle": "Marta Pinedo Sánchez | Abogada",
-    "siteDescription": "Soluciones jurídicas con cercanía, claridad y compromiso."
+    "siteTitle": "Abogada en Madrid | Marta Pinedo Sánchez",
+    "siteDescription": "Asesoramiento legal en Madrid con cercanía, claridad y compromiso en derecho civil, mercantil, contratos y litigios."
   },
   "aboutPage": {
     "metadataTitle": "Sobre mí - Marta Pinedo Sánchez",

@@ -25,7 +25,7 @@ interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 
 const headingVariants: Record<HeadingVariant, { className: string; tag: HeadingTag }> = {
   homeHeadline: {
-    tag: 'h2',
+    tag: 'h1',
     className: 'text-lg sm:text-xl md:text-2xl uppercase tracking-wide text-white/90 font-main text-center max-w-full',
   },
   sectionTitle: {
