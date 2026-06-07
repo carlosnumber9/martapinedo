@@ -49,7 +49,15 @@ export const GET_BLOG_POST_BY_ID = gql`
 export const GET_BLOG_POST_METADATA = gql`
   query GetBlogPostMetadata($id: ID!, $locale: Locale!) {
     posts(where: { id: $id }, locales: [$locale]) {
+      lastModificationDate
+      publishDate
+      publishedAt
+      subtitle
       title
+      updatedAt
+      createdBy {
+        name
+      }
     }
   }
 `;

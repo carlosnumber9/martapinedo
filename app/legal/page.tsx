@@ -1,22 +1,16 @@
-import { SupportedLocale } from 'app/types';
 import { CookieConsentToggle, Heading } from 'components';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from 'utils/seo';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale?: SupportedLocale };
-}): Promise<Metadata> {
-  const locale: SupportedLocale = params?.locale ?? 'es';
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('legal');
 
-  return {
-    title: {
-      absolute: t('metaTitle'),
-    },
+  return buildPageMetadata({
+    title: t('metaTitle'),
     description: t('metaDescription'),
-  };
+    path: '/legal',
+  });
 }
 
 export default async function LegalsPage() {

@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { extractHeadingsFromHTML, getCleanPostBody } from 'utils';
+import { buildPageMetadata } from 'utils/seo';
 import { getBlogPostById, getBlogPostMetadata } from '../_data/posts';
 
 export const dynamic = 'force-dynamic';
@@ -24,10 +25,16 @@ export async function generateMetadata({
       notFound();
     }
 
-    return {
+    return buildPageMetadata({
       title: `${post.title} | Marta Pinedo Sánchez`,
-      description: t('description'),
-    };
+      description: post.subtitle || t('description'),
+      path: `/blog/${id}`,
+      image: '/blog.png',
+      type: 'article',
+      publishedTime: post.publishDate || post.publishedAt,
+      modifiedTime: post.lastModificationDate || post.updatedAt,
+      authors: post.createdBy?.name ? [post.createdBy.name] : undefined,
+    });
   } catch (err) {
     console.error('Error fetching metadata:', err);
     notFound();

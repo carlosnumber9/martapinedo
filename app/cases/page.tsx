@@ -1,11 +1,23 @@
 import type { SupportedLocale } from 'app/types';
 import { Button } from 'components';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from 'utils/seo';
 import { getCases } from './_data/cases';
 import { CasesTimeline } from './CasesTimeline';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('cases');
+
+  return buildPageMetadata({
+    title: `${t('title')} | Marta Pinedo Sánchez`,
+    description: t('metaDescription'),
+    path: '/cases',
+  });
+}
 
 export default async function Cases() {
   const locale = (await getLocale()) as SupportedLocale;

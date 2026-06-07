@@ -2,6 +2,7 @@ import { PostItem } from 'components';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from 'utils/seo';
 import { SupportedLocale } from '../types';
 import { getBlogPosts } from './_data/posts';
 
@@ -11,12 +12,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const locale = (await getLocale()) as SupportedLocale;
   const t = await getTranslations({ locale, namespace: 'blog' });
 
-  return {
-    title: {
-      absolute: t('title'),
-    },
+  return buildPageMetadata({
+    title: t('title'),
     description: t('description'),
-  };
+    path: '/blog',
+    image: '/blog.png',
+  });
 }
 
 async function Blog() {

@@ -30,7 +30,10 @@ export interface Case {
 
 export type CaseMetadata = Pick<Case, 'caseName' | 'description'>;
 
-export type BlogPostMetadata = Pick<Post, 'title'>;
+export type BlogPostMetadata = Pick<
+  Post,
+  'createdBy' | 'lastModificationDate' | 'publishDate' | 'publishedAt' | 'subtitle' | 'title' | 'updatedAt'
+>;
 
 export type BlogSitemapPost = Pick<Post, 'id' | 'lastModificationDate'>;
 

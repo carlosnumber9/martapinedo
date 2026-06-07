@@ -5,21 +5,21 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 import { bodyFont, mainFont, subtitleFont } from 'utils/fonts';
-import { SupportedLocale } from './types';
+import { buildPageMetadata, SITE_NAME, SITE_URL } from 'utils/seo';
 import '../styles/globals.css';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale?: SupportedLocale };
-}): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('layout');
 
   return {
-    title: {
-      absolute: t('siteTitle'),
-    },
-    description: t('siteDescription'),
+    metadataBase: new URL(SITE_URL),
+    applicationName: SITE_NAME,
+    publisher: SITE_NAME,
+    ...buildPageMetadata({
+      title: t('siteTitle'),
+      description: t('siteDescription'),
+      path: '/',
+    }),
     manifest: '/manifest.webmanifest',
     icons: {
       icon: '/favicon.ico',

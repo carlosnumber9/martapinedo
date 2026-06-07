@@ -2,6 +2,7 @@ import type { SupportedLocale } from 'app/types';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from 'utils/seo';
 import { getCaseById, getCaseMetadata } from '../_data/cases';
 import { CaseDetailArea } from '../CaseDetailArea';
 import { CaseDetailContent } from '../CaseDetailContent';
@@ -23,10 +24,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       notFound();
     }
 
-    return {
+    return buildPageMetadata({
       title: `${caseItem.caseName} | Marta Pinedo Sánchez`,
       description: caseItem.description.text,
-    };
+      path: `/cases/${id}`,
+    });
   } catch (err: unknown) {
     console.error('Error fetching case metadata:', err);
     notFound();
