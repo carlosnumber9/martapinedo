@@ -1,13 +1,19 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
-import { introduceHeader } from 'utils/animations';
 import { Header, Headline, HomeScrollCue, Marta, Services, VideoContainer } from '../components';
+import { introduceHeader } from './animations';
 
 const PageContent: React.FC = () => {
   const headerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => introduceHeader(headerRef), []);
+  useEffect(() => {
+    const animation = introduceHeader(headerRef);
+
+    return () => {
+      animation?.kill();
+    };
+  }, []);
 
   return (
     <div className="relative w-full overflow-x-hidden">

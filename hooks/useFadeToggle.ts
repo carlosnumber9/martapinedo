@@ -1,33 +1,11 @@
-import { useRef, useEffect, RefObject } from 'react';
-import gsap from 'gsap';
+import { RefObject } from 'react';
+import { useFadeToggleTimeline } from 'utils/animations';
 
-export function useFadeToggle(
-    ref: RefObject<HTMLElement | null>,
-) {
-    const duration = 0.3;
+export function useFadeToggle(ref: RefObject<HTMLElement | null>) {
+  const tl = useFadeToggleTimeline(ref);
 
-    const tl = useRef<gsap.core.Timeline | null>(null);
-    const ctx = useRef<gsap.Context | null>(null);
+  const open = () => tl.current?.play();
+  const close = () => tl.current?.reverse();
 
-    useEffect(() => {
-        ctx.current = gsap.context(() => {
-            tl.current = gsap.timeline({
-                paused: true,
-            });
-
-            if (ref?.current) {
-                tl.current.fromTo(ref.current,
-                    { opacity: 0, visibility: 'hidden' },
-                    { opacity: 1, visibility: 'visible', duration }
-                );
-            }
-        });
-
-        return () => ctx.current?.revert();
-    }, []);
-
-    const open = () => tl.current?.play();
-    const close = () => tl.current?.reverse();
-
-    return { open, close };
+  return { open, close };
 }

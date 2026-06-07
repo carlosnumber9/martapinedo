@@ -1,9 +1,9 @@
 'use client';
 
 import classNames from 'classnames';
-import gsap from 'gsap';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { useFadeInUp } from 'utils/animations';
 
 export const Marta = () => {
   const [isLandscape, setIsLandscape] = useState(false);
@@ -20,24 +20,7 @@ export const Marta = () => {
     return () => window.removeEventListener('resize', updateLayoutFlags);
   }, []);
 
-  useEffect(() => {
-    if (imageRef.current) {
-      gsap.fromTo(
-        imageRef.current,
-        {
-          opacity: 0,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: 'power2.out',
-        }
-      );
-    }
-  }, []);
+  useFadeInUp(imageRef);
 
   return (
     <div

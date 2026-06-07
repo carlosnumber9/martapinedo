@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from 'components/Button';
 import classNames from 'classnames';
-import { gsap } from 'gsap';
+import { Button } from 'components/Button';
 import { CSSProperties, forwardRef, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'use-intl';
+import { useFadeInUpChildren } from 'utils/animations';
 
 const getSplitHeroPositions = (height: number): { claimTop: number; ctaTop: number } => ({
   claimTop: Math.max(140, Math.round(height * 0.16)),
@@ -40,27 +40,7 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
     return () => window.removeEventListener('resize', updateLayoutFlags);
   }, []);
 
-  useEffect(() => {
-    if (textsRef.current) {
-      const textsAndButton = textsRef.current.querySelectorAll('[data-header-animate]');
-
-      gsap.fromTo(
-        textsAndButton,
-        {
-          opacity: 0,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: 'power2.out',
-          delay: 0.5,
-        }
-      );
-    }
-  }, []);
+  useFadeInUpChildren(textsRef, '[data-header-animate]', { delay: 0.5 });
 
   const splitClaimStyle: CSSProperties | undefined = useSplitMobileHeroLayout
     ? { top: splitHeroPositions.claimTop }
@@ -73,13 +53,9 @@ export const Header = forwardRef<HTMLDivElement>((_, ref) => {
     <div
       className={classNames(
         'h-screen',
-        isLandscape
-          ? 'ml-auto flex w-1/2 flex-col items-center justify-center'
-          : 'w-full',
+        isLandscape ? 'ml-auto flex w-1/2 flex-col items-center justify-center' : 'w-full',
         !isLandscape &&
-          (useSplitMobileHeroLayout
-            ? 'relative'
-            : 'flex flex-col items-center justify-end pb-12')
+          (useSplitMobileHeroLayout ? 'relative' : 'flex flex-col items-center justify-end pb-12')
       )}
       ref={ref}
     >

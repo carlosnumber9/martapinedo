@@ -1,14 +1,14 @@
 'use client';
 
-import gsap from 'gsap';
-import { useServices } from 'hooks';
-import { useTranslations } from 'next-intl';
-import { useEffect, useRef } from 'react';
-import type { CSSProperties } from 'react';
 import { Button } from 'components/Button';
 import { Heading } from 'components/Heading';
-import { ServicesImage } from './ServicesImage';
+import { useServices } from 'hooks';
+import { useTranslations } from 'next-intl';
+import type { CSSProperties } from 'react';
+import { useRef } from 'react';
+import { useRevealOnIntersection } from 'utils/animations';
 import { ServiceItem } from './ServiceItem';
+import { ServicesImage } from './ServicesImage';
 
 const servicePositions = [
   { x: '0rem', y: '-17rem' },
@@ -21,57 +21,22 @@ const servicePositions = [
 export const Services = () => {
   const t = useTranslations('services');
   const services = useServices();
+  const servicesRef = useRef<HTMLDivElement>(null);
   const servicesImageRef = useRef<HTMLDivElement>(null);
-  const serviceItemsRef = useRef<Array<HTMLElement | null>>([]);
 
-  useEffect(() => {
-    const servicesImage = servicesImageRef.current;
-    const serviceItems = serviceItemsRef.current.filter(Boolean) as HTMLElement[];
-
-    if (!servicesImage || serviceItems.length === 0) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (prefersReducedMotion) {
-      gsap.set(serviceItems, { autoAlpha: 1 });
-      return;
-    }
-
-    const timeline = gsap.timeline({ paused: true });
-
-    timeline.to(serviceItems, {
-      autoAlpha: 1,
-      duration: 0.35,
-      ease: 'power2.out',
-      stagger: 0.14,
-    });
-
-    gsap.set(serviceItems, { autoAlpha: 0 });
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        timeline.play();
-        observer.disconnect();
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(servicesImage);
-
-    return () => {
-      observer.disconnect();
-      timeline.kill();
-    };
-  }, []);
+  useRevealOnIntersection({
+    rootRef: servicesRef,
+    selector: '[data-service-item]',
+    triggerRef: servicesImageRef,
+  });
 
   return (
-    <div className="flex flex-row flex-wrap relative w-full min-h-[calc(100vh+5rem)] overflow-hidden bg-darkSecondary">
+    <div
+      ref={servicesRef}
+      className="flex flex-row flex-wrap relative w-full min-h-[calc(100vh+5rem)] overflow-hidden bg-darkSecondary"
+    >
       <div className="flex w-full flex-col items-center px-6 py-24 text-white sm:px-8 lg:px-10">
-        <Heading variant="sectionTitle">
-          {t('title')}
-        </Heading>
+        <Heading variant="sectionTitle">{t('title')}</Heading>
 
         <div className="relative mt-14 flex w-full max-w-6xl flex-col items-center gap-6 lg:min-h-[44rem]">
           <ServicesImage ref={servicesImageRef} />
@@ -89,9 +54,7 @@ export const Services = () => {
               return (
                 <ServiceItem
                   key={service.id}
-                  ref={(element) => {
-                    serviceItemsRef.current[index] = element;
-                  }}
+                  data-service-item
                   service={service}
                   style={serviceStyle}
                 />

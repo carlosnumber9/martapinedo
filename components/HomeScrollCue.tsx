@@ -1,55 +1,22 @@
 'use client';
 
-import { gsap } from 'gsap';
 import Lottie from 'lottie-react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useTranslations } from 'use-intl';
-import { LOTTIE_OPTIONS } from 'utils/animations';
+import { LOTTIE_OPTIONS, prefersReducedMotion, useFadeInUpChildren } from 'utils/animations';
 
 export const HomeScrollCue = () => {
   const t = useTranslations('services');
   const cueRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!cueRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const cues = cueRef.current?.querySelectorAll('[data-scroll-cue-animate]') ?? [];
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      if (prefersReducedMotion) {
-        gsap.set(cues, { opacity: 1 });
-        return;
-      }
-
-      gsap.fromTo(
-        cues,
-        {
-          opacity: 0,
-          y: 20,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: 'power2.out',
-          delay: 2.5,
-        }
-      );
-    }, cueRef);
-
-    return () => ctx.revert();
-  }, []);
+  useFadeInUpChildren(cueRef, '[data-scroll-cue-animate]', { delay: 2.5 });
 
   const handleScrollCueClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const services = document.getElementById('services');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     services?.scrollIntoView({
-      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      behavior: prefersReducedMotion() ? 'auto' : 'smooth',
       block: 'start',
     });
 
@@ -70,11 +37,7 @@ export const HomeScrollCue = () => {
           data-scroll-cue-animate
           onClick={handleScrollCueClick}
         >
-          <Lottie
-            {...LOTTIE_OPTIONS.BACK_TO_TOP}
-            aria-hidden
-            className="w-20 sm:w-24 md:w-28"
-          />
+          <Lottie {...LOTTIE_OPTIONS.BACK_TO_TOP} aria-hidden className="w-20 sm:w-24 md:w-28" />
         </button>
       ))}
     </div>

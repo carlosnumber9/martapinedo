@@ -1,29 +1,21 @@
 'use client';
 
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
 import { useRef } from 'react';
-
-gsap.registerPlugin(useGSAP);
+import { prefersReducedMotion, useGsapStateTween } from 'utils/animations';
 
 export const Timeline: React.FC = () => {
   const lineRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      if (!lineRef.current) return;
-
-      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      gsap.to(lineRef.current, {
-        opacity: 0.8,
-        duration: prefersReducedMotion ? 0 : 1.8,
-        ease: 'power2.out',
-        delay: prefersReducedMotion ? 0 : 0.2,
-      });
-    },
-    { scope: lineRef }
-  );
+  useGsapStateTween({
+    dependencies: [],
+    ref: lineRef,
+    getVars: () => ({
+      opacity: 0.8,
+      duration: prefersReducedMotion() ? 0 : 1.8,
+      ease: 'power2.out',
+      delay: prefersReducedMotion() ? 0 : 0.2,
+    }),
+  });
 
   return (
     <div

@@ -1,15 +1,14 @@
 'use client';
 
-import { useGSAP } from '@gsap/react';
 import LanguageSwitcher from 'components/LanguageSwitcher';
-import gsap from 'gsap';
 import { useMobileMenu, useScrollPosition } from 'hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useRef, useState } from 'react';
 import type { MouseEvent } from 'react';
+import { useRef, useState } from 'react';
+import { useGsapStateTween } from 'utils/animations';
 import { MobileMenu } from './MobileMenu';
 import { NavbarButton } from './NavbarButton';
 
@@ -24,25 +23,25 @@ export const Navbar: React.FC = () => {
   const isScrolled = useScrollPosition(50);
   const [isHovered, setIsHovered] = useState(false);
 
-  useGSAP(() => {
-    if (!logoRef.current) return;
-
-    gsap.to(logoRef.current, {
+  useGsapStateTween({
+    dependencies: [isScrolled],
+    ref: logoRef,
+    getVars: () => ({
       scale: isScrolled ? 0.9 : 1,
       duration: 0.3,
       ease: 'power2.out',
-    });
-  }, [isScrolled]);
+    }),
+  });
 
-  useGSAP(() => {
-    if (!navRef.current) return;
-
-    gsap.to(navRef.current, {
+  useGsapStateTween({
+    dependencies: [isScrolled, isHovered],
+    ref: navRef,
+    getVars: () => ({
       opacity: isScrolled && !isHovered ? 0.95 : 1,
       duration: 0.3,
       ease: 'power2.inOut',
-    });
-  }, [isScrolled, isHovered]);
+    }),
+  });
 
   const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (isMobileMenuOpen) {
