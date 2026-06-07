@@ -3,10 +3,11 @@ import { JsonLd } from 'components/StructuredData';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getLocale, getTranslations } from 'next-intl/server';
-import { buildPageMetadata, SITE_URL } from 'utils/seo';
+import { buildPageMetadata } from 'utils/seo';
 import { getCaseById, getCaseMetadata } from '../_data/cases';
 import { CaseDetailArea } from '../CaseDetailArea';
 import { CaseDetailContent } from '../CaseDetailContent';
+import { buildCaseBreadcrumbStructuredData } from './seo';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -47,33 +48,7 @@ export default async function CaseDetailPage({ params }: Props) {
       notFound();
     }
 
-    const caseUrl = `${SITE_URL}/cases/${caseItem.id}`;
-    const homeLabel = locale === 'es' ? 'Inicio' : 'Home';
-    const casesLabel = locale === 'es' ? 'Casos' : 'Cases';
-    const breadcrumbStructuredData = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: homeLabel,
-          item: SITE_URL,
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: casesLabel,
-          item: `${SITE_URL}/cases`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: caseItem.caseName,
-          item: caseUrl,
-        },
-      ],
-    };
+    const breadcrumbStructuredData = buildCaseBreadcrumbStructuredData(caseItem, locale);
 
     return (
       <>
