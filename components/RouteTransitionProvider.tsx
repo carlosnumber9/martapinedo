@@ -49,7 +49,7 @@ export const RouteTransitionProvider: React.FC<PropsWithChildren> = ({ children 
     }
 
     if (prefersReducedMotion()) {
-      gsap.set(content, { autoAlpha: 1, y: 0 });
+      gsap.set(content, { autoAlpha: 1, clearProps: 'transform' });
       setIsTransitioning(false);
       return;
     }
@@ -62,7 +62,10 @@ export const RouteTransitionProvider: React.FC<PropsWithChildren> = ({ children 
         duration: FADE_IN_DURATION,
         ease: 'power2.out',
         y: 0,
-        onComplete: () => setIsTransitioning(false),
+        onComplete: () => {
+          gsap.set(content, { clearProps: 'transform' });
+          setIsTransitioning(false);
+        },
       }
     );
   }, []);
@@ -98,7 +101,7 @@ export const RouteTransitionProvider: React.FC<PropsWithChildren> = ({ children 
 
     if (!content) return;
 
-    gsap.set(content, { autoAlpha: 1, y: 0 });
+    gsap.set(content, { autoAlpha: 1, clearProps: 'transform' });
   }, []);
 
   useEffect(() => {
