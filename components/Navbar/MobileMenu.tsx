@@ -12,18 +12,23 @@ export const MobileMenu: React.FC<Props> = ({ onClickLink, ref }) => {
   return (
     <div
       ref={ref}
-      className="mobile-menu sm:hidden fixed top-20 left-0 flex flex-col items-center justify-start bg-darkSecondary w-full shadow-lg z-40 h-full overflow-y-hidden gap-5"
+      className="mobile-menu sm:hidden fixed top-0 left-0 flex h-full w-full flex-col items-center justify-start gap-5 overflow-y-hidden bg-darkSecondary pt-20 pb-10 shadow-lg z-40"
     >
       <hr className="mt-12 border-white/20" />
-      <NavbarButton text={t('buttons.blog')} route="/blog" isMobile onClick={onClickLink} />
-      <hr className="w-3/4 border-white/20" />
       <NavbarButton text={t('buttons.cases')} route="/cases" isMobile onClick={onClickLink} />
       <hr className="w-3/4 border-white/20" />
       <NavbarButton text={t('buttons.contact')} route="/contact" isMobile onClick={onClickLink} />
       <hr className="w-3/4 border-white/20" />
-      <NavbarButton text={t('buttons.legal')} route="/legal" isMobile onClick={onClickLink} />
+      <NavbarButton text={t('buttons.blog')} route="/blog" isMobile onClick={onClickLink} />
       <hr className="w-3/4 border-white/20" />
-      <div className="w-full h-15 p-15 flex items-center justify-center text-4xl p-5">
+      <NavbarButton
+        text={t('buttons.legal')}
+        route="/legal"
+        isMobile
+        align="end"
+        onClick={onClickLink}
+      />
+      <div className="w-full h-15 flex items-center justify-center text-4xl p-5">
         <LanguageSwitcher />
       </div>
     </div>

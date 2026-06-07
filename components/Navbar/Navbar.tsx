@@ -81,11 +81,11 @@ export const Navbar: React.FC = () => {
             <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
           </div>
         </Link>
-        <NavbarButton text={t('buttons.blog')} route="/blog" />
         <NavbarButton text={t('buttons.cases')} route="/cases" />
         <NavbarButton text={t('buttons.contact')} route="/contact" />
-        <NavbarButton text={t('buttons.legal')} route="/legal" />
-        <div className="w-24 hidden sm:block ml-auto cursor-pointer lg:hover:scale-110 transition-transform duration-700 ease-in-out">
+        <NavbarButton text={t('buttons.blog')} route="/blog" />
+        <NavbarButton text={t('buttons.legal')} route="/legal" align="end" />
+        <div className="w-24 hidden sm:block cursor-pointer lg:hover:scale-110 transition-transform duration-700 ease-in-out">
           <LanguageSwitcher />
         </div>
         <div
