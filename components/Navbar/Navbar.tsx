@@ -1,9 +1,9 @@
 'use client';
 
 import LanguageSwitcher from 'components/LanguageSwitcher';
+import { TransitionLink } from 'components/TransitionLink';
 import { useMobileMenu, useScrollPosition } from 'hooks';
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import type { MouseEvent } from 'react';
@@ -75,11 +75,11 @@ export const Navbar: React.FC = () => {
         onMouseLeave={() => setIsHovered(false)}
         aria-label="main-navigation"
       >
-        <Link href="/" onClick={handleLogoClick}>
+        <TransitionLink href="/" onClick={handleLogoClick}>
           <div ref={logoRef}>
             <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
           </div>
-        </Link>
+        </TransitionLink>
         <NavbarButton text={t('buttons.cases')} route="/cases" />
         <NavbarButton text={t('buttons.contact')} route="/contact" />
         <NavbarButton text={t('buttons.blog')} route="/blog" />

@@ -1,5 +1,5 @@
 import { Path } from 'app/types';
-import Link from 'next/link';
+import { TransitionLink } from 'components/TransitionLink';
 import { usePathname } from 'next/navigation';
 
 interface Props {
@@ -22,7 +22,7 @@ export const NavbarButton: React.FC<Props> = ({
   const alignmentClass = align === 'end' ? (isMobile ? 'mt-auto' : 'ml-auto') : '';
 
   return (
-    <Link
+    <TransitionLink
       href={route}
       className={`${isMobile ? 'block' : 'hidden sm:block'} ${alignmentClass}`}
       onClick={() => (isAlreadyOnRoute ? undefined : onClick?.())}
@@ -34,6 +34,6 @@ export const NavbarButton: React.FC<Props> = ({
       >
         {text}
       </div>
-    </Link>
+    </TransitionLink>
   );
 };

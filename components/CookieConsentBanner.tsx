@@ -2,6 +2,7 @@
 
 import { COOKIE_CONSENT_EVENT, COOKIE_CONSENT_NAME } from 'app/constants';
 import { Button, getButtonClassName } from 'components/Button';
+import { TransitionLink } from 'components/TransitionLink';
 import { useTranslations } from 'next-intl';
 import type { ComponentProps } from 'react';
 import { useEffect, useState } from 'react';
@@ -59,9 +60,9 @@ export const CookieConsentBanner: React.FC = () => {
       hideOnDecline={false}
     >
       {t('message')}{' '}
-      <a href="/legal" className="underline text-blueSecondary">
+      <TransitionLink href="/legal" className="underline text-blueSecondary">
         {t('learnMore')}
-      </a>
+      </TransitionLink>
     </CookieConsent>
   );
 };

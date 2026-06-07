@@ -3,6 +3,7 @@
 import { Turnstile } from '@marsidev/react-turnstile';
 import classNames from 'classnames';
 import { Button, Heading, Loader } from 'components';
+import { TransitionLink } from 'components/TransitionLink';
 import { useEmail } from 'hooks';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
@@ -104,9 +105,9 @@ export const ContactForm = () => {
           />
           {t.rich('legalsCheckbox', {
             legalsInfo: (chunks) => (
-              <a href="/legal" className="text-blueSecondary cursor-pointer underline">
+              <TransitionLink href="/legal" className="text-blueSecondary cursor-pointer underline">
                 {chunks}
-              </a>
+              </TransitionLink>
             ),
           })}
         </label>

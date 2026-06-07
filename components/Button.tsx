@@ -1,11 +1,12 @@
 import classNames from 'classnames';
-import Link, { type LinkProps } from 'next/link';
+import { type LinkProps } from 'next/link';
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
   CSSProperties,
   ReactNode,
 } from 'react';
+import { TransitionLink } from './TransitionLink';
 
 type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'surface' | 'unstyled';
 type ButtonSize = 'md' | 'lg';
@@ -78,9 +79,9 @@ export const Button: React.FC<ButtonProps> = ({
     const linkProps = props as LinkButtonProps;
 
     return (
-      <Link {...linkProps} className={resolvedClassName}>
+      <TransitionLink {...linkProps} className={resolvedClassName}>
         {children}
-      </Link>
+      </TransitionLink>
     );
   }
 

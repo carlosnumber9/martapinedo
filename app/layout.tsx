@@ -1,4 +1,10 @@
-import { AnalyticsProvider, CookieConsentBanner, Footer, Navbar } from 'components';
+import {
+  AnalyticsProvider,
+  CookieConsentBanner,
+  Footer,
+  Navbar,
+  RouteTransitionProvider,
+} from 'components';
 import StructuredData from 'components/StructuredData';
 import { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -38,14 +44,21 @@ const RootLayout = async ({ children }: Props) => {
     <html lang={locale} className={`${mainFont.variable} ${subtitleFont.variable} ${bodyFont.variable}`}>
       <body className="text-white/90 bg-darkPrimary min-h-screen flex flex-col font-body select-none">
         <NextIntlClientProvider>
-          <header>
-            <Navbar />
-          </header>
-          <AnalyticsProvider />
-          <StructuredData />
-          <main className="py-0 flex flex-col items-center flex-1 w-full">{children}</main>
-          <Footer />
-          <CookieConsentBanner />
+          <RouteTransitionProvider>
+            <header>
+              <Navbar />
+            </header>
+            <AnalyticsProvider />
+            <StructuredData />
+            <main
+              className="py-0 flex flex-col items-center flex-1 w-full"
+              data-route-transition-content
+            >
+              {children}
+            </main>
+            <Footer />
+            <CookieConsentBanner />
+          </RouteTransitionProvider>
         </NextIntlClientProvider>
       </body>
     </html>
