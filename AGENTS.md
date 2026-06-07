@@ -34,6 +34,7 @@ This repository should be treated with care: preserve the current user experienc
 - For performance, Core Web Vitals, CLS, hydration stability, media loading, SSR, query shape, React rendering cost, and observability tasks, read `agents/next-performance-optimizer.md` first.
 - For UX/UI design, visual consistency, reusable component styling, Tailwind tokens, interaction states, accessibility, responsive layout, and GSAP motion tasks, read `agents/ux-ui-designer.md` first.
 - For refactoring, code readability, file organization, TypeScript robustness, component boundaries, constants, SSR/client separation, and maintainability tasks, read `agents/refactorizer.md` first.
+- For SEO, crawlability, indexability, metadata, structured data, local search, multilingual search visibility, and legal-service content strategy tasks, read `agents/seo-expert.md` first.
 - Future dedicated agent notes should live in focused Markdown files under `agents/` and be referenced here.
 - Keep `AGENTS.md` limited to general development guidance and routing to those dedicated notes.
 
