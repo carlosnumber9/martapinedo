@@ -37,6 +37,8 @@ export type BlogPostMetadata = Pick<
 
 export type BlogSitemapPost = Pick<Post, 'id' | 'lastModificationDate'>;
 
+export type CaseSitemapItem = Pick<Case, 'id' | 'solvedAt'>;
+
 export interface PostsResponse<PostType> {
   posts?: PostType[] | null;
 }

@@ -3,12 +3,18 @@ import 'server-only';
 import type {
   Case,
   CaseMetadata,
+  CaseSitemapItem,
   CasesResponse,
   SupportedLocale,
 } from 'app/types';
 import { apolloClient } from 'utils/client';
 import { getCleanPostBody } from 'utils/posts';
-import { GET_CASE_BY_ID, GET_CASE_METADATA, GET_CASES } from './queries';
+import {
+  GET_CASE_BY_ID,
+  GET_CASE_METADATA,
+  GET_CASE_SITEMAP_ITEMS,
+  GET_CASES,
+} from './queries';
 
 export const getCases = async (locale: SupportedLocale): Promise<Case[]> => {
   const { data } = await apolloClient.query<CasesResponse<Case>>({
@@ -43,6 +49,17 @@ export const getCaseMetadata = async (
   });
 
   return data.cases?.[0] ?? null;
+};
+
+export const getSitemapCases = async (
+  locale: SupportedLocale
+): Promise<CaseSitemapItem[]> => {
+  const { data } = await apolloClient.query<CasesResponse<CaseSitemapItem>>({
+    query: GET_CASE_SITEMAP_ITEMS,
+    variables: { locale },
+  });
+
+  return data.cases ?? [];
 };
 
 const withCleanDescription = (caseItem: Case): Case => ({

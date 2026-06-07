@@ -41,3 +41,12 @@ export const GET_CASE_METADATA = gql`
     }
   }
 `;
+
+export const GET_CASE_SITEMAP_ITEMS = gql`
+  query GetCaseSitemapItems($locale: Locale!) {
+    cases(locales: [$locale]) {
+      id
+      solvedAt
+    }
+  }
+`;
