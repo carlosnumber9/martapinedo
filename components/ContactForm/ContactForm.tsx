@@ -1,44 +1,32 @@
 'use client';
 
 import { Turnstile } from '@marsidev/react-turnstile';
-import classNames from 'classnames';
-import { Button, Heading, Loader } from 'components';
+import type { ContactFormValues, SendingState } from 'app/types';
+import { Heading } from 'components/Heading';
 import { TransitionLink } from 'components/TransitionLink';
 import { useEmail } from 'hooks';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useActionState, useState } from 'react';
+import { getFormValue } from 'utils/formData';
+import { ContactSubmitButton } from './ContactSubmitButton';
 
-const getSubmitButtonContent = (state: string, t: (key: string) => string) => {
-  switch (state) {
-    case 'IDLE':
-      return t('button.idle');
-    case 'SENDING':
-      return <Loader />;
-    case 'SENT':
-      return t('button.sent');
-    case 'ERROR':
-      return t('button.error');
-    default:
-      return t('button.idle');
-  }
-};
+const getContactFormValues = (formData: FormData): ContactFormValues => ({
+  name: getFormValue(formData, 'name'),
+  email: getFormValue(formData, 'email'),
+  message: getFormValue(formData, 'message'),
+  subject: getFormValue(formData, 'subject'),
+});
 
 export const ContactForm = () => {
   const t = useTranslations('contact');
-  const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
-    message: '',
-    subject: '',
-  });
   const [legalsAreAccepted, setLegalsAreAccepted] = useState(false);
-  const { sendingState, sendEmail } = useEmail();
+  const { sendEmail } = useEmail();
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await sendEmail(formValues, captchaToken);
-  };
+  const [sendingState, submitContactForm, isPending] = useActionState<SendingState, FormData>(
+    async (_previousState, formData) => sendEmail(getContactFormValues(formData), captchaToken),
+    'IDLE'
+  );
 
   return (
     <div
@@ -50,15 +38,13 @@ export const ContactForm = () => {
       </Heading>
       <form
         className="w-full max-w-md space-y-4 flex-col items-center justify-center"
-        onSubmit={handleSubmit}
+        action={submitContactForm}
       >
         <input
           type="text"
           placeholder={t('placeholders.name')}
           className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300 autofill:!bg-transparent"
           required
-          onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
-          value={formValues.name}
           name="name"
         />
         <input
@@ -66,16 +52,12 @@ export const ContactForm = () => {
           placeholder={t('placeholders.email')}
           className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300"
           required
-          onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
-          value={formValues.email}
           name="email"
         />
         <input
           type="text"
           placeholder={t('placeholders.subject')}
           className="w-full p-2 text-white bg-transparent border-b-2 border-white/30 focus:outline-none focus:border-white/80 transition-colors ease-in-out duration-300"
-          onChange={(e) => setFormValues({ ...formValues, subject: e.target.value })}
-          value={formValues.subject}
           name="subject"
         />
         <textarea
@@ -83,8 +65,6 @@ export const ContactForm = () => {
           rows={4}
           className="w-full border border-none focus:outline-none p-2 text-white bg-gray-800/50 focus:bg-white/20 transition-colors ease-in-out duration-300"
           required
-          onChange={(e) => setFormValues({ ...formValues, message: e.target.value })}
-          value={formValues.message}
           name="message"
         />
         <div className="overflow-hidden w-full h-[65px] flex items-center justify-center">
@@ -111,24 +91,13 @@ export const ContactForm = () => {
             ),
           })}
         </label>
-        <Button
-          type="submit"
-          disabled={
-            !captchaToken ||
-            sendingState === 'SENDING' ||
-            sendingState === 'SENT' ||
-            !legalsAreAccepted
-          }
-          variant="surface"
-          fullWidth
-          className={classNames(
-            sendingState === 'SENT' && 'bg-green-500 hover:bg-green-600',
-            sendingState === 'ERROR' && 'bg-red-500 hover:bg-red-600',
-            sendingState === 'SENDING' && 'bg-bluePrimary/50 cursor-not-allowed'
-          )}
-        >
-          {getSubmitButtonContent(sendingState, t)}
-        </Button>
+        <ContactSubmitButton
+          captchaToken={captchaToken}
+          isPending={isPending}
+          legalsAreAccepted={legalsAreAccepted}
+          sendingState={sendingState}
+          t={t}
+        />
       </form>
     </div>
   );

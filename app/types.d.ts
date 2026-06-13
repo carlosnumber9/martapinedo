@@ -49,6 +49,13 @@ export interface CasesResponse<CaseType> {
 
 export type SendingState = 'IDLE' | 'SENDING' | 'SENT' | 'ERROR';
 
+export type ContactFormValues = {
+  name: string;
+  email: string;
+  message: string;
+  subject?: string;
+};
+
 export type SupportedLocale = 'es' | 'en';
 export interface Service {
   id: string;

@@ -1,36 +1,31 @@
-import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { SendingState } from 'app/types';
+import type { ContactFormValues, SendingState } from 'app/types';
 
 export const useEmail = () => {
-  const [sendingState, setSendingState] = useState<SendingState>('IDLE');
-
-  const sendEmail = async (formValues: {
-    name: string;
-    email: string;
-    message: string;
-    subject?: string;
-  }, captchaToken: string | null) => {
+  const sendEmail = async (
+    formValues: ContactFormValues,
+    captchaToken: string | null
+  ): Promise<SendingState> => {
     try {
-      if(!captchaToken) {
+      if (!captchaToken) {
         throw new Error('Captcha token is missing');
       }
-      setSendingState('SENDING');
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
         formValues,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
-      setSendingState('SENT');
+
+      return 'SENT';
     } catch (error) {
-      setSendingState('ERROR');
       console.error('Error sending email:', error);
+
+      return 'ERROR';
     }
   };
 
   return {
-    sendingState,
     sendEmail,
   };
 };
