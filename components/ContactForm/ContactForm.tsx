@@ -1,30 +1,21 @@
 'use client';
 
 import { Turnstile } from '@marsidev/react-turnstile';
-import type { ContactFormValues, SendingState } from 'app/types';
+import type { SendingState } from 'app/types';
 import { Heading } from 'components/Heading';
 import { TransitionLink } from 'components/TransitionLink';
-import { useEmail } from 'hooks';
 import { useTranslations } from 'next-intl';
 import { useActionState, useState } from 'react';
-import { getFormValue } from 'utils/formData';
+import { submitContactFormAction } from './actions';
 import { ContactSubmitButton } from './ContactSubmitButton';
-
-const getContactFormValues = (formData: FormData): ContactFormValues => ({
-  name: getFormValue(formData, 'name'),
-  email: getFormValue(formData, 'email'),
-  message: getFormValue(formData, 'message'),
-  subject: getFormValue(formData, 'subject'),
-});
 
 export const ContactForm = () => {
   const t = useTranslations('contact');
   const [legalsAreAccepted, setLegalsAreAccepted] = useState(false);
-  const { sendEmail } = useEmail();
   const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
-  const [sendingState, submitContactForm, isPending] = useActionState<SendingState, FormData>(
-    async (_previousState, formData) => sendEmail(getContactFormValues(formData), captchaToken),
+  const [sendingState, formAction, isPending] = useActionState<SendingState, FormData>(
+    submitContactFormAction,
     'IDLE'
   );
 
@@ -38,7 +29,7 @@ export const ContactForm = () => {
       </Heading>
       <form
         className="w-full max-w-md space-y-4 flex-col items-center justify-center"
-        action={submitContactForm}
+        action={formAction}
       >
         <input
           type="text"
@@ -67,6 +58,7 @@ export const ContactForm = () => {
           required
           name="message"
         />
+        <input type="hidden" name="captchaToken" value={captchaToken || ''} />
         <div className="overflow-hidden w-full h-[65px] flex items-center justify-center">
           <div className="w-[300px] h-[65px] flex items-center justify-center animate-pulse-bg">
             <Turnstile
