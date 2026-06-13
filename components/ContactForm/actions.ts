@@ -41,7 +41,11 @@ const sendContactEmail = async (formValues: ContactFormValues) => {
   });
 
   if (!response.ok) {
-    throw new Error(`EmailJS request failed with status ${response.status}`);
+    const errorMessage = await response.text();
+
+    throw new Error(
+      `EmailJS request failed with status ${response.status}: ${errorMessage || response.statusText}`
+    );
   }
 };
 
