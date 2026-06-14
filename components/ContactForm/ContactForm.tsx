@@ -72,6 +72,8 @@ export const ContactForm = () => {
           <input
             type="checkbox"
             required
+            name="legalsAccepted"
+            value="true"
             className="mt-5 mr-5 w-5 h-5"
             onChange={(e) => setLegalsAreAccepted(e.target.checked)}
           />
