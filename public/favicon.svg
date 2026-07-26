@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Marta Pinedo Sánchez</title>
+  <rect width="512" height="512" fill="#1c0f13"/>
+  <g
+    fill="none"
+    stroke="#ffe080"
+    stroke-width="28"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    transform="translate(38.4 38.4) scale(.85)"
+  >
+    <path d="M256 82v348"/>
+    <path d="M256 82h50c75 0 118 48 118 116s-43 116-118 116h-20"/>
+    <path d="m110 150 146 138 82-82"/>
+    <path d="M110 150v126c0 72 48 128 120 150"/>
+  </g>
+</svg>

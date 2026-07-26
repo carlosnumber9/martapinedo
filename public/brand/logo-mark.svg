@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="88 58 360 390" role="img" aria-labelledby="title description">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
   <title id="title">Marta Pinedo Sánchez</title>
-  <desc id="description">Monograma abierto MP en tonos dorados</desc>
+  <desc id="description">Archivo maestro del monograma abierto MP</desc>
   <defs>
     <linearGradient id="gold" gradientUnits="userSpaceOnUse" x1="90" y1="90" x2="430" y2="430">
       <stop offset="0" stop-color="#fff1ad"/>

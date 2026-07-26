@@ -29,8 +29,25 @@ export async function generateMetadata(): Promise<Metadata> {
     }),
     manifest: '/manifest.webmanifest',
     icons: {
-      icon: '/favicon.ico',
-      apple: '/apple-icon.png',
+      icon: [
+        {
+          url: '/favicon.svg',
+          type: 'image/svg+xml',
+        },
+        {
+          url: '/favicon.ico',
+          sizes: '16x16 32x32 48x48 64x64',
+          type: 'image/x-icon',
+        },
+      ],
+      shortcut: '/favicon.ico',
+      apple: [
+        {
+          url: '/apple-icon.png',
+          sizes: '180x180',
+          type: 'image/png',
+        },
+      ],
     },
   };
 }

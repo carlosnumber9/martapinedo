@@ -76,8 +76,14 @@ export const Navbar: React.FC = () => {
         aria-label="main-navigation"
       >
         <TransitionLink href="/" onClick={handleLogoClick}>
-          <div ref={logoRef}>
-            <Image src="/logo.svg" alt="Logo" width={150} height={45} priority />
+          <div ref={logoRef} className="flex h-16 w-[150px] items-center">
+            <Image
+              src="/logo.svg"
+              alt="Marta Pinedo Sánchez"
+              width={56}
+              height={61}
+              priority
+            />
           </div>
         </TransitionLink>
         <NavbarButton text={t('buttons.cases')} route="/cases" />
