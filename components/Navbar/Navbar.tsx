@@ -76,7 +76,7 @@ export const Navbar: React.FC = () => {
         aria-label="main-navigation"
       >
         <TransitionLink href="/" onClick={handleLogoClick}>
-          <div ref={logoRef} className="flex h-16 w-[150px] items-center">
+          <div ref={logoRef} className="flex h-16 w-14 items-center">
             <Image
               src="/logo.svg"
               alt="Marta Pinedo Sánchez"
