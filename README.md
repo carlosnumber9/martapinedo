@@ -2,6 +2,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+Use Node.js 24 LTS (the version in `.nvmrc`). With nvm installed:
+
+```bash
+nvm install
+nvm use
+npm ci
+```
+
+Configure deployment and CI environments to use the same Node.js major version.
+
 First, run the development server:
 
 ```bash
