@@ -12,6 +12,11 @@ npm ci
 
 Configure deployment and CI environments to use the same Node.js major version.
 
+The `@tailwindcss/typography` dependency override replaces its pinned vulnerable
+`postcss-selector-parser` with the patched 6.1.5 release
+([GHSA-rj75-hqrm-r3gf](https://github.com/advisories/GHSA-rj75-hqrm-r3gf)).
+Recheck the upstream dependency before removing this override.
+
 First, run the development server:
 
 ```bash
