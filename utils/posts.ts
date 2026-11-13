@@ -1,4 +1,4 @@
-import { IndexHeading } from 'app/types';
+import type { IndexHeading } from 'app/types';
 import sanitize from 'sanitize-html';
 
 const getPlainText = (html: string): string =>

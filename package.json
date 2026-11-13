@@ -11,6 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "npx @biomejs/biome lint",
+    "test:sanitization": "node --test tests/posts.test.mjs",
     "lint:fix": "npx @biomejs/biome lint --write"
   },
   "dependencies": {
@@ -30,7 +31,7 @@
     "react-cookie-consent": "^10.0.1",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.9",
-    "sanitize-html": "^2.17.0"
+    "sanitize-html": "^2.18.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
